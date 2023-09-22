@@ -29,18 +29,6 @@ const lexend = Lexend({
   preload: false,
 });
 
-interface Slide {
-  id: number;
-  type: string;
-  content: string;
-  Bathroom: number;
-  Bedrooms: number; 
-  unit: string;
-  price: number; 
-  lot: string;
-  floor: number;
-}
-
 SwiperCore.use([
   EffectCoverflow,
   EffectCube,
@@ -56,20 +44,6 @@ export default function Home() {
   const {data: Property} = useGetPropertyQuery();
 
   const swiperRef = useRef<HTMLButtonElement>();
-
-  const slides: Slide[] = [
-    { id: 1, Bathroom: 0, lot: "1004", floor: 203, Bedrooms: 0, unit: "no unit", price: 0, type: 'Land', content: 'DR88-000341  The Venice Luxury Residences | Studio Unit Condominium for Rent in Mckinley Hill, Fort Bonifacio, Taguig City Near Venice grand canal Mall, SM Aura, and BGC' },
-    { id: 2, Bathroom: 2, lot: "1004", floor: 203, Bedrooms: 3, unit: "no unit", price: 0, type: 'House', content: 'DR88-000341  The Venice Luxury Residences | Studio Unit Condominium for Rent in Mckinley Hill, Fort Bonifacio, Taguig City Near Venice grand canal Mall, SM Aura, and BGC' },
-    { id: 3, Bathroom: 0, lot: "1004", floor: 203, Bedrooms: 0, unit: "no unit", price: 0, type: 'Land', content: 'DR88-000341  The Venice Luxury Residences | Studio Unit Condominium for Rent in Mckinley Hill, Fort Bonifacio, Taguig City Near Venice grand canal Mall, SM Aura, and BGC' },
-    { id: 4, Bathroom: 2, lot: "1004", floor: 203, Bedrooms: 3, unit: "no unit", price: 0, type: 'House', content: 'DR88-000341  The Venice Luxury Residences | Studio Unit Condominium for Rent in Mckinley Hill, Fort Bonifacio, Taguig City Near Venice grand canal Mall, SM Aura, and BGC' },
-    { id: 5, Bathroom: 2, lot: "1004", floor: 203, Bedrooms: 1, unit: "293J", price: 0, type: 'Condominium', content: 'DR88-000341  The Venice Luxury Residences | Studio Unit Condominium for Rent in Mckinley Hill, Fort Bonifacio, Taguig City Near Venice grand canal Mall, SM Aura, and BGC' },
-    { id: 6, Bathroom: 2, lot: "1004", floor: 203, Bedrooms: 3, unit: "no unit", price: 0, type: 'House', content: 'DR88-000341  The Venice Luxury Residences | Studio Unit Condominium for Rent in Mckinley Hill, Fort Bonifacio, Taguig City Near Venice grand canal Mall, SM Aura, and BGC' },
-    { id: 7, Bathroom: 0, lot: "1004", floor: 203, Bedrooms: 0, unit: "no unit", price: 0, type: 'Office', content: 'DR88-000341  The Venice Luxury Residences | Studio Unit Condominium for Rent in Mckinley Hill, Fort Bonifacio, Taguig City Near Venice grand canal Mall, SM Aura, and BGC' },
-    { id: 8, Bathroom: 0, lot: "1004", floor: 203, Bedrooms: 0, unit: "no unit", price: 0, type: 'Office', content: 'DR88-000341  The Venice Luxury Residences | Studio Unit Condominium for Rent in Mckinley Hill, Fort Bonifacio, Taguig City Near Venice grand canal Mall, SM Aura, and BGC' },
-    { id: 9, Bathroom: 2, lot: "1004", floor: 203, Bedrooms: 4, unit: "no unit", price: 0, type: 'Apartment', content: 'DR88-000341  The Venice Luxury Residences | Studio Unit Condominium for Rent in Mckinley Hill, Fort Bonifacio, Taguig City Near Venice grand canal Mall, SM Aura, and BGC' },
-    { id: 10, Bathroom: 1, lot: "1004", floor: 203, Bedrooms: 4, unit: "no unit", price: 0, type: 'Hotel', content: 'DR88-000341  The Venice Luxury Residences | Studio Unit Condominium for Rent in Mckinley Hill, Fort Bonifacio, Taguig City Near Venice grand canal Mall, SM Aura, and BGC' },
-  ];
-
   
 
  
@@ -206,7 +180,7 @@ export default function Home() {
                   </>
                   : 
                   <>
-                    {Property?.slice(0,slides.length).map((item, index) => (
+                    {Property?.slice(0,Property?.length).map((item, index) => (
                     <SwiperSlide key={index} className="pt-5 pb-5">
                        <Product TypeProp={item.Type} isImage={item.Images[0]} id={item.ProductId} location={`${item.Location.city}, ${item.Location.province}`} content={item.TitleState} type={item.PropertyType} Bathroom={item.Bathrooms} Bedrooms={item.Bedrooms} unit={item.Unit} price={item.Price} lot={item.ParkingLot} floor={item.LotFloor}  />
                     </SwiperSlide>

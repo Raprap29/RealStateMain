@@ -11,6 +11,10 @@ interface Location {
     city: string;
 }
 
+interface SendSubscriber {
+    email: string;
+}
+
 interface Product {
     ProductId: string;
     TitleState: string;
@@ -59,12 +63,20 @@ export const RealtyApi = createApi({
                 method: "POST",
                 body: send,
             })
-        })
+        }),
+        sendSubsriber: builder.mutation<void, SendSubscriber>({
+            query: (subscribe) => ({
+                url: '/subcribe',
+                method: "POST",
+                body: subscribe,
+            })
+        }),
     })
 });
 
 export const {
     useSendMessageCustomerMutation,
+    useSendSubsriberMutation,
 
     useGetSlideImageQuery,
     useGetPropertyQuery,

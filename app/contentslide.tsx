@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from "react";
+import React, {useState, useEffect, useRef, FormEvent} from "react";
 
 
 import SwiperCore, {
@@ -13,7 +13,7 @@ import { MdLocationOn } from "react-icons/md";
 import "swiper/css";
 import "swiper/css/pagination"
 import { Pagination, Navigation, Autoplay } from "swiper";
-import { useGetSlideImageQuery } from "./appApi/api";
+import { useGetSlideImageQuery, useGetPropertyQuery } from "./appApi/api";
 
 SwiperCore.use([
     EffectCoverflow,
@@ -25,7 +25,7 @@ SwiperCore.use([
   ]);
 
 
-const ContentSLide: React.FC<ImageProps> = () =>{
+const ContentSLide: React.FC = () =>{
     const [showLoc, setshowLoc] = useState<boolean>(false);
     const [inputValue, setInputValue] = useState<string>("");
     const [showBoxOption, setshowBoxOption] = useState<boolean>(false);
@@ -35,7 +35,26 @@ const ContentSLide: React.FC<ImageProps> = () =>{
     const [ShowOption, setShowOption] = useState<boolean>(false);
     const swiperRef = useRef();
 
+    const {data: Property} = useGetPropertyQuery();
+
     const {data: SlideImage} = useGetSlideImageQuery();
+    const propertyTypeCodeMap = new Map();
+
+    Property?.forEach((property: any) => {
+      const propertyType = property.PropertyType;
+      const code = property.Code;
+    
+      if (propertyType != null) {
+        if (!propertyTypeCodeMap.has(propertyType)) {
+          propertyTypeCodeMap.set(propertyType, [code]);
+        } else {
+  
+          if (!propertyTypeCodeMap.get(propertyType).includes(code)) {
+            propertyTypeCodeMap.get(propertyType).push(code);
+          }
+        }
+      }
+    });
 
     const slideNext = () => {
       if (swiperRef && swiperRef.current && swiperRef.current.slideNext) {
@@ -64,6 +83,16 @@ const ContentSLide: React.FC<ImageProps> = () =>{
     setshowBoxOption(!showBoxOption);
   };
  
+  const handleSubmitLocation = (e: FormEvent) => {
+    e.preventDefault();
+    
+    if(ShowOption){
+
+    }else{
+
+    }
+  }
+
   const handleChange = (e: any): void => {
     setInputValue(e.target.value);
  
@@ -123,7 +152,7 @@ const ContentSLide: React.FC<ImageProps> = () =>{
                 <p className="text-[30px] font-bold text-white max-[420px]:text-[15px] max-[720px]:text-[25px]">Discover Your Dream Home, Ideal Office, or Lucrative Investment Property!</p>
                 <p className="text-white mt-[10px]  max-[720px]:text-[15px] max-[420px]:text-[10px]">Unlock the Gateway to Exceptional Philippine Real Estate: Explore our Verified Listings Now!</p>
                 <div className="mt-[20px]">
-                  <form className="max-[720px]:hidden">
+                  <form onSubmit={handleSubmitLocation} className="max-[720px]:hidden">
                     <div className="flex">
                         <div className="relative flex flex-col items-center">
                           <button type="button" onClick={() => setShowOption(!ShowOption)} className={`w-[195px] h-[45px] border-solid border border-[#fff] rounded-tl-[10px] ${ShowOption ? " bg-[#F9F9FB]" : "pointer-events-none bg-[#FFF] font-bold"}`}>
@@ -209,6 +238,25 @@ const ContentSLide: React.FC<ImageProps> = () =>{
               </button>
             </div>
           </div>
+          <div className='container mx-auto max-w-[1150px] mt-8 mb-8 p-[20px] max-[720px]:block hidden'>
+          <div className='w-full h-full border border-solid border-1 rounded-[5px] border-[#B9AFAF] shadow-[2px_2px_3px_0px_rgba(0,0,0,0.25)]'>
+              <div className='flex p-5 gap-x-[5px] flex-wrap justify-center gap-y-[20px]'>
+                <button type='button' className='rounded-[10px] px-5 py-3 border border-solid border-1 border-[#BCBCBC]'><div className='flex gap-x-[50px] items-center'><p className='font-bold text-[12px]'>BUY PROPERTY</p><BiCaretDown size={20} /></div></button>
+                <button type='button' className='rounded-[10px] px-5 py-3 border border-solid border-1 border-[#BCBCBC]'><div className='flex gap-x-[50px] items-center'><p className='font-bold text-[12px]'>PROPERTY TYPE</p><BiCaretDown size={20} /></div></button>
+                <button type='button' className='rounded-[10px] px-5 py-3 border border-solid border-1 border-[#BCBCBC]'><div className='flex gap-x-[50px] items-center'><p className='font-bold text-[12px]'>NO. BEDROOMS</p><BiCaretDown size={20} /></div></button>
+              </div>
+              <div>
+              <div className="w-full flex-wrap gap-y-[20px] flex gap-x-[50px] justify-center items-center px-5">
+                <div className='relative w-full'>
+                  <input onChange={handleChange} value={inputValue} placeholder="Search for location...." className="py-[12px] w-[100%] h-full pl-3 mr-[20px] outline-none border border-solid border-1 border-[#BCBCBC] rounded-[5px]" />
+                  {!showLoc ? <MdLocationOn className="absolute top-[7px] right-[20px]" color="#25D242" size={30} /> : ""}
+                </div>
+                <button type="button" className="py-[12px] rounded-[10px] px-[35px] mr-[5px] bg-[#25D242] whitespace-nowrap "><p className="font-bold">Find Your Home</p></button>
+                <Image src="/logo/LogoJama.png" width={180} height={180} alt="photoLogo" />
+              </div>
+              </div>
+          </div>
+        </div>
         </>
     )
 }

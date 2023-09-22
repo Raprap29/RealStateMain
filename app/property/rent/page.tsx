@@ -67,9 +67,7 @@ const Rent = () =>{
 
     const FilterTypeNumber: any = PropertyRent?.filter((property: any) => property.Type === "Rent");
 
-
-
-    const FilterType = FilterTypeNumber?.filter((property: any) => property.Code === type);
+    const FilterType = (type && type !== "All") ? FilterTypeNumber?.filter((property: any) => property.Code === type) : FilterTypeNumber;
 
     const filterProvince: any = FilterType?.filter((property: any) => property.Location.province === province);
 
@@ -94,7 +92,7 @@ const Rent = () =>{
       return lowestPrice <= propertyPrice && propertyPrice <= highestPrice;
     });
 
-    const TotalCardItems = filteredProperties?.filter((property: any) => property.Code === type).length as number;
+    const TotalCardItems = ((type && type !== "All") ? FilterTypeNumber?.filter((property: any) => property.Code === type) : FilterTypeNumber).length as number;
     const totalPages = Math.ceil(TotalCardItems / cardItemperPage);
     const startIndex = (currentPage - 1) * cardItemperPage;
     const endIndex = startIndex + cardItemperPage;

@@ -3,6 +3,7 @@ import { Rubik } from 'next/font/google';
 import NavBar from './components/Navbar/Page';
 import React from 'react'
 import { ReduxProvider } from './provider/provider';
+import Footer from './components/footer/Footer';
 const rubik = Rubik({ subsets: ['latin'] })
 
 export default function RootLayout({
@@ -16,6 +17,7 @@ export default function RootLayout({
           <ReduxProvider>
             <NavBar />
             {children}
+            <Footer />
           </ReduxProvider>
       </body>
     </html>
