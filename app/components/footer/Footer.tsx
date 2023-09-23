@@ -21,6 +21,7 @@ const Footer: React.FC = () => {
     })
 
     const [openError, setOpenError] = useState<boolean>(false);
+    const [messageError, setmessageError] = useState<string>("");
 
     const chanageInput = (e: ChangeEvent<HTMLInputElement>) => {
         setRegister({...Register, [e.target.name]: e.target.value});
@@ -38,6 +39,7 @@ const Footer: React.FC = () => {
             }
 
             setOpenError(false);
+            setmessageError("");
             await RegisterSubsriber({
                 email: email,
             }).unwrap();
@@ -48,7 +50,8 @@ const Footer: React.FC = () => {
 
         }catch(err)
         {
-            console.error(err);
+            setOpenError(true);
+            setmessageError("This email is already exist.");
             return;
         }
     }
@@ -96,9 +99,12 @@ const Footer: React.FC = () => {
                             <p className={`${Fjalla.className} text-[30px] max-[520px]:text-[20px]`}>SUBSCRIBE</p>
                             <p className={`${Source_Sans.className}`}>Sign up for real estate news.</p>
                         </div>
-                        <div className="flex items-center gap-x-[20px] w-full mt-[20px]">
-                            <input name="email" value={Register.email} onChange={chanageInput} className={`w-full h-[40px] px-[10px] outline-none border  border-solid ${openError ? "border-[red] border-1 " : "border-[rgba(0,0,0,.50)] border-1 "} rounded-[5px] rounded-[5px]`} placeholder="Email Address" />
-                            <button onClick={HandleSubmitSubscribe} type="button" className="bg-[#25D242] max-[520px]:text-[12px] h-[40px] w-[150px] font-bold rounded-[5px]">{isLoading ? "Loading..." : "SIGN UP"}</button>
+                        <div className="w-full mt-[20px]">
+                            <p className="ml-1 text-[red] mb-2">{messageError}</p>
+                            <div className="flex items-center gap-x-[20px] w-full ">
+                                <input name="email" value={Register.email} onChange={chanageInput} className={`w-full h-[40px] px-[10px] outline-none border  border-solid ${openError ? "border-[red] border-1 " : "border-[rgba(0,0,0,.50)] border-1 "} rounded-[5px] rounded-[5px]`} placeholder="Email Address" />
+                                <button onClick={HandleSubmitSubscribe} type="button" className="bg-[#25D242] max-[520px]:text-[12px] h-[40px] w-[150px] font-bold rounded-[5px]">{isLoading ? "Loading..." : "SIGN UP"}</button>
+                            </div>
                         </div>
                     </div>
                 </div>
