@@ -1,26 +1,18 @@
 "use client"
 
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import { MuseoModerno } from "next/font/google";
 import { BiCaretDown } from 'react-icons/bi';
 import { MdLocationOn } from "react-icons/md";
 import Image from 'next/image';
 import Contact from '../components/contact/contact';
 import BankLoan from '../components/loan/Loan';
+import { useGetPropertyQuery } from '../appApi/api';
+import QuickSearch from '../components/quicksearch/quickSearch';
 const Museo_Moderno = MuseoModerno({weight: '700', preload: false})
 
 const AboutPage = () => {
-  const [showLoc, setshowLoc] = useState<boolean>(false);
-  const [inputValue, setInputValue] = useState<string>("");
-  const handleChange = (e: any): void => {
-    setInputValue(e.target.value);
- 
-    if (e.target.value === "") {
-      setshowLoc(false);
-    } else {
-      setshowLoc(true);
-    }
-  };
+
   return (
     <>
         <title>Jama Realty - About Us</title>
@@ -32,25 +24,7 @@ const AboutPage = () => {
           </div>
           <div className='bg-[rgba(0,0,0,0.25)] w-full h-full absolute top-0'></div>
         </div>
-        <div className='container mx-auto max-w-[1150px] mt-8 mb-8'>
-          <div className='w-full h-full border border-solid border-1 rounded-[5px] border-[#B9AFAF] shadow-[2px_2px_3px_0px_rgba(0,0,0,0.25)]'>
-              <div className='flex p-5 gap-x-[5px] justify-between'>
-                <button type='button' className='rounded-[10px] px-10 py-3 border border-solid border-1 border-[#BCBCBC]'><div className='flex gap-x-[50px] items-center'><p className='font-bold text-[18px]'>BUY PROPERTY</p><BiCaretDown size={30} /></div></button>
-                <button type='button' className='rounded-[10px] px-10 py-3 border border-solid border-1 border-[#BCBCBC]'><div className='flex gap-x-[50px] items-center'><p className='font-bold text-[18px]'>PROPERTY TYPE</p><BiCaretDown size={30} /></div></button>
-                <button type='button' className='rounded-[10px] px-10 py-3 border border-solid border-1 border-[#BCBCBC]'><div className='flex gap-x-[50px] items-center'><p className='font-bold text-[18px]'>NO. BEDROOMS</p><BiCaretDown size={30} /></div></button>
-              </div>
-              <div>
-              <div className="w-full flex gap-x-[50px] items-center px-5">
-                <div className='relative w-full'>
-                  <input onChange={handleChange} value={inputValue} placeholder="Search for location...." className="py-[12px] w-[100%] h-full pl-3 mr-[20px] outline-none border border-solid border-1 border-[#BCBCBC] rounded-[5px]" />
-                  {!showLoc ? <MdLocationOn className="absolute top-[4px] right-[20px]" color="#25D242" size={40} /> : ""}
-                </div>
-                <button type="button" className="py-[12px] rounded-[10px] px-[35px] mr-[5px] bg-[#25D242] whitespace-nowrap "><p className="font-bold">Find Your Home</p></button>
-                <Image src="/logo/LogoJama.png" width={180} height={180} alt="photoLogo" />
-              </div>
-              </div>
-          </div>
-        </div>
+        <QuickSearch />
         <div className='mx-auto container max-w-[1100px] flex justify-center gap-x-[50px] mb-7'>
           <div className='flex flex-col gap-y-[20px] w-[900px]'>
             <p className='text-[40px] drop-shadow-[0_2px_3px_rgba(0,0,0,0.70)] font-bold text-[#3B5189]'>OUR STORY</p>

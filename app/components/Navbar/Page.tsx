@@ -105,18 +105,10 @@ const NavBar = () => {
                   </Link>
                 </li>
                 <li className={`nav-item`}>
-                  <Link className="px-3 py-7 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" href="/news">
+                  <Link className="px-3 py-7 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" href="/contact-us">
                     <div className="w-full relative">
                       <span>CONTACT US</span>
-                      {pathname === "/page/contact" && <div className="border-b-[3px] border-[#25D242] absolute top-6 left-0 right-0"></div>}
-                    </div>
-                  </Link>
-                </li>
-                <li className={`nav-item`}>
-                  <Link className="px-3 py-7 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" href="/news">
-                    <div className="w-full relative">
-                      <span>Explore Location</span>
-                      {pathname === "/page/contact" && <div className="border-b-[3px] border-[#25D242] absolute top-6 left-0 right-0"></div>}
+                      {pathname === "/contact-us" && <div className="border-b-[3px] border-[#25D242] absolute top-6 left-0 right-0"></div>}
                     </div>
                   </Link>
                 </li>
@@ -126,7 +118,7 @@ const NavBar = () => {
                   <Link href="/" className="px-3 py-4 flex items-center text-xs border border-solid border-[2px] border-[#1B7E19] hover:border-[rgba(27,126,25, 0.75)] uppercase font-bold leading-snug hover:bg-[rgba(37,210,66,0.75)] transition ease-in-out duration-300 font-black bg-[#25D242] rounded-[5px]">
                     <div className="flex items-center justify-center gap-x-5">
                       <p className="text-[20px]"><FaHouseUser /></p>
-                      <p className="text-black font-black text-[14px]">SELL YOUR PROPERTY</p>
+                      <p className="text-black font-black text-[14px]">EXPLORE LOCATION</p>
                     </div>
                   </Link>
                 </li>

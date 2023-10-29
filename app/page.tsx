@@ -45,8 +45,6 @@ export default function Home() {
 
   const swiperRef = useRef<HTMLButtonElement>();
   
-
- 
   useEffect(()=>{
     window.addEventListener(
         "resize",

@@ -95,12 +95,6 @@ const ContentSLide: React.FC = () =>{
         swiperRef.current.slidePrev();
       }
     };
-
-    const handleClick = (index: number) => {
-      if (swiperRef.current && swiperRef.current.swiper) {
-        swiperRef.current.swiper.slideTo(index);
-      }
-    };
      
   const handleItemClickBed = (item: string): void => {
     setselecterbed(item);
@@ -242,7 +236,7 @@ const ContentSLide: React.FC = () =>{
             {SlideImage && SlideImage.map((item: any, index: number)=> (
               <SwiperSlide key={index}> 
                 <Image
-                  src={item.images}
+                  src={`${item.images || "/assets/sean-pollock-PhYq704ffdA-unsplash.jpg"}`}
                   alt={`Photo-${index}`}
                   layout="fill"
                   objectFit="cover"
