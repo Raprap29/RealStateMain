@@ -58,7 +58,7 @@ const NavBar = () => {
           </div>
         </div>
       </div>
-      <nav className="relative max-[620px]:h-[70px] flex flex-wrap items-center px-1 justify-between bg-[#FFFFFF] sticky top-0 w-full items-center max-[720px]:px-2 z-[50]" style={{ boxShadow: "1px 5px 10px 0px rgba(0,0,0, 0.25)"}}>
+      <nav className="max-[620px]:h-[70px] flex flex-wrap items-center px-1 justify-between bg-[#FFFFFF] sticky top-0 w-full items-center max-[720px]:px-2 z-[50]" style={{ boxShadow: "1px 5px 10px 0px rgba(0,0,0, 0.25)"}}>
         <div className="container mx-auto flex flex-wrap items-center">
           <div className="flex-grow items-center">
             <ul className="flex list-none items-center mx-auto container justify-between">

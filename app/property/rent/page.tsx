@@ -13,6 +13,7 @@ import Contact from "@/app/components/contact/contact";
 import BankLoan from "@/app/components/loan/Loan";
 import { useGetPropertyQuery } from "@/app/appApi/api";
 import { useRouter } from "next/navigation";
+import Footer from "@/app/components/footer/Footer";
 
 const VietnamPro = Be_Vietnam_Pro({weight: '700', preload: false})
 
@@ -706,6 +707,7 @@ const Rent = () =>{
             </div>            
             <Contact mt={0} />
             <BankLoan />
+            <Footer />
         </>
     )
 }

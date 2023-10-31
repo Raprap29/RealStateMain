@@ -9,6 +9,7 @@ import Contact from '../components/contact/contact';
 import BankLoan from '../components/loan/Loan';
 import { useGetPropertyQuery } from '../appApi/api';
 import QuickSearch from '../components/quicksearch/quickSearch';
+import Footer from '../components/footer/Footer';
 const Museo_Moderno = MuseoModerno({weight: '700', preload: false})
 
 const AboutPage = () => {
@@ -82,6 +83,7 @@ const AboutPage = () => {
         </div>
         <Contact mt={0} />
         <BankLoan />
+        <Footer />
     </>
   );
 };

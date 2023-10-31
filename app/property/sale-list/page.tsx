@@ -6,6 +6,7 @@ import BankLoan from "@/app/components/loan/Loan";
 import Link from "next/link";
 import Contact from "@/app/components/contact/contact";
 import ContentSLide from "@/app/contentslide";
+import Footer from "@/app/components/footer/Footer";
 interface ImagesList {
     id: number;
     type: string;
@@ -94,6 +95,7 @@ const salelist = () =>{
         </div>
         <Contact mt={8} />
         <BankLoan />
+        <Footer />
         </>
     )
 }

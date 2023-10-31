@@ -41,6 +41,15 @@ interface PropsSendMessage {
     TypeP: string;
 }
 
+interface InquireForm {
+    fullname: string;
+    email: string;
+    contact: string;
+    subject: string;
+    inquire: string;
+    url: string;
+}
+
 export const RealtyApi = createApi({
     reducerPath: 'AuthRealty',
     baseQuery: fetchBaseQuery({baseUrl: API_BASE_URL}),
@@ -71,12 +80,20 @@ export const RealtyApi = createApi({
                 body: subscribe,
             })
         }),
+        sendMessageCustomerToEmail: builder.mutation<void, InquireForm>({
+            query: (message) => ({
+                url: '/sendmessage/customer',
+                method: "POST",
+                body: message,
+            })
+        }),
     })
 });
 
 export const {
     useSendMessageCustomerMutation,
     useSendSubsriberMutation,
+    useSendMessageCustomerToEmailMutation,
 
     useGetSlideImageQuery,
     useGetPropertyQuery,

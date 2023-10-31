@@ -24,6 +24,7 @@ import { useGetPropertyQuery } from "./appApi/api";
 import Product from "./Product";
 
 import { Pagination, Navigation, Autoplay } from "swiper";
+import Footer from "./components/footer/Footer";
 
 const lexend = Lexend({
   preload: false,
@@ -194,6 +195,7 @@ export default function Home() {
       </div>
       <Contact mt={0} />
       <BankLoan />
+      <Footer />
     </>
   )
 }
