@@ -10,14 +10,14 @@ import SwiperCore, {
   EffectCoverflow,
   EffectCube,
 } from "swiper";
+import { Swiper, SwiperSlide} from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
 import ContentSLide from "./contentslide";
 import Image from "next/image";
 import {  properyIcon } from "./assetsItems";
 import { Lexend } from "next/font/google";
 import Link from "next/link";
-import { Swiper, SwiperSlide} from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
 import { useGetPropertyQuery } from "./appApi/api";
 
 // import "swiper/css/navigation"

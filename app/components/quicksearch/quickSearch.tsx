@@ -189,11 +189,11 @@ const QuickSearch: React.FC = () => {
     }, [showbedroom])
 
     return(
-        <div className='container mx-auto max-w-[1150px] mt-8 mb-8'>
+        <div className='px-[10px] container mx-auto max-w-[1150px] max-[720px]:px-[10px] mt-8 mb-8'>
           <form onSubmit={handleSumbit} className='w-full h-full border border-solid border-1 rounded-[5px] border-[#B9AFAF] shadow-[2px_2px_3px_0px_rgba(0,0,0,0.25)]'>
-              <div className='flex p-5 gap-x-[5px] justify-between'>
+              <div className='flex max-[720px]:justify-center w-full gap-y-[10px] flex-wrap p-5 gap-x-[5px] justify-between'>
                 <div className='relative'>
-                  <button onClick={handleShowBoxBuyRent} type='button' className='rounded-[10px] px-10 py-3 border border-solid border-1 border-[#BCBCBC]'>
+                  <button onClick={handleShowBoxBuyRent} type='button' className='w-full rounded-[10px] px-10 py-3 border border-solid border-1 border-[#BCBCBC]'>
                     <div className='flex gap-x-[50px] items-center'>
                       <p className='font-bold text-[18px]'>
                         {propertyBuyRent}
@@ -201,7 +201,7 @@ const QuickSearch: React.FC = () => {
                       <BiCaretDown size={30} />
                     </div>
                   </button>
-                  <div ref={BoxPropertyRef} className={`${showBoxPropertyBuyRent ? "flex" : "hidden"} flex-col z-[3] py-[10px] gap-y-[10px] bg-[#fff] absolute top-[60px] border border-solid border-1 border-[rgba(0,0,0,.75)] w-full rounded-[5px]`}>
+                  <div ref={BoxPropertyRef} className={`${showBoxPropertyBuyRent ? "flex" : "hidden"} flex-col z-[3] py-[10px] gap-y-[10px] bg-[#fff] absolute top-[60px] max-[380px]:top-[85px] border border-solid border-1 border-[rgba(0,0,0,.75)] w-full rounded-[5px]`}>
                     <button type='button' onClick={() => handleSetBuyRent("BUY PROPERTY")} className='w-full font-medium'>
                       <p>BUY PROPERTY</p>
                     </button>
@@ -215,7 +215,7 @@ const QuickSearch: React.FC = () => {
                       <BiCaretDown size={30} />
                     </div>
                   </button>
-                  <div ref={BoxPropertyTypeRef} className={`${showBoxPropertyType ? "flex" : "hidden"} flex-col z-[3] py-[10px] gap-y-[10px] bg-[#fff] absolute top-[60px] border border-solid border-1 border-[rgba(0,0,0,.75)] w-full rounded-[5px]`}>
+                  <div ref={BoxPropertyTypeRef} className={`${showBoxPropertyType ? "flex" : "hidden"} max-[380px]:top-[85px] flex-col z-[3] py-[10px] gap-y-[10px] bg-[#fff] absolute top-[60px] border border-solid border-1 border-[rgba(0,0,0,.75)] w-full rounded-[5px]`}>
                     <ul className="divide-y divide-gray-300">
                       {ShowOption ? 
                       <>
@@ -267,8 +267,8 @@ const QuickSearch: React.FC = () => {
                 </div>
               </div>
               <div>
-              <div className="w-full flex gap-x-[50px] items-center px-5">
-                <div className='relative w-full'>
+              <div className="w-full max-[720px]:justify-center w-full gap-y-[10px] flex-wrap flex gap-x-[50px] items-center px-5">
+                <div className='relative w-[600px]'>
                   <input onChange={handleChange} value={inputValue} placeholder="Search for location...." className="py-[12px] w-[100%] h-full pl-3 mr-[20px] outline-none border border-solid border-1 border-[#BCBCBC] rounded-[5px]" />
                   {!showLoc ? <MdLocationOn className="absolute top-[4px] right-[20px]" color="#25D242" size={40} /> : ""}
                 </div>

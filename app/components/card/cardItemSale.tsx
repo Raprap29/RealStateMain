@@ -33,20 +33,16 @@ const CardState: React.FC<CardProps> = ({isImage, title, price, link, location, 
         return `${truncatedSentence}...`;
     }
     
-    function formatPrice(price: number) {
-        // Convert price to a string
-        let priceStr = price.toString();
+    function formatPrice(price: number): string {
+        let priceStr = price.toFixed(2);
         
-        // Split the string into integer and decimal parts
         const [integerPart, decimalPart] = priceStr.split('.');
         
-        // Format the integer part by adding comma every three digits
-        if (integerPart.length >= 3) {
-          priceStr = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        }
-        
-        // Combine the formatted integer part with the decimal part
-        return priceStr;
+        const formattedIntegerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        const formattedDecimalPart = decimalPart ? `.${decimalPart}` : ".00";
+    
+        return formattedIntegerPart + formattedDecimalPart;
+
     }
     
     return(

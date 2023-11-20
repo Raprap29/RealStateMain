@@ -240,7 +240,7 @@ const Contact:React.FC<styles> = ({mt = 0}) =>{
 
 
     return(
-        <div className={`w-full h-[120vh] max-[420px]:h-[140vh] relative mt-${mt}`}>
+        <div className={`w-full h-[900px] max-[420px]:h-[900px] relative mt-${mt}`}>
         <div className="h-screen max-[420px]:h-[800px]">
           <Image
             src="/assets/ezgif.com-webp-to-png.png"
