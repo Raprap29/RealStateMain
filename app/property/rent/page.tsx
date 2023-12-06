@@ -669,7 +669,7 @@ const Rent = () =>{
                                 isImage={item.Images[0]}
                                 title={item.TitleState}
                                 price={item.Price}
-                                link={`/page/${item.ProductId}`}
+                                link={`/jama_property?id=${item._id}`}
                                 location={`${item.Location.province}, ${item.Location.city}`}
                                 opening={open}
                               />
@@ -687,7 +687,7 @@ const Rent = () =>{
                                 isImage={item.Images[0]}
                                 title={item.TitleState}
                                 price={item.Price}
-                                link={`/page/${item.ProductId}`}
+                                link={`/jama_property?id=${item._id}`}
                                 location={`${item.Location.province}, ${item.Location.city}`}
                                 opening={open}
                               />

@@ -50,7 +50,7 @@ const CardState: React.FC<CardProps> = ({isImage, title, price, link, location, 
             {!opening ? 
                 <>
                 <div key={id} className={`group bg-[#fff] border border-solid border-2 border-[#000000] w-[400px] h-[432.5px] rounded-[10px] transition-transform scale-95 hover:scale-100 transition ease-in-out duration-500 hover:shadow-[0px_10px_20px_2px_rgba(0,0,0,0.25)] shadow-[0px_0px_3px_2px_rgba(0,0,0,.25)]`}>
-                    <Link href="/">
+                    <Link href={link}>
                         <div className="flex flex-col items-center relative px-2">
                             <img src={isImage} alt="photo" className="h-[240px] w-full mt-2 rounded-[10px]" />
                             <div className="absolute top-[25px] bg-[#FF8A00] shadow-3dshadow px-4 py-2 rounded-[10px] left-[30px]"><p className="text-[#fff] font-bold">FOR SALE</p></div>
@@ -64,22 +64,22 @@ const CardState: React.FC<CardProps> = ({isImage, title, price, link, location, 
                     </Link>
                     <div className="p-3"><p className="font-bold">{handleChangeWord(title)}</p></div>
                     <div className="pl-3 pr-3 pt-2 flex justify-between items-center">
-                        <div className="font-medium"><p>Price: ₱<span>{formatPrice(price)}</span></p></div>
+                        <div className="font-medium"><p>Price: ₱<span> {formatPrice(price)}</span></p></div>
                         <div className="cursor-pointer"><AiOutlineShareAlt color="#25D242" size={25}/></div>
                     </div>
-                    <Link href="/" className="bg-[#D9D9D9] rounded-b-[10px] border border-solid border-t-2 border-b-2 w-full border-[#000] py-3 absolute bottom-0 flex justify-center cursor-pointer group-hover:bg-[#25D242] group-hover:text-[#fff] transition ease-in-out duration-300"><h1 className="font-bold">VIEW MORE</h1></Link>
+                    <Link href={link} className="bg-[#D9D9D9] rounded-b-[10px] border border-solid border-t-2 border-b-2 w-full border-[#000] py-3 absolute bottom-0 flex justify-center cursor-pointer group-hover:bg-[#25D242] group-hover:text-[#fff] transition ease-in-out duration-300"><h1 className="font-bold">VIEW MORE</h1></Link>
                 </div>
                 </>
                 :
                 <>
                 <div key={id} className="group bg-[#fff] border border-solid border-2 border-[#000000] w-full h-full rounded-[10px] flex mb-4 scale-95 hover:scale-100 transition ease-in-out duration-500">
-                    <Link href="/">
+                    <Link href={link}>
                         <div className="h-full items-center flex py-2 px-2 w-full">
                             <img src={isImage} alt="photo" className="h-[240px] w-full rounded-[10px]" />
                         </div>
                     </Link>
                     <div className="py-3 px-3">
-                        <Link href="/">
+                        <Link href={link}>
                             <div className="flex justify-between">
                                 <div className="bg-[#FF8A00] shadow-3dshadow px-4 py-2 rounded-[10px]">
                                     <p className="text-[#fff] font-bold">FOR SALE</p>
@@ -95,7 +95,7 @@ const CardState: React.FC<CardProps> = ({isImage, title, price, link, location, 
                         </div>
                         </Link>
                         <div className="flex justify-between items-center mt-8 px-3">
-                            <Link href="/" className="bg-[#D9D9D9] cursor-pointer px-5 py-2 rounded-[5px] group-hover:text-[#fff] group-hover:bg-[#25D242] transition ease-in-out duration-300"><p className="font-bold">View More</p></Link>
+                            <Link href={link} className="bg-[#D9D9D9] cursor-pointer px-5 py-2 rounded-[5px] group-hover:text-[#fff] group-hover:bg-[#25D242] transition ease-in-out duration-300"><p className="font-bold">View More</p></Link>
                             <div className="cursor-pointer"><AiOutlineShareAlt color="#25D242" size={40}/></div>
                         </div>
                     </div>

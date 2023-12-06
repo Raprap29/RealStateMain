@@ -64,7 +64,7 @@ const CardState: React.FC<CardProps> = ({isImage, title, price, link, location, 
                     </Link>
                     <div className="p-3"><p className="font-bold">{handleChangeWord(title)}</p></div>
                     <div className="pl-3 pr-3 pt-2 flex justify-between items-center">
-                        <div className="font-medium"><p>Price/Montly: ₱<span>{formatPrice(price)}</span></p></div>
+                        <div className="font-medium"><p>Price/Montly: ₱<span> {formatPrice(price)}</span></p></div>
                         <div className="cursor-pointer"><AiOutlineShareAlt color="#25D242" size={25}/></div>
                     </div>
                     <Link href={link} className="bg-[#D9D9D9] rounded-b-[10px] border border-solid border-t-2 border-b-2 w-full border-[#000] py-3 absolute bottom-0 flex justify-center cursor-pointer group-hover:bg-[#25D242] group-hover:text-[#fff] transition ease-in-out duration-300"><h1 className="font-bold">VIEW MORE</h1></Link>

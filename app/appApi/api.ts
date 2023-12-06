@@ -48,6 +48,9 @@ interface InquireForm {
     subject: string;
     inquire: string;
     url: string;
+    title: string;
+    category: string;
+    property: string;
 }
 
 export const RealtyApi = createApi({
@@ -87,6 +90,12 @@ export const RealtyApi = createApi({
                 body: message,
             })
         }),
+        ViewDetailsProducts: builder.query<Product[], {_id: string}>({
+            query: ({_id}) => ({
+                url: `/jamarealty/realstateprods/${_id}`,
+                method: "GET",
+            })
+        })
     })
 });
 
@@ -95,6 +104,7 @@ export const {
     useSendSubsriberMutation,
     useSendMessageCustomerToEmailMutation,
 
+    useViewDetailsProductsQuery,
     useGetSlideImageQuery,
     useGetPropertyQuery,
 } = RealtyApi;

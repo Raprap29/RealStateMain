@@ -3,9 +3,11 @@
 import React, {useState, useEffect, useRef, ChangeEvent, FormEvent} from "react";
 import QuickSearch from "../components/quicksearch/quickSearch";
 import {MdKeyboardArrowLeft, MdKeyboardArrowRight, MdLocationOn} from "react-icons/md";
-import { useSendMessageCustomerToEmailMutation } from "../appApi/api";
+import { useSendMessageCustomerToEmailMutation, useViewDetailsProductsQuery, useGetPropertyQuery } from "../appApi/api";
 import { usePathname, useSearchParams  } from "next/navigation";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
+import CA from "./assets_detailsJama/CA";
+import OF from "./assets_detailsJama/OF";
 import SwiperCore, {
     EffectFade,
     EffectCoverflow,
@@ -47,9 +49,13 @@ const JamaRealtyView: React.FC = () => {
 
     const pathname = usePathname()
     const searchParams = useSearchParams()
-    const type = searchParams.get('id');
+    const _id = searchParams.get('id');
+    const [Phone, setPhone] = useState<boolean>(false);
 
     const swiperRef = useRef<HTMLButtonElement>();
+
+    const {data: ViewDetails} = useViewDetailsProductsQuery({_id: _id});
+    const {data: Property} = useGetPropertyQuery();
 
     const [sendMessageFormError, setsendMessageFormError] = useState<FormInquireError>({
         fullname: false,
@@ -69,30 +75,12 @@ const JamaRealtyView: React.FC = () => {
         inquire: '',
     })
 
-
-
-    const DataProperty = [
-        {
-            img: "/assets/ezgif.com-webp-to-png.png"
-        },
-        {
-            img: "/assets/097feff961369265243eca1867c57edc.jpg"
-        },
-        {
-            img: "/assets/jason-dent-w3eFhqXjkZE].jpg"
-        },
-        {
-            img: "/assets/ezgif.com-webp-to-png.png"
-        },
-        {
-            img: "/assets/PhotoAbout.jpg"
-        },
-    ]
+    const filteredProperty: any = Property?.filter((item: any) => item.Code === ViewDetails?.Code && item._id !== _id);
 
     const [currentNumber, setcurrentNumber] = useState<number>(0);
 
     const handleNext = () => {
-        if(currentNumber >=  DataProperty?.length - 1)
+        if(currentNumber >=  ViewDetails?.Images?.length - 1)
         {
             setcurrentNumber(0);
         }else{
@@ -107,7 +95,7 @@ const JamaRealtyView: React.FC = () => {
     const handlePrev = () => {
         if(currentNumber <= 0)
         {
-            setcurrentNumber(DataProperty?.length - 1);
+            setcurrentNumber(ViewDetails?.Images?.length - 1);
         }else{
             setcurrentNumber(currentNumber - 1);
         }
@@ -208,12 +196,15 @@ const JamaRealtyView: React.FC = () => {
 
               if (Object.values(errors).every((error) => !error)) {
                 await SendMessageInquire({
+                    title: ViewDetails?.TitleState,
+                    category: ViewDetails?.Type,
+                    property: ViewDetails?.PropertyType,
                     fullname: fullname,
                     email: email,
                     contact: contact,
                     subject: subject,
                     inquire: inquire,
-                    url: `http:localhost:${pathname}?id=${type}`,
+                    url: `http://localhost:${pathname}?id=${type}`,
                 }).unwrap();
                 clearAllField();
               }
@@ -222,7 +213,7 @@ const JamaRealtyView: React.FC = () => {
             return console.error(err);
         }
     }
-
+    
     function formatPrice(price: number): string {
         let priceStr = price.toFixed(2);
         
@@ -249,18 +240,38 @@ const JamaRealtyView: React.FC = () => {
         return `${truncatedSentence}...`;
     }
 
+    const DataProperty: any[] = [{}]
+
+    useEffect(() => {
+        if (ViewDetails?.Images) {
+            ViewDetails.Images.forEach((imageObject: any) => {
+                DataProperty.push({ img: imageObject });
+            });
+        }
+    }, [ViewDetails, DataProperty]);
+
+    useEffect(()=>{
+        window.addEventListener(
+            "resize",
+            () => window.innerWidth >= 620 ? setPhone(false) : setPhone(true)
+        );
+        
+      }, [Phone])
+
+      console.log(filteredProperty?.length)
+
     return(
         <React.Fragment>
-            <title>Jama Property | DR88-000132- Uptown Ritz | Conner unit Two Bedroom 2BR Condominium for Rent in 36th St. Cor. 9th Ave. Bonifacio Global City, Taguig</title>
+            <title>{`Jama Property | ${ViewDetails?.TitleState}`}</title>
             <QuickSearch />
             <div className={`top-0 z-[10] bg-[rgba(0,0,0,0.25)] w-full ${LoadingInquire ? "fixed" : "hidden"} transition duration-300 ease-in-out h-full z-[30]`}>
                 <img alt="Loading" src="/assets/Loading/Hourglass.gif" className="absolute top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%] z-[15] w-[60px] h-[60px]"  />
             </div>
-            <div className="relative max-[920px]:justify-center grid gap-x-[70px] max-[920px]:grid-cols-1 grid-cols-[50vw_minmax(40vw,_1fr)] container mx-auto max-w-[1130px]">
-                <div className="max-[920px]:px-[100px]">
-                    <div><p className="font-medium text-[18px] px-[20px]">DR88-000132- Uptown Ritz | Conner unit Two Bedroom 2BR Condominium for Rent in 36th St. Cor. 9th Ave. Bonifacio Global City, Taguig</p></div>
+            <div className="mb-6 relative max-[920px]:justify-center grid gap-x-[70px] max-[920px]:grid-cols-1 grid-cols-[50vw_minmax(40vw,_1fr)] container mx-auto max-w-[1130px]">
+                <div className="max-[920px]:px-[40px] max-[420px]:px-[20px]">
+                    <div><p className="font-medium text-[18px] px-[20px] max-[420px]:text-[15px]">{ViewDetails?.TitleState}</p></div>
                     <div className="relative w-full">
-                        <img alt="Pic_1" className="w-[730px] max-[920px]:w-full shadow-3dshadow rounded-[5px] h-[350px] mb-[20px] mt-[10px]" src={DataProperty[currentNumber].img} />    
+                        <img alt="Pic_1" className="w-[730px] max-[920px]:w-full shadow-3dshadow rounded-[5px] h-[350px] mb-[20px] mt-[10px]" src={ViewDetails?.Images[currentNumber] } />    
                         <div className="absolute right-[25px] top-[44%]">
                             <button type="button" className="bg-[green] transition duration-300 ease-in-out hover:bg-[rgba(0,128,0,.75)] shadow-3dshadow rounded-[600px]" onClick={handleNext}><MdKeyboardArrowRight size={50} color="#fff" /></button>
                         </div>
@@ -268,15 +279,16 @@ const JamaRealtyView: React.FC = () => {
                             <button type="button" className="bg-[green] transition duration-300 ease-in-out hover:bg-[rgba(0,128,0,.75)] shadow-3dshadow rounded-[600px]" onClick={handlePrev}><MdKeyboardArrowLeft size={50} color="#fff" /></button>
                         </div>
                     </div>
-                    <div className="flex mt-2 gap-x-[10px] max-[920px]:hidden">
-                        {[1, 2, 3].map((offset) => {
-                            const index = (currentNumber + offset) % DataProperty.length;
+                    <div className="flex mt-2 gap-x-[10px] justify-center w-full max-[920px]:hidden">
+                        {ViewDetails && ViewDetails?.Images && ViewDetails.Images?.slice(1, 4)?.map((image: string, index: number) => {
+                            const adjustedIndex = (currentNumber + index + 1) % ViewDetails?.Images?.length;
+
                             return (
-                                <div className="cursor-pointer" onClick={() => clickHandleImage(index)} key={index}>
+                                <div className="cursor-pointer w-full" onClick={() => clickHandleImage(adjustedIndex)} key={adjustedIndex}>
                                     <img
-                                        alt={`props-${index}`}
-                                        src={DataProperty[index].img}
-                                        className="rounded-[5px] w-full h-[150px] shadow-3dshadow"
+                                        alt={`props-${adjustedIndex}`}
+                                        src={ViewDetails?.Images[adjustedIndex]}
+                                        className="rounded-[5px] w-full h-[200px] shadow-3dshadow"
                                     />
                                 </div>
                             );
@@ -286,30 +298,7 @@ const JamaRealtyView: React.FC = () => {
                         <div className="bg-[#000] mt-[20px] w-full h-[2px]"></div>     
                     </div>
                     <div className="px-[10px]">
-                        <div className="mt-3">
-                            <p>Code: PR</p>
-                        </div>
-                        <div className="mt-3">
-                            <p>Property Type: House</p>
-                        </div>
-                        <div className="mt-3">
-                            <p>Category: For Sale</p>
-                        </div>
-                        <div className="mt-3">
-                            <p>City: San Marcos, Agoo La Union</p>
-                        </div>
-                        <div className="mt-3">
-                            <p>Bedrooms: Two Bedroom (2BR)</p>
-                        </div>
-                        <div className="mt-3">
-                            <p>Size: 100sqm</p>
-                        </div>
-                        <div className="mt-3">
-                            <p>Floor: 100sqm</p>
-                        </div>
-                        <div className="mt-3">
-                            <p>Price: Php 22,000,000</p>
-                        </div>
+                        <OF FormCA={ViewDetails} />
                     </div>
                     <div className="h-[2px] bg-[#000] w-full mb-3 mt-3"></div>
                 </div>
@@ -364,13 +353,14 @@ const JamaRealtyView: React.FC = () => {
                             </div>
                         </form>
                     </div>
-                    <div className="bg-[#000] w-full h-[2px] mt-8"></div>
                 </div>
             </div>
+            {filteredProperty?.length <= 0 ? <></> : <>
             <div className="mx-auto container w-[1130px] max-[920px]:w-full">
                 <div>
                     <p className="text-[#3B5189] drop-shadow-md font-bold text-[32px] text-center mt-2">Similar Properties</p>
                 </div>
+
                 <div>
                 <div className="mx-auto container max-w-[1100px]">
                     <div className="mt-2 flex justify-center items-center ">
@@ -379,7 +369,7 @@ const JamaRealtyView: React.FC = () => {
                         </button>
                         <Swiper
                             className="mySwiper"
-                            slidesPerView={1}
+                            slidesPerView={Phone ? 1 : 3}
                             spaceBetween={30}
                             slidesPerGroup={1}
                             scrollbar={{ draggable: true }}
@@ -396,31 +386,29 @@ const JamaRealtyView: React.FC = () => {
                         >
                             <div className="container mx-auto">
                                 <div className="flex items-center justify-center">
-                                    {DataProperty?.map((item: any, index: number) => (
-                                        <>
-                                            <SwiperSlide key={index} className="pt-5 pb-5">
-                                            <div className={`group bg-[#fff] border border-solid border-2 border-[#000000] w-[400px] h-[432.5px] rounded-[10px] transition-transform scale-95 hover:scale-100 transition ease-in-out duration-500 hover:shadow-[0px_10px_20px_2px_rgba(0,0,0,0.25)] shadow-[0px_0px_3px_2px_rgba(0,0,0,.25)]`}>
-                                                <Link href="/">
-                                                    <div className="flex flex-col items-center relative px-2">
-                                                        <img src={item.img} alt="photo" className="h-[240px] w-full mt-2 rounded-[10px]" />
-                                                        <div className="absolute top-[25px] bg-[#FF8A00] shadow-3dshadow px-4 py-2 rounded-[10px] left-[30px]"><p className="text-[#fff] font-bold">FOR SALE</p></div>
-                                                        <div className="absolute bottom-4 rounded-[5px] w-full px-[20px]">
-                                                            <div className="flex items-center pr-[5px] bg-[#D9D9D9] py-[5px] rounded-[5px]">
-                                                                <MdLocationOn className="mr-[5px]" color="#25D242" size={35} />
-                                                                <p className="text-[14px] text-black font-bold max-[360px]:text-[9px]">Aogoo La union san marocs</p>
-                                                            </div>
+                                    {filteredProperty && filteredProperty?.map((item: any, index: number) => (
+                                        <SwiperSlide key={index} className="pt-5 pb-5">
+                                        <div className={`group bg-[#fff] border border-solid border-2 border-[#000000] w-[400px] h-[432.5px] rounded-[10px] transition-transform scale-95 hover:scale-100 transition ease-in-out duration-500 hover:shadow-[0px_10px_20px_2px_rgba(0,0,0,0.25)] shadow-[0px_0px_3px_2px_rgba(0,0,0,.25)]`}>
+                                            <Link href={`/jama_property?id=${item._id}`}>
+                                                <div className="flex flex-col items-center relative px-2">
+                                                    <img src={item.Images[0]} alt="photo" className="h-[240px] w-full mt-2 rounded-[10px]" />
+                                                    <div className="absolute top-[25px] bg-[#FF8A00] shadow-3dshadow px-4 py-2 rounded-[10px] left-[30px]"><p className="text-[#fff] font-bold">FOR SALE</p></div>
+                                                    <div className="absolute bottom-4 rounded-[5px] w-full px-[20px]">
+                                                        <div className="flex items-center pr-[5px] bg-[#D9D9D9] py-[5px] rounded-[5px]">
+                                                            <MdLocationOn className="mr-[5px]" color="#25D242" size={35} />
+                                                            <p className="text-[14px] text-black font-bold max-[360px]:text-[9px]">{item.Address}</p>
                                                         </div>
                                                     </div>
-                                                </Link>
-                                                <div className="p-3"><p className="font-bold">{handleChangeWord("Dei oworkwoerpwe urwejr oiwejr oiwero werj weoir")}</p></div>
-                                                <div className="pl-3 pr-3 pt-2 flex justify-between items-center">
-                                                    <div className="font-medium"><p>Price: ₱<span>{formatPrice(200000)}</span></p></div>
-                                                    <div className="cursor-pointer"><AiOutlineShareAlt color="#25D242" size={25}/></div>
                                                 </div>
-                                                <Link href="/" className="bg-[#D9D9D9] rounded-b-[10px] border border-solid border-t-2 border-b-2 w-full border-[#000] py-3 absolute bottom-0 flex justify-center cursor-pointer group-hover:bg-[#25D242] group-hover:text-[#fff] transition ease-in-out duration-300"><h1 className="font-bold">VIEW MORE</h1></Link>
+                                            </Link>
+                                            <div className="p-3"><p className="font-bold">{handleChangeWord(item.TitleState)}</p></div>
+                                            <div className="pl-3 pr-3 pt-2 flex justify-between items-center">
+                                                <div className="font-medium"><p>Price: ₱<span>{formatPrice(item.Price)}</span></p></div>
+                                                <div className="cursor-pointer"><AiOutlineShareAlt color="#25D242" size={25}/></div>
                                             </div>
-                                            </SwiperSlide>
-                                        </>
+                                            <Link href={`/jama_property?id=${item._id}`} className="bg-[#D9D9D9] rounded-b-[10px] border border-solid border-t-2 border-b-2 w-full border-[#000] py-3 absolute bottom-0 flex justify-center cursor-pointer group-hover:bg-[#25D242] group-hover:text-[#fff] transition ease-in-out duration-300"><h1 className="font-bold">VIEW MORE</h1></Link>
+                                        </div>
+                                        </SwiperSlide>
                                     ))}
                                 </div>
                             </div>      
@@ -435,9 +423,10 @@ const JamaRealtyView: React.FC = () => {
                 </div>
                 </div>
             </div>
+            </>}
             <BankLoan />
             <Footer />
-            <div className="fixed bottom-0 w-full h-[60px] z-[99]">
+            <div className="fixed bottom-0 w-full h-[60px] max-[920px]:block hidden z-[99]">
                 <button type="button" onClick={handleClick} className="bg-[rgba(0,128,0)] w-full h-[60px] z-[99] shadow-3dshadow flex justify-center font-bold items-center"><p className="text-white text-center">INQUIRE NOW</p></button>
             </div>
         </React.Fragment>
