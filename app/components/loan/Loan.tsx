@@ -1,10 +1,8 @@
 "use client"
 
 import React, {useState} from "react";
-import { Source_Sans_Pro } from "next/font/google";
 import { useRouter } from "next/navigation";
 
-const sourcesansPro = Source_Sans_Pro({weight: '900', preload: false})
 
 const BankLoan = () =>{
 
@@ -21,7 +19,7 @@ const BankLoan = () =>{
                 <img src="/logo/png-clipart-bdo-logo-and-slogan-bank.png" className="w-[580px]" />
                 <div className="flex justify-center">
                     <div className="group border border-solid border-2 border-[#004990] p-2 transition ease-in-out">
-                        <button onClick={NavigationToBankLoan} type="button" className="bg-[#FFB20C] p-3 shadow-[0px_5px_5px_0px_rgba(0,73,144,0)] group-hover:shadow-[0px_0px_5px_5px_rgba(0,73,144,0.80)] transition ease-in-out duration-300"><p className={`${sourcesansPro.className} text-[#fff] text-[16px] max-[520px]:text-[12px]`}>CLICK TO CALCULATE YOUR HOME LOAN</p></button>
+                        <button onClick={NavigationToBankLoan} type="button" className="bg-[#FFB20C] p-3 shadow-[0px_5px_5px_0px_rgba(0,73,144,0)] group-hover:shadow-[0px_0px_5px_5px_rgba(0,73,144,0.80)] transition ease-in-out duration-300"><p className={`text-[#fff] text-[16px] max-[520px]:text-[12px]`}>CLICK TO CALCULATE YOUR HOME LOAN</p></button>
                     </div>
                 </div>
             </div>  

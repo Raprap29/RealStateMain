@@ -1,12 +1,9 @@
 "use client"
 
 import React, {useState, useRef, useEffect} from 'react';
-import { BiCaretDown } from 'react-icons/bi';
-import { MdLocationOn } from "react-icons/md";
 import Image from 'next/image';
 import Contact from '../components/contact/contact';
 import BankLoan from '../components/loan/Loan';
-import { useGetPropertyQuery } from '../appApi/api';
 import QuickSearch from '../components/quicksearch/quickSearch';
 import Footer from '../components/footer/Footer';
 import { MuseoModerno } from "next/font/google";
@@ -14,7 +11,7 @@ const Museo_Moderno = MuseoModerno({weight: '700', preload: false})
 
 const AboutPage = () => {
   const [Phone, setPhone] = useState<boolean>(false);
-
+  
   useEffect(()=>{
     window.addEventListener(
         "resize",

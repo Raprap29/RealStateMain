@@ -132,7 +132,7 @@ export default function Home() {
                 <p className="font-semibold">{item.properyTitle}</p>
                 <p className={`${lexend.className} font-light mt-2`}>{item.paragraphproperty}</p>
               </div>
-              <Link href="/" className="rounded-[5px] absolute bottom-[30px] border border-solid border-[2px] border-[#25D242] px-5 py-2 text-[#25D242] bg-[#fff] group-hover:bg-[#18872B] group-hover:text-white duration-500 transition ease-in-out group-hover:border-[#18872B]">{item.buttonProperty}</Link>
+              <Link href={item.link} className="rounded-[5px] absolute bottom-[30px] border border-solid border-[2px] border-[#25D242] px-5 py-2 text-[#25D242] bg-[#fff] group-hover:bg-[#18872B] group-hover:text-white duration-500 transition ease-in-out group-hover:border-[#18872B]">{item.buttonProperty}</Link>
             </div>
           ))}
         </div>

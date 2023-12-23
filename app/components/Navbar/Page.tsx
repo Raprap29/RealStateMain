@@ -2,13 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import { Lexend } from "next/font/google";
 import { usePathname } from "next/navigation";
 import { FaHouseUser, FaTimes } from "react-icons/fa";
 import {AiFillPhone, AiFillMail} from "react-icons/ai";
 import Sidebar from "../SideBar/Page";
 import {BiAlignLeft} from "react-icons/bi";
+import { useGetDeveloperQuery } from "@/app/appApi/api";
 
 const lexend = Lexend({
   weight: "600",
@@ -24,6 +25,24 @@ const NavBar = () => {
   const toggleMenu = (): void => {
     setToggleMenu(!ToggleMenu);
   };
+
+  
+  const OrganizeName = (name: string) => {
+    const splitWords = name.split(" ");
+
+    for (let i = 0; i < splitWords.length; i++) {
+      const word = splitWords[i].toLowerCase();
+      splitWords[i] = word.charAt(0).toUpperCase() + word.slice(1);
+    }
+  
+    const finalName = splitWords.join(" ");
+  
+    return finalName;
+  }
+
+
+  const {data: Developer} = useGetDeveloperQuery();
+
   // While loading of the website it change if the width of the windows is 740
   useEffect(()=>{
     window.addEventListener(
@@ -103,6 +122,27 @@ const NavBar = () => {
                       </div>
                     </div>
                   </Link>
+                </li>
+                <li className={`nav-item`}>
+                  <div className="relative group h-full">
+                    <Link className="px-3 py-7 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" href="/property/developer">
+                      <div className="w-full relative">
+                        <span>TOP DEVELOPERS</span>
+                        {pathname === "/property/developer" || pathname === "/property/developer" ? <div className="border-b-[3px] border-[#25D242] absolute top-6 left-0 right-0"></div> : ""}
+                      </div>
+                    </Link>
+                    <div className="absolute group-hover:block hidden top-[60px]">
+                      <div className="bg-[#fff] border border-solid border-1 border-[#ccc] rounded-[5px] w-full">
+                        {Developer && Developer?.map((item: any, index: number) => (
+                          <div key={index} className=" ">
+                            <Link href="/" className="w-full h-full text-[#000] hover:text-[#25D242]">
+                              <p className="whitespace-nowrap py-[5px] px-[10px] font-medium h-full">{OrganizeName(item.nameDeveloper)}</p>
+                            </Link>
+                          </div>
+                        ))}
+                      </div> 
+                    </div>
+                  </div>
                 </li>
                 <li className={`nav-item`}>
                   <Link className="px-3 py-7 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" href="/contact-us">

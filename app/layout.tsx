@@ -1,9 +1,10 @@
+"use client";
+
 import './globals.css'
 import { Rubik } from 'next/font/google';
 import NavBar from './components/Navbar/Page';
-import React from 'react'
+import React, {useEffect} from 'react'
 import { ReduxProvider } from './provider/provider';
-import Footer from './components/footer/Footer';
 const rubik = Rubik({ subsets: ['latin'] })
 
 export default function RootLayout({
@@ -11,13 +12,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
+
   return (
     <html lang="en">
       <body className={rubik.className}>
           <ReduxProvider>
             <NavBar />
             {children}
-            {/* <Footer /> */}
           </ReduxProvider>
       </body>
     </html>

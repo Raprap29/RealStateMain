@@ -15,6 +15,19 @@ interface SendSubscriber {
     email: string;
 }
 
+interface DescriptionArray {
+    image: string,
+    descriptionImage: string,
+}
+
+interface FormDeveloperGet {
+    _id: string;
+    nameDeveloper: string;
+    logo: string;
+    descriptionLogo: string;
+    desciptionImagesOfLogo: DescriptionArray[]
+}
+
 interface Product {
     ProductId: string;
     TitleState: string;
@@ -95,7 +108,13 @@ export const RealtyApi = createApi({
                 url: `/jamarealty/realstateprods/${_id}`,
                 method: "GET",
             })
-        })
+        }),
+        getDeveloper: builder.query<FormDeveloperGet[], void>({
+            query: () => ({
+                url: `/developer`,
+                method: "GET",
+            })
+        }),
     })
 });
 
@@ -107,4 +126,5 @@ export const {
     useViewDetailsProductsQuery,
     useGetSlideImageQuery,
     useGetPropertyQuery,
+    useGetDeveloperQuery,
 } = RealtyApi;

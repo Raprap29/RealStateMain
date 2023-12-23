@@ -3,10 +3,9 @@
 import Link from "next/link";
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useSendSubsriberMutation } from "@/app/appApi/api";
-import { Fjalla_One, Source_Sans_Pro } from "next/font/google";
+import { Fjalla_One } from "next/font/google";
 
 const Fjalla = Fjalla_One({weight: "400", subsets: ['latin']});
-const Source_Sans = Source_Sans_Pro({weight: "200", subsets: ['latin']});
 
 interface RegisterSubs {
     email: string;
@@ -97,7 +96,7 @@ const Footer: React.FC = () => {
                     <div className="w-full flex flex-col items-center">
                         <div className="w-full flex flex-col items-center">
                             <p className={`${Fjalla.className} text-[30px] max-[520px]:text-[20px]`}>SUBSCRIBE</p>
-                            <p className={`${Source_Sans.className}`}>Sign up for real estate news.</p>
+                            <p>Sign up for real estate news.</p>
                         </div>
                         <div className="w-full mt-[20px]">
                             <p className="ml-1 text-[red] mb-2">{messageError}</p>

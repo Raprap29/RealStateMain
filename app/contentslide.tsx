@@ -1,6 +1,5 @@
 import React, {useState, useEffect, useRef, FormEvent} from "react";
 
-
 import SwiperCore, {
     EffectFade,
     EffectCoverflow,
