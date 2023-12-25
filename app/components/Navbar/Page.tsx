@@ -128,14 +128,14 @@ const NavBar = () => {
                     <Link className="px-3 py-7 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" href="/property/developer">
                       <div className="w-full relative">
                         <span>TOP DEVELOPERS</span>
-                        {pathname === "/property/developer" || pathname === "/property/developer" ? <div className="border-b-[3px] border-[#25D242] absolute top-6 left-0 right-0"></div> : ""}
+                        {pathname === "/property/developer" || pathname === "/property/developer/viewdeveloper" ? <div className="border-b-[3px] border-[#25D242] absolute top-6 left-0 right-0"></div> : ""}
                       </div>
                     </Link>
                     <div className="absolute group-hover:block hidden top-[60px]">
                       <div className="bg-[#fff] border border-solid border-1 border-[#ccc] rounded-[5px] w-full">
                         {Developer && Developer?.map((item: any, index: number) => (
                           <div key={index} className=" ">
-                            <Link href="/" className="w-full h-full text-[#000] hover:text-[#25D242]">
+                            <Link href={`/property/developer/viewdeveloper?developer=${item.nameDeveloper}`} className="w-full h-full text-[#000] hover:text-[#25D242]">
                               <p className="whitespace-nowrap py-[5px] px-[10px] font-medium h-full">{OrganizeName(item.nameDeveloper)}</p>
                             </Link>
                           </div>

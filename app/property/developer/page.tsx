@@ -114,20 +114,20 @@ const Developer: React.FC = () => {
                 {itemShow && itemShow?.map((item: any, index: number) => (
                     <div key={index} className="relative flex-col h-full items-center flex">
                         <div className="border border-solid border-1 border-[rgba(0,0,0,.10)]">
-                            <Link href={`/property/sale?type=${item.nameDeveloper}`} className="">
+                            <Link href={`/property/developer/viewdeveloper?developer=${item.nameDeveloper}`} className="">
                                 <div className="group overflow-hidden w-full flex justify-center relative">
                                     <img className="w-[350px] h-[240px] transition duration-300 ease-in-out transform group-hover:scale-105" alt={`Photo-${item._id}`} src={item.logo}/>
                                 </div>  
                                 <div className="bg-[rgba(0,0,0,.10)] w-full h-[1px]"></div>
                             </Link>
                             <div className="mt-2 mb-1">
-                                <Link href="/"><p className="text-[rgba(0,0,0,.75)] transition duration-300 ease-in-out hover:text-[#25D242] px-[20px] py-[15px] font-medium">{item.descriptionLogo}</p></Link>
+                                <Link href={`/property/developer/viewdeveloper?developer=${item.nameDeveloper}`}><p className="text-[rgba(0,0,0,.75)] transition duration-300 ease-in-out hover:text-[#25D242] px-[20px] py-[15px] font-medium">{item.descriptionLogo}</p></Link>
                             </div>
                             <p className="px-[20px] text-[rgba(0,0,0,.50)] mb-4 text-[12px]">
                               {item.address}
                             </p>
                             <div className="bg-[rgba(0,0,0,.10)] w-full h-[1px]"></div>
-                            <Link href="/" className="bg-[#D9D9D9] rounded-b-[10px] border border-solid border-t-2 border-b-2 w-full border-[#000] py-3 flex justify-center cursor-pointer hover:bg-[#25D242] hover:text-[#fff] transition ease-in-out duration-300"><h1 className="font-bold">VIEW MORE</h1></Link>
+                            <Link href={`/property/developer/viewdeveloper?developer=${item.nameDeveloper}`} className="bg-[#D9D9D9] rounded-b-[10px] border border-solid border-t-2 border-b-2 w-full border-[#000] py-3 flex justify-center cursor-pointer hover:bg-[#25D242] hover:text-[#fff] transition ease-in-out duration-300"><h1 className="font-bold">VIEW Details</h1></Link>
                         </div>
                     </div>
                 ))}

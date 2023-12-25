@@ -120,10 +120,10 @@ const BankLoan: React.FC = () => {
             <QuickSearch />
             <div className="bg-[rgba(0,0,0,.50)] w-full h-[1px]"></div>
             <div className="flex justify-center mt-4 mb-5">
-                <p className="text-center max-w-[400px] font-medium">Start living in your dream home with interest rates as low as 7.00%, and enjoy flexible payment options spanning up to 20 years.</p>
+                <p className="text-center max-w-[400px] font-medium max-[720px]:px-[20px]">Start living in your dream home with interest rates as low as 7.00%, and enjoy flexible payment options spanning up to 20 years.</p>
             </div>
-            <div ref={scrollRefLoan} className="mb-[40px] mt-[15px] container mx-auto max-w-[890px]">
-                <div className="border rounded-[5px] grid grid-cols-2 border-solid border-1 border-[rgba(0,0,0,.50)] px-[20px] py-[15px]">
+            <div ref={scrollRefLoan} className="mb-[40px] mt-[15px] container px-[20px] mx-auto max-w-[890px]">
+                <div className="border rounded-[5px] grid grid-cols-2 gap-y-[30px] max-[620px]:grid-cols-1 border-solid border-1 border-[rgba(0,0,0,.50)] px-[20px] py-[15px]">
                     <div>
                        <div>
                             <p className="font-bold text-[16px]">Loan Amount</p>
