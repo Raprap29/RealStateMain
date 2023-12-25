@@ -25,7 +25,8 @@ interface FormDeveloperGet {
     nameDeveloper: string;
     logo: string;
     descriptionLogo: string;
-    desciptionImagesOfLogo: DescriptionArray[]
+    desciptionImagesOfLogo: DescriptionArray[],
+    desciptionImagesForView: string[]
 }
 
 interface Product {

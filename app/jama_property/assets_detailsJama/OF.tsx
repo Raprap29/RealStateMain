@@ -1,16 +1,23 @@
 "use client"
 
 import React, {useState, useEffect} from "react";
-
+import { useGetDeveloperQuery } from "@/app/appApi/api";
 interface ValueCA {
     FormCA?: Record<string, any>;
 }
 
 const OF: React.FC<ValueCA> = ({FormCA}) => {
 
+    const { data: developers } = useGetDeveloperQuery(); 
+
+    const filteredDevelopers = developers?.filter(
+      (developer: any) => developer?.nameDeveloper === FormCA?.Developer
+    );
+
+
     function formatPrice(price?: number): string {
         if (price === undefined || price === null) {
-            return "N/A"; // or handle it differently based on your requirements
+            return "N/A"; 
           }
         let priceStr = price.toFixed(2);
         
@@ -104,6 +111,26 @@ const OF: React.FC<ValueCA> = ({FormCA}) => {
                 )}
                 </div>
             </div>
+            <div className="h-[2px] bg-[#000] w-full mb-3 mt-3"></div>
+            {filteredDevelopers && filteredDevelopers?.length <= 0 ? <></> : <>
+            {filteredDevelopers && filteredDevelopers?.map((item: any, index: number) => (
+                <div key={index}>
+                    <div className="flex flex-col items-center">
+                        <p className="font-medium text-[18px] mb-2">{item?.nameDeveloper}</p>
+                        <img alt="Logo" src={item?.logo} className="w-[500px]" />
+                        <p className="text-justify mb-5">{item?.descriptionLogo}</p>
+                    </div>
+                    <hr />
+                    {item.desciptionImagesOfLogo?.map((itemView: any, index: number) => (
+                        <div className="w-full mt-4" key={index}>
+                            <img alt="image-1" src={itemView?.image} className="mb-5" />
+                            <p className="text-justify">{itemView?.descriptionImage}</p>
+                        </div>     
+                    ))}
+                </div>
+            ))}
+            <div className="h-[2px] bg-[#000] w-full mb-3 mt-3"></div>
+            </>}
         </React.Fragment>
     )
 }

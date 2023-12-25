@@ -6,7 +6,6 @@ import {MdKeyboardArrowLeft, MdKeyboardArrowRight, MdLocationOn} from "react-ico
 import { useSendMessageCustomerToEmailMutation, useViewDetailsProductsQuery, useGetPropertyQuery } from "../appApi/api";
 import { usePathname, useSearchParams  } from "next/navigation";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
-import CA from "./assets_detailsJama/CA";
 import OF from "./assets_detailsJama/OF";
 import SwiperCore, {
     EffectFade,
@@ -204,7 +203,7 @@ const JamaRealtyView: React.FC = () => {
                     contact: contact,
                     subject: subject,
                     inquire: inquire,
-                    url: `http://localhost:${pathname}?id=${type}`,
+                    url: `http://localhost:${pathname}?id=${_id}`,
                 }).unwrap();
                 clearAllField();
               }
@@ -258,8 +257,6 @@ const JamaRealtyView: React.FC = () => {
         
       }, [Phone])
 
-      console.log(filteredProperty?.length)
-
     return(
         <React.Fragment>
             <title>{`Jama Property | ${ViewDetails?.TitleState}`}</title>
@@ -300,7 +297,6 @@ const JamaRealtyView: React.FC = () => {
                     <div className="px-[10px]">
                         <OF FormCA={ViewDetails} />
                     </div>
-                    <div className="h-[2px] bg-[#000] w-full mb-3 mt-3"></div>
                 </div>
                 <div className="p-5 z-[3] sticky max-[920px]:hidden max-[920px]:flex top-[90px] shadow-[0px_0px_20px_0px_rgba(0,0,0,.25)] bg-[#fff] h-[565px] w-[380px] border border-solid border-1 border-[green]">
                     <div className="w-full h-[60px] border flex justify-center items-center border-solid border-2 border-[green]">
@@ -414,7 +410,7 @@ const JamaRealtyView: React.FC = () => {
                             </div>      
                         </Swiper>
                         <button type="button" className="max-[420px]:hidden max-[460px]:mr-[-40px] max-[390px]:mr-[-60px]" onClick={() => swiperRef.current.slideNext()}>
-                        <BiChevronRight size={65} />
+                            <BiChevronRight size={65} />
                         </button>
                     </div>
                     <div className="flex justify-center items-center w-full mb-[20px]">

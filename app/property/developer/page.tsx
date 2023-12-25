@@ -108,7 +108,7 @@ const Developer: React.FC = () => {
             <QuickSearch />
             <div className="mt-5 container mx-auto">
                 <div className="flex justify-center mb-5">
-                    <p className="text-[#333] font-medium">Welcome to Top Jama Realty developer, our largest array of property offering. Jama Realty has it all here for you.</p>
+                    <p className="text-[#333] font-medium text-center max-[420px]:px-[20px]">Welcome to Top Jama Realty developer, our largest array of property offering. Jama Realty has it all here for you.</p>
                 </div>
                 <div className="px-[10px] grid gap-5 grid-cols-3 mt-8 max-[920px]:grid-cols-3 max-[720px]:grid-cols-2 max-[620px]:grid-cols-1">
                 {itemShow && itemShow?.map((item: any, index: number) => (
@@ -120,9 +120,12 @@ const Developer: React.FC = () => {
                                 </div>  
                                 <div className="bg-[rgba(0,0,0,.10)] w-full h-[1px]"></div>
                             </Link>
-                            <div className="mt-2 mb-5">
+                            <div className="mt-2 mb-1">
                                 <Link href="/"><p className="text-[rgba(0,0,0,.75)] transition duration-300 ease-in-out hover:text-[#25D242] px-[20px] py-[15px] font-medium">{item.descriptionLogo}</p></Link>
                             </div>
+                            <p className="px-[20px] text-[rgba(0,0,0,.50)] mb-4 text-[12px]">
+                              {item.address}
+                            </p>
                             <div className="bg-[rgba(0,0,0,.10)] w-full h-[1px]"></div>
                             <Link href="/" className="bg-[#D9D9D9] rounded-b-[10px] border border-solid border-t-2 border-b-2 w-full border-[#000] py-3 flex justify-center cursor-pointer hover:bg-[#25D242] hover:text-[#fff] transition ease-in-out duration-300"><h1 className="font-bold">VIEW MORE</h1></Link>
                         </div>
