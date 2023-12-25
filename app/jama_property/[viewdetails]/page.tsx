@@ -1,9 +1,9 @@
 "use client";
 
 import React, {useState, useEffect, useRef, ChangeEvent, FormEvent} from "react";
-import QuickSearch from "../components/quicksearch/quickSearch";
+import QuickSearch from "../../components/quicksearch/quickSearch";
 import {MdKeyboardArrowLeft, MdKeyboardArrowRight, MdLocationOn} from "react-icons/md";
-import { useSendMessageCustomerToEmailMutation, useViewDetailsProductsQuery, useGetPropertyQuery } from "../appApi/api";
+import { useSendMessageCustomerToEmailMutation, useViewDetailsProductsQuery, useGetPropertyQuery } from "../../appApi/api";
 import { usePathname, useSearchParams  } from "next/navigation";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import OF from "./assets_detailsJama/OF";
@@ -18,8 +18,8 @@ import SwiperCore, {
   import { Pagination, Navigation, Autoplay } from "swiper";
 import Link from "next/link";
 import { AiOutlineShareAlt } from "react-icons/ai";
-import BankLoan from "../components/loan/Loan";
-import Footer from "../components/footer/Footer";
+import BankLoan from "../../components/loan/Loan";
+import Footer from "../../components/footer/Footer";
 SwiperCore.use([
     EffectCoverflow,
     EffectCube,
@@ -44,7 +44,7 @@ interface FormInquireError {
     inquire: boolean;
 }
 
-const JamaRealtyView: React.FC = () => {
+const JamaRealtyView: React.FC = ({params}) => {
 
     const pathname = usePathname()
     const searchParams = useSearchParams()
@@ -53,7 +53,7 @@ const JamaRealtyView: React.FC = () => {
 
     const swiperRef = useRef<HTMLButtonElement>();
 
-    const {data: ViewDetails} = useViewDetailsProductsQuery({_id: _id});
+    const {data: ViewDetails} = useViewDetailsProductsQuery({_id: params.viewdetails});
     const {data: Property} = useGetPropertyQuery();
 
     const [sendMessageFormError, setsendMessageFormError] = useState<FormInquireError>({
@@ -74,7 +74,7 @@ const JamaRealtyView: React.FC = () => {
         inquire: '',
     })
 
-    const filteredProperty: any = Property?.filter((item: any) => item.Code === ViewDetails?.Code && item._id !== _id);
+    const filteredProperty: any = Property?.filter((item: any) => item.Code === ViewDetails?.Code && item._id !== params.viewdetails);
 
     const [currentNumber, setcurrentNumber] = useState<number>(0);
 
@@ -203,7 +203,7 @@ const JamaRealtyView: React.FC = () => {
                     contact: contact,
                     subject: subject,
                     inquire: inquire,
-                    url: `http://localhost:${pathname}?id=${_id}`,
+                    url: `http://localhost:${pathname}?id=${params.viewdetails}`,
                 }).unwrap();
                 clearAllField();
               }
@@ -385,10 +385,10 @@ const JamaRealtyView: React.FC = () => {
                                     {filteredProperty && filteredProperty?.map((item: any, index: number) => (
                                         <SwiperSlide key={index} className="pt-5 pb-5">
                                         <div className={`group bg-[#fff] border border-solid border-2 border-[#000000] w-[400px] h-[432.5px] rounded-[10px] transition-transform scale-95 hover:scale-100 transition ease-in-out duration-500 hover:shadow-[0px_10px_20px_2px_rgba(0,0,0,0.25)] shadow-[0px_0px_3px_2px_rgba(0,0,0,.25)]`}>
-                                            <Link href={`/jama_property?id=${item._id}`}>
+                                            <Link href={`/jama_property/${item._id}`}>
                                                 <div className="flex flex-col items-center relative px-2">
                                                     <img src={item.Images[0]} alt="photo" className="h-[240px] w-full mt-2 rounded-[10px]" />
-                                                    <div className="absolute top-[25px] bg-[#FF8A00] shadow-3dshadow px-4 py-2 rounded-[10px] left-[30px]"><p className="text-[#fff] font-bold">FOR SALE</p></div>
+                                                    <div className="absolute top-[25px] bg-[#FF8A00] shadow-3dshadow px-4 py-2 rounded-[10px] left-[30px]"><p className="text-[#fff] font-bold">FOR {item.Type.toUpperCase()}</p></div>
                                                     <div className="absolute bottom-4 rounded-[5px] w-full px-[20px]">
                                                         <div className="flex items-center pr-[5px] bg-[#D9D9D9] py-[5px] rounded-[5px]">
                                                             <MdLocationOn className="mr-[5px]" color="#25D242" size={35} />
@@ -402,7 +402,7 @@ const JamaRealtyView: React.FC = () => {
                                                 <div className="font-medium"><p>Price: ₱<span>{formatPrice(item.Price)}</span></p></div>
                                                 <div className="cursor-pointer"><AiOutlineShareAlt color="#25D242" size={25}/></div>
                                             </div>
-                                            <Link href={`/jama_property?id=${item._id}`} className="bg-[#D9D9D9] rounded-b-[10px] border border-solid border-t-2 border-b-2 w-full border-[#000] py-3 absolute bottom-0 flex justify-center cursor-pointer group-hover:bg-[#25D242] group-hover:text-[#fff] transition ease-in-out duration-300"><h1 className="font-bold">VIEW MORE</h1></Link>
+                                            <Link href={`/jama_property/${item._id}`} className="bg-[#D9D9D9] rounded-b-[10px] border border-solid border-t-2 border-b-2 w-full border-[#000] py-3 absolute bottom-0 flex justify-center cursor-pointer group-hover:bg-[#25D242] group-hover:text-[#fff] transition ease-in-out duration-300"><h1 className="font-bold">VIEW MORE</h1></Link>
                                         </div>
                                         </SwiperSlide>
                                     ))}

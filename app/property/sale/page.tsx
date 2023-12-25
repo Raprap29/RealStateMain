@@ -668,7 +668,7 @@ const Sale = () =>{
                                 isImage={item.Images[0]}
                                 title={item.TitleState}
                                 price={item.Price}
-                                link={`/jama_property?id=${item._id}`}
+                                link={`/jama_property/${item._id}`}
                                 location={`${item.Location.province}, ${item.Location.city}`}
                                 opening={open}
                               />
@@ -686,7 +686,7 @@ const Sale = () =>{
                                 isImage={item.Images[0]}
                                 title={item.TitleState}
                                 price={item.Price}
-                                link={`/jama_property?id=${item._id}`}
+                                link={`/jama_property/${item._id}`}
                                 location={`${item.Location.province}, ${item.Location.city}`}
                                 opening={open}
                               />

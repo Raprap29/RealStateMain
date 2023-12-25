@@ -25,19 +25,17 @@ import Footer from "@/app/components/footer/Footer";
 const Coustard_Font = Coustard({weight: "400", subsets: ['latin']})
 const Stint_Ultra = Stint_Ultra_Condensed({weight: "400", subsets: ['latin']});
 
-const ViewDeveloper: React.FC = () => {
+export default function ViewDeveloper({params}) {
 
     const [thumbsSwiper, setThumbsSwiper] = useState<null>(null);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-    const searchParams = useSearchParams();
-    const developer = searchParams.get('developer');
 
     const {data: Property} = useGetPropertyQuery();
     const {data: Developer} = useGetDeveloperQuery();
 
-    const filteredDevelopers = Property && Property?.filter((item: any) => item.Developer === developer);
+    const filteredDevelopers = Property && Property?.filter((item: any) => item.Developer === params.viewdeveloper);
     
-    const filterViewDevelopers = Developer && Developer?.filter((item: any) => item.nameDeveloper === developer);
+    const filterViewDevelopers = Developer && Developer?.filter((item: any) => item.nameDeveloper === params.viewdeveloper);
 
     function handleChangeWord(sentence: string): string{
 
@@ -203,5 +201,3 @@ const ViewDeveloper: React.FC = () => {
         </React.Fragment>
     )
 }
-
-export default ViewDeveloper;

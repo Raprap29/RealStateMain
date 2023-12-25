@@ -19,11 +19,12 @@ import {  properyIcon } from "./assetsItems";
 import { Lexend } from "next/font/google";
 import Link from "next/link";
 import { useGetPropertyQuery } from "./appApi/api";
+import "./style.css";
 
 // import "swiper/css/navigation"
 import Product from "./Product";
 
-import { Pagination, Navigation, Autoplay } from "swiper";
+import { Pagination, Autoplay } from "swiper";
 import Footer from "./components/footer/Footer";
 
 const lexend = Lexend({
@@ -34,7 +35,6 @@ SwiperCore.use([
   EffectCoverflow,
   EffectCube,
   EffectFade,
-  Navigation,
   Pagination,
 ]);
 
@@ -151,13 +151,12 @@ export default function Home() {
             </button>
             <Swiper
               modules={[Pagination, Autoplay]}
-              className="mySwiper"
+              className="mySwiper3"
               slidesPerView={Phone ? 1 : 3}
               spaceBetween={30}
               slidesPerGroup={1}
               scrollbar={{ draggable: true }}
               loop={true}
-              grabCursor={true}
               autoplay={{
                 delay: 3000,
                 disableOnInteraction: false,
