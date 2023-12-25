@@ -14,6 +14,7 @@ import "swiper/css/pagination"
 import { Pagination, Navigation, Autoplay } from "swiper";
 import { useGetSlideImageQuery, useGetPropertyQuery } from "./appApi/api";
 import {useRouter} from "next/navigation";
+import "./style.css";
 
 SwiperCore.use([
     EffectCoverflow,
@@ -225,7 +226,6 @@ const ContentSLide: React.FC = () =>{
               disableOnInteraction: false,
             }}
             draggable={false}
-            navigation={true}
             className="mySwiper h-[500px] max-[420px]:h-[50vh] z-[-1]"
             onSwiper={(swiper) => {
               swiperRef.current = swiper;

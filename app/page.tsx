@@ -19,7 +19,6 @@ import {  properyIcon } from "./assetsItems";
 import { Lexend } from "next/font/google";
 import Link from "next/link";
 import { useGetPropertyQuery } from "./appApi/api";
-import "./style.css";
 
 // import "swiper/css/navigation"
 import Product from "./Product";
@@ -44,7 +43,10 @@ export default function Home() {
 
   const {data: Property} = useGetPropertyQuery();
 
+  const filterNotSold = Property && Property?.filter((item: any) => item.Type !== "Sold Out");
+
   const swiperRef = useRef<HTMLButtonElement>();
+  
   
   useEffect(()=>{
     window.addEventListener(
@@ -168,19 +170,19 @@ export default function Home() {
             >
               <div className="container mx-auto">
                 <div className="flex items-center justify-center">
-                  {Property && Property?.length > 8 ? 
+                  {filterNotSold && filterNotSold?.length > 8 ? 
                   <>
-                    {Property?.slice(0,8).map((item, index) => (
+                    {filterNotSold?.slice(0,8).map((item, index) => (
                     <SwiperSlide key={index} className="pt-5 pb-5">
-                      <Product TypeProp={item.Type} isImage={item.Images[0]} id={item.ProductId} location={`${item.Location.city}, ${item.Location.province}`} content={item.TitleState} type={item.PropertyType} Bathroom={item.Bathrooms} Bedrooms={item.Bedrooms} unit={item.Unit} price={item.Price} lot={item.ParkingLot} floor={item.LotFloor}  />
+                      <Product TypeProp={item?.Type} isImage={item?.Images[0]} id={item?.ProductId} location={`${item?.Location?.city}, ${item?.Location?.province}`} content={item?.TitleState} type={item?.PropertyType} Bathroom={item?.Bathrooms} Bedrooms={item?.Bedrooms} unit={item?.Unit} price={item?.Price} lot={item?.ParkingLot} floor={item?.LotFloor}  />
                     </SwiperSlide>
                   ))} 
                   </>
                   : 
                   <>
-                    {Property?.slice(0,Property?.length).map((item, index) => (
+                    {filterNotSold?.slice(0,filterNotSold?.length).map((item, index) => (
                     <SwiperSlide key={index} className="pt-5 pb-5">
-                       <Product TypeProp={item.Type} isImage={item.Images[0]} id={item.ProductId} location={`${item.Location.city}, ${item.Location.province}`} content={item.TitleState} type={item.PropertyType} Bathroom={item.Bathrooms} Bedrooms={item.Bedrooms} unit={item.Unit} price={item.Price} lot={item.ParkingLot} floor={item.LotFloor}  />
+                       <Product TypeProp={item?.Type} isImage={item?.Images[0]} id={item?.ProductId} location={`${item?.Location?.city}, ${item?.Location?.province}`} content={item?.TitleState} type={item?.PropertyType} Bathroom={item?.Bathrooms} Bedrooms={item?.Bedrooms} unit={item?.Unit} price={item?.Price} lot={item?.ParkingLot} floor={item?.LotFloor}  />
                     </SwiperSlide>
                   ))}
                   </>}

@@ -74,7 +74,7 @@ const JamaRealtyView: React.FC = ({params}) => {
         inquire: '',
     })
 
-    const filteredProperty: any = Property?.filter((item: any) => item.Code === ViewDetails?.Code && item._id !== params.viewdetails);
+    const filteredProperty: any = Property?.filter((item: any) => item.Code === ViewDetails?.Code && item._id !== params.viewdetails && item.Type !== "SOLD OUT");
 
     const [currentNumber, setcurrentNumber] = useState<number>(0);
 

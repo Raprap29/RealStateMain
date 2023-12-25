@@ -6,14 +6,14 @@ export default function Product(props: any){
 
     function handleChangeWord(sentence: string): string{
 
-        const words = sentence.split(" ");
+        const words = sentence?.split(" ");
 
-        if (words.length < 13) {
+        if (words?.length < 13) {
             return sentence;
         }
 
-        const truncatedWords = words.slice(0, 13);
-        const truncatedSentence = truncatedWords.join(' ');
+        const truncatedWords = words?.slice(0, 13);
+        const truncatedSentence = truncatedWords?.join(' ');
       
         return `${truncatedSentence}...`;
     }

@@ -50,7 +50,7 @@ const ContactUs: React.FC = () => {
             <QuickSearch />
             <Contact mt={0} />
             <div className="max-[720px]:px-[10px] container max-[720px]:grid-cols-1 gap-x-[30px] mx-auto mt-5 mb-5 grid justify-center w-full grid-cols-[55vw_minmax(35vw,_1fr)]">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d32020.601698411323!2d-77.26113928704667!3d38.896915577567704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b64bc40ef45803%3A0x43f037fa6d445dd4!2s344%20Maple%20Ave%20W%20%23140%2C%20Vienna%2C%20VA%2022180%2C%20Estados%20Unidos!5e0!3m2!1sfil!2sph!4v1699268451710!5m2!1sfil!2sph" className="w-full" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d32020.601698411323!2d-77.26113928704667!3d38.896915577567704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b64bc40ef45803%3A0x43f037fa6d445dd4!2s344%20Maple%20Ave%20W%20%23140%2C%20Vienna%2C%20VA%2022180%2C%20Estados%20Unidos!5e0!3m2!1sfil!2sph!4v1699268451710!5m2!1sfil!2sph" className="w-full" height="450" loading="lazy"></iframe>
                 <div className="max-[720px]:mt-[10px]">
                     <p className="text-[20px] font-medium">Contact Jama Realty</p>
                     <div className="mt-3 flex items-center gap-x-[20px]">
