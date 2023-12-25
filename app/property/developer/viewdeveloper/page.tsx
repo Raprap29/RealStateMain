@@ -143,7 +143,7 @@ const ViewDeveloper: React.FC = () => {
                         <div key={index}>
                             {item?.desciptionImagesForView && item?.desciptionImagesForView?.map((item: any, index: number) => (
                                 <SwiperSlide key={index}>
-                                    <img className="h-[400px] w-full rounded-[5px]" src={item} />
+                                    <img className="h-[300px] w-full rounded-[5px]" src={item} />
                                 </SwiperSlide>
                             ))}
                         </div>
