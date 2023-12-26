@@ -20,6 +20,18 @@ interface DescriptionArray {
     descriptionImage: string,
 }
 
+interface ForEnlistproperty {
+    FullName: string;
+    Email: string;
+    ContactNumber: string;
+    PropertyName: string;
+    WhatProperty: string;
+    LocationProperty: string;
+    PropertyPrice: number;
+    Type: string;
+    Images: string[];
+}
+
 interface FormDeveloperGet {
     _id: string;
     nameDeveloper: string;
@@ -116,6 +128,13 @@ export const RealtyApi = createApi({
                 method: "GET",
             })
         }),
+        sendEnlistProperty: builder.mutation<void, ForEnlistproperty>({
+            query: (item) => ({
+                url: `/jamarealty/uploadproperty`,
+                method: "POST",
+                body: item,
+            })
+        }),
     })
 });
 
@@ -123,6 +142,7 @@ export const {
     useSendMessageCustomerMutation,
     useSendSubsriberMutation,
     useSendMessageCustomerToEmailMutation,
+    useSendEnlistPropertyMutation,
 
     useViewDetailsProductsQuery,
     useGetSlideImageQuery,
