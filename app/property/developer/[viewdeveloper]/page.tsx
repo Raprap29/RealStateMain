@@ -23,9 +23,14 @@ import Contact from "@/app/components/contact/contact";
 import Footer from "@/app/components/footer/Footer";
 
 const Coustard_Font = Coustard({weight: "400", subsets: ['latin']})
-const Stint_Ultra = Stint_Ultra_Condensed({weight: "400", subsets: ['latin']});
 
-export default function ViewDeveloper({params}) {
+interface ViewDeveloperProps {
+    params: {
+        viewdeveloper: string;
+    }
+}
+
+const ViewDeveloper: React.FC<ViewDeveloperProps> = ({params}) => { 
 
     const [thumbsSwiper, setThumbsSwiper] = useState<null>(null);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -201,3 +206,5 @@ export default function ViewDeveloper({params}) {
         </React.Fragment>
     )
 }
+
+export default ViewDeveloper;

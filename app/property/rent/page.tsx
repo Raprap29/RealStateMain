@@ -14,6 +14,7 @@ import BankLoan from "@/app/components/loan/Loan";
 import { useGetPropertyQuery } from "@/app/appApi/api";
 import { useRouter } from "next/navigation";
 import Footer from "@/app/components/footer/Footer";
+import PhoneShopRent from "@/app/components/Phone/phoneshoprent";
 
 const VietnamPro = Be_Vietnam_Pro({weight: '700', preload: false})
 
@@ -491,8 +492,9 @@ const Rent = () =>{
                 <h1 className="text-[30px] font-bold">FOR RENT</h1>
                 <p>Discover our wide range of rental properties, providing a diverse selection of options, including vacant lots, preselling condominium units, and fully-equipped commercial spaces. Whether you're seeking an investment opportunity or looking for a place to call home, our collection offers excellent choices for your rental needs.</p>
             </div>
-                <div className="shadow-[0_3px_6px_0px_rgba(0,0,0,1)] w-full h-[3px] mt-5 bg-[#000]"></div>  
-            <div className="grid h-full" style={{gridTemplateColumns: '400px 70%'}}>
+            <div className="shadow-[0_3px_6px_0px_rgba(0,0,0,1)] w-full h-[3px] mt-5 bg-[#000]"></div>  
+            <PhoneShopRent />
+            <div className="grid h-full max-[720px]:hidden" style={{gridTemplateColumns: '400px 70%'}}>
                 <div className="flex-col items-center w-full flex">
                     <div className="flex items-center h-[100px] w-[380px] justify-center">
                         <div className="border-[#1B7E19] border border-solid border-[3px] px-10 py-2">

@@ -4,7 +4,6 @@ import React,{useRef, useState, useEffect, FormEvent} from "react";
 import { useSearchParams } from "next/navigation";
 import ContentSLide from "@/app/contentslide";
 import { BiCaretDown, BiCaretUp } from "react-icons/bi";
-import { Be_Vietnam_Pro } from 'next/font/google';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import {AiFillAppstore, AiOutlineUnorderedList, AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
@@ -14,7 +13,8 @@ import BankLoan from "@/app/components/loan/Loan";
 import { useGetPropertyQuery } from "@/app/appApi/api";
 import { useRouter } from "next/navigation";
 import Footer from "@/app/components/footer/Footer";
-
+import PhoneShopSale from "@/app/components/Phone/phoneshopsale";
+import { Be_Vietnam_Pro } from 'next/font/google';
 const VietnamPro = Be_Vietnam_Pro({weight: '700', preload: false})
 
 
@@ -482,17 +482,18 @@ const Sale = () =>{
       }
     }
   });
-
+  
     return(
         <>
             <title>Jama Realty - Sale</title>
             <ContentSLide />   
             <div className="flex flex-col items-center justify-center mt-5 text-center mx-auto container max-w-[1100px]">
                 <h1 className="text-[30px] font-bold">FOR SALE</h1>
-                <p>Explore our vast collection of properties for sale, featuring an array of options including vacant lots, preselling condominium units, and fully-equipped commercial spaces - offering excellent opportunities for both investment and personal use.</p>
+                <p className="max-[620px]:px-[10px]">Explore our vast collection of properties for sale, featuring an array of options including vacant lots, preselling condominium units, and fully-equipped commercial spaces - offering excellent opportunities for both investment and personal use.</p>
             </div>
-                <div className="shadow-[0_3px_6px_0px_rgba(0,0,0,1)] w-full h-[3px] mt-5 bg-[#000]"></div>  
-            <div className="grid h-full" style={{gridTemplateColumns: '400px 70%'}}>
+                <div className="shadow-[0_3px_6px_0px_rgba(0,0,0,1)] w-full h-[3px] mt-5 bg-[#000]"></div>    
+            <PhoneShopSale />
+            <div className={`grid h-full max-[820px]:hidden`} style={{gridTemplateColumns: '400px 70%'}}>
                 <div className="flex-col items-center w-full flex">
                     <div className="flex items-center h-[100px] w-[380px] justify-center">
                         <div className="border-[#1B7E19] border border-solid border-[3px] px-10 py-2">

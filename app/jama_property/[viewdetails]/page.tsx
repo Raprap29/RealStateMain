@@ -44,7 +44,13 @@ interface FormInquireError {
     inquire: boolean;
 }
 
-const JamaRealtyView: React.FC = ({params}) => {
+interface ViewDetailsProps{
+    params: {
+        viewdetails: string;
+    }
+}
+
+const JamaRealtyView: React.FC<ViewDetailsProps> = ({params}) => {
 
     const pathname = usePathname()
     const searchParams = useSearchParams()
