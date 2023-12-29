@@ -20,6 +20,7 @@ import Link from "next/link";
 import { AiOutlineShareAlt } from "react-icons/ai";
 import BankLoan from "../../components/loan/Loan";
 import Footer from "../../components/footer/Footer";
+import { useRouter } from "next/navigation";
 SwiperCore.use([
     EffectCoverflow,
     EffectCube,
@@ -54,8 +55,10 @@ const JamaRealtyView: React.FC<ViewDetailsProps> = ({params}) => {
 
     const pathname = usePathname()
     const searchParams = useSearchParams()
-    const _id = searchParams.get('id');
+
     const [Phone, setPhone] = useState<boolean>(false);
+
+    const Router = useRouter();
 
     const swiperRef = useRef<HTMLButtonElement>();
 
@@ -141,6 +144,10 @@ const JamaRealtyView: React.FC<ViewDetailsProps> = ({params}) => {
       }
 
     const ref = useRef<HTMLDivElement>(null);
+
+    const navigatePush = () => {
+        Router.push(`/property/sale?type=${ViewDetails?.Code}`)
+    }
 
     const handleClick = () => {
     ref.current?.scrollIntoView({behavior: 'smooth'});
@@ -420,7 +427,7 @@ const JamaRealtyView: React.FC<ViewDetailsProps> = ({params}) => {
                         </button>
                     </div>
                     <div className="flex justify-center items-center w-full mb-[20px]">
-                        <button type="button" className="bg-[#1F4329] text-white h-[50px] w-[300px] text-white font-bold rounded-[5px] shadow-3dshadow transition duration-300 ease-in-out hover:bg-[rgba(31,67,41,.75)]">VIEW ALL</button>
+                        <button onClick={navigatePush} type="button" className="bg-[#1F4329] text-white h-[50px] w-[300px] text-white font-bold rounded-[5px] shadow-3dshadow transition duration-300 ease-in-out hover:bg-[rgba(31,67,41,.75)]">VIEW ALL</button>
                     </div>
                 </div>
                 </div>

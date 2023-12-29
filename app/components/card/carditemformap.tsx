@@ -49,7 +49,7 @@ const CardState: React.FC<CardProps> = ({isImage, title, price, link, location, 
         <>
             <div key={id} className={`group bg-[#fff] border border-solid border-2 border-[#000000] w-[350px] h-[432.5px] rounded-[10px] transition-transform scale-95 hover:scale-100 transition ease-in-out duration-500 hover:shadow-[0px_10px_20px_2px_rgba(0,0,0,0.25)] shadow-[0px_0px_3px_2px_rgba(0,0,0,.25)]`}>
                 <Link href={link}>
-                    <div className="flex flex-col items-center relative px-2">
+                    <div className="flex flex-col items-center relative px-[10px]">
                         <img src={isImage} alt="photo" className="h-[240px] w-full mt-2 rounded-[10px]" />
                         <div className={`absolute top-[25px] ${type === "Sales" ? "bg-[#FF8A00]" : "bg-[blue]"} shadow-3dshadow px-4 py-2 rounded-[10px] left-[30px]`}><p className="text-[#fff] font-bold">FOR {type}</p></div>
                         <div className="absolute bottom-4 bg-[#D9D9D9] rounded-[5px] pl-[10px] w-[330px] py-[10px]">

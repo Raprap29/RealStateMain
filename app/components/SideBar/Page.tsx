@@ -53,7 +53,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, setisOpen }) => {
     <div
       className={`overflow-y-scroll fixed left-0 top-0 h-screen w-full bg-gray-200 z-50 transform ${
         isOpen ? "translate-x-0" : "-translate-x-full"
-      } transition duration-300 ease-in-out`}
+      } transition duration-300 ease-in-out z-[9999]`}
     >
       <div className="absolute top-[20px] right-[25px]">
         <button type="button" onClick={handleCloseNavBar} className="bg-[red] p-1 rounded-[5px] transition duratio-300 ease-in-out shadow-3dshadow text-white hover:bg-[rgba(255,0,0,.75)]"><FaTimes size={20} /></button>

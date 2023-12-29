@@ -117,13 +117,15 @@ const OF: React.FC<ValueCA> = ({FormCA}) => {
                 <div key={index}>
                     <div className="flex flex-col items-center">
                         <p className="font-medium text-[18px] mb-2">{item?.nameDeveloper}</p>
-                        <img alt="Logo" src={item?.logo} className="w-[500px]" />
+                        <img alt="Logo" src={item?.logo} className="w-[200px]" />
                         <p className="text-justify mb-5">{item?.descriptionLogo}</p>
                     </div>
                     <hr />
                     {item.desciptionImagesOfLogo?.map((itemView: any, index: number) => (
                         <div className="w-full mt-4" key={index}>
-                            <img alt="image-1" src={itemView?.image} className="mb-5" />
+                            <div className="flex flex-col items-center">
+                                <img alt="image-1" src={itemView?.image} className="mb-5" />
+                            </div>
                             <p className="text-justify">{itemView?.descriptionImage}</p>
                         </div>     
                     ))}

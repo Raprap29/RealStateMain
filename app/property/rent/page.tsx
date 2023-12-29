@@ -669,7 +669,7 @@ const Rent = () =>{
                               <CardState
                                 id={index}
                                 isImage={item.Images[0]}
-                                title={item.TitleState}
+                                title={`${item?.Code}${item.ProductId} - ${item.TitleState}`}
                                 price={item.Price}
                                 link={`/jama_property/${item._id}`}
                                 location={`${item.Location.province}, ${item.Location.city}`}
@@ -687,7 +687,7 @@ const Rent = () =>{
                               <CardState
                                 id={index}
                                 isImage={item.Images[0]}
-                                title={item.TitleState}
+                                title={`${item?.Code}${item.ProductId} - ${item.TitleState}`}
                                 price={item.Price}
                                 link={`/jama_property/${item._id}`}
                                 location={`${item.Location.province}, ${item.Location.city}`}

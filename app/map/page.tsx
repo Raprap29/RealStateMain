@@ -1,29 +1,27 @@
 'use client'
 
 import React,{useRef, useState, useEffect, FormEvent} from "react";
-import { useSearchParams } from "next/navigation";
-import ContentSLide from "@/app/contentslide";
 import { BiCaretDown, BiCaretUp } from "react-icons/bi";
 import { Be_Vietnam_Pro } from 'next/font/google';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
-import {AiFillAppstore, AiOutlineUnorderedList, AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 import CardState from "../components/card/carditemformap";
 import { useGetPropertyQuery } from "@/app/appApi/api";
-import { useRouter } from "next/navigation";
+import { MapContainer, Popup, TileLayer, useMap } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import "./style.css";
+import { Marker } from "react-leaflet";
+import { Icon, divIcon, point } from "leaflet";
+import MarkerClusterGroup from "react-leaflet-cluster";
+
+interface MapInterface {
+  lon: number;
+  lat: number;
+}
 
 const VietnamPro = Be_Vietnam_Pro({weight: '700', preload: false})
 const MapJamaRealty: React.FC = () => {
 
-    const getLatLonForAddress = async (address: string) => {
-        const geoCodeUrl = `https://geocode.maps.co/search?q=${address}&api_key=${process.env.NEXT_PUBLIC_GOOGLE}`
-        const geoCodeResponse = await fetch(geoCodeUrl);
-        const geoCodeData = await geoCodeResponse.json();
-        const {lat, lon} =  geoCodeData[0];
-        return {lat, lon};
-    }   
-
-    // console.log(getLatLonForAddress("San Marcos, Agoo, La Union, Philippines"));
 
     const ProvinceRef = useRef<HTMLButtonElement | null>(null);
     const PropertyRef = useRef<HTMLButtonElement | null>(null);
@@ -31,9 +29,12 @@ const MapJamaRealty: React.FC = () => {
     const BathroomsRef = useRef<HTMLButtonElement | null>(null);
     const TypeBoxRef = useRef<HTMLButtonElement | null>(null);
 
-    const Router = useRouter();
-
     const {data: PropertyRS} =  useGetPropertyQuery()
+
+    const [centermap, setcentermap] = useState<MapInterface>({
+      lon: 121.7740,
+      lat: 12.8797,
+    })
 
 
     const [ProvinceBox, setProvinceBox] = useState<boolean>(false);
@@ -46,9 +47,6 @@ const MapJamaRealty: React.FC = () => {
     const [Property, setProperty] = useState<string>("");
     const [Bedrooms, setBedrooms] = useState<string>("");
     const [Bathrooms, setBathrooms] = useState<string>("");
-    const searchParams = useSearchParams();
-    const highestPrice: any = searchParams.get("highest");
-    const lowestPrice: any = searchParams.get("lowest");
 
 
     const FilterTypeNumber: any = PropertyRS?.filter((property: any) => property.Type === Type);
@@ -80,8 +78,6 @@ const MapJamaRealty: React.FC = () => {
     const handlePriceChange = (value: any) => {
       setPriceRange(value);
     };
-
-
 
 
     const handleProvince = () => {
@@ -123,6 +119,7 @@ const MapJamaRealty: React.FC = () => {
     const BathroomsSet = (item: string) => {
       setBathrooms(item);
     };
+
 
     const handleInputChange = (event: any, index: number) => {
         let { value } = event.target;
@@ -168,6 +165,9 @@ const MapJamaRealty: React.FC = () => {
           }
 
       }, [ProvinceBox]);
+
+
+
 
       useEffect(()=> {
         if (PropertyBox) {
@@ -234,6 +234,15 @@ const MapJamaRealty: React.FC = () => {
       }, [TypeBox])
       
 
+    const customIcon = new Icon({
+      iconUrl: "/icon/location.png",
+      iconSize: [38, 38],
+    })
+
+    const center: [number, number] = [
+      12.8797,
+      121.7740,
+    ];
 
     const railStyle = { backgroundColor: '#25D242' };
     const handleStyle = { backgroundColor: '#000000', borderColor: '#000000', borderRadius: '0px' };
@@ -269,14 +278,13 @@ const MapJamaRealty: React.FC = () => {
           return priceRange[0] <= propertyPrice && propertyPrice <= priceRange[1];
         });
 
-  
-
     return(
         <React.Fragment>
             <title>Jama Realty | Map</title>
+            <div className="bg-[#000] w-full h-[1px]"></div>
             <div className="grid grid grid-cols-[30vw_minmax(60vw,_1fr)]">
                 <div>
-                    <div className="overflow-y-scroll bg-[#fff] bord h-[520px] w-full rounded-[10px]">
+                    <div className="overflow-y-scroll bg-[#fff] bord h-[100vh] w-full rounded-[10px]">
                         <div className="flex flex-col items-center px-[25px]">
                             <div className="flex w-full gap-x-[10px]">
                                 <div className="mt-5 w-full relative">
@@ -397,22 +405,45 @@ const MapJamaRealty: React.FC = () => {
                         </div>
                         <div className="bg-[#000] w-full h-[2px] mt-5"></div>
                         <div className="mt-5 flex flex-col items-center pb-5">
-                            {newFilteredProperties && newFilteredProperties?.map((item: any, index: number) => (
+                            {newFilteredProperties?.length <= 0 ? 
+                            <>
+                              <div className="flex justify-center w-full">
+                                <p className="text-[red] font-bold">No Property Show Up.</p>
+                              </div>
+                            </>
+                            :   
+                            <>
+                              {newFilteredProperties && newFilteredProperties?.map((item: any, index: number) => (
                                 <CardState key={index}
                                 type = {Type}
                                 id={index}
                                 isImage={item.Images[0]}
-                                title={item.TitleState}
+                                title={`${item?.Code}${item.ProductId} - ${item.TitleState}`}
                                 price={item.Price}
                                 link={`/jama_property/${item._id}`}
                                 location={`${item.Location.province}, ${item.Location.city}`}
                                 />
                             ))}
+                            </>}
                         </div>
                     </div>
                 </div>
-                <div>
-                    <p>Map</p>
+                <div className="">
+                    <MapContainer scrollWheelZoom={false} center={newFilteredProperties?.length < 0 ? [12.8797, 121.7740] : [newFilteredProperties?.[0]?.lat, newFilteredProperties?.[0]?.lon]} zoom={newFilteredProperties?.length <= 0 ? 3 : 11}>
+                      <TileLayer
+                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                      />
+                      <MarkerClusterGroup
+                        chunkedLoading
+                      >
+                        {newFilteredProperties?.map((item: any, index: number) => (
+                          <Marker key={index} position={[item?.lat, item?.lon]} icon={customIcon}>
+                            <Popup>{item?.TitleState}</Popup>
+                          </Marker>
+                        ))}
+                      </MarkerClusterGroup>
+                    </MapContainer>
                 </div>
             </div>
         </React.Fragment>

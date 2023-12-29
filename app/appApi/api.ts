@@ -55,6 +55,8 @@ interface Product {
     Bedrooms: string;
     Unit: string;
     Images: string[];
+    lat: number;
+    lon: number;
   }
 
 interface PropsSendMessage {
