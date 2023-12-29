@@ -54,8 +54,6 @@ const NavBar = () => {
 
   return (
     <React.Fragment>
-      {pathname === "/map" ? <></> : 
-      <>
         <div className="bg-[#FFFFFF] h-[100px] z-70 flex items-center justify-between mx-auto container max-w-[1240px]">
         <div className="px-4 flex items-center max-[720px]:flex-col gap-y-[15px]">
           <p className={`${lexend.className} text-[14px] max-[720px]:text-[10px]`}>GET CONNECTED</p>
@@ -84,13 +82,13 @@ const NavBar = () => {
         <div className="container mx-auto flex flex-wrap items-center">
           <div className="flex-grow items-center">
             <ul className="flex list-none items-center mx-auto container justify-between">
-              <div className="relative justify-center hidden max-[720px]:flex items-center">                 
+              <div className="relative justify-center hidden max-[820px]:flex items-center">                 
                 <button onClick={toggleMenu} className="text-black cursor-pointer text-xl px-3 py-1">
                   <BiAlignLeft size={30} className="text-[#3B5189]" />
                 </button>
               </div>
               <div className="max-[620px]:block hidden absolute top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%]"><Image src="/logo/LogoJama.png" width={Phone ? 120 : 170} alt="logo" height={Phone ? 120 : 170} /></div>
-              <div className="flex items-center gap-x-2 max-[720px]:hidden">
+              <div className="flex items-center gap-x-2 max-[820px]:hidden">
                 <li className={"nav-item"}>
                   <Link className="px-3 py-7 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75 " href="/">
                     <div className="w-full relative">
@@ -164,7 +162,7 @@ const NavBar = () => {
                   </Link>
                 </li>
               </div>
-              <div className="flex items-center gap-x-10 max-[720px]:hidden">
+              <div className="flex items-center gap-x-10 max-[820px]:hidden">
                 <li className="nav-item">
                   <Link href="/map" className="px-3 py-4 flex items-center text-xs border border-solid border-[2px] border-[#1B7E19] hover:border-[rgba(27,126,25, 0.75)] uppercase font-bold leading-snug hover:bg-[rgba(37,210,66,0.75)] transition ease-in-out duration-300 font-black bg-[#25D242] rounded-[5px]">
                     <div className="flex items-center justify-center gap-x-5">
@@ -179,9 +177,6 @@ const NavBar = () => {
         </div>
       </nav>
       {ToggleMenu && <Sidebar isOpen={ToggleMenu} setisOpen={setToggleMenu} />}
-      </>
-      
-      }
     </React.Fragment>
   );
 };

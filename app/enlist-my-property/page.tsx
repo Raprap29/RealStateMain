@@ -375,7 +375,7 @@ const EnlistMyProperty: React.FC = () => {
             <div className="w-full h-full relative">
                 <img src='/assets/enlistProperty.jpg' className='bg-cover bg-center w-full h-[450px]' alt='photoabout'/>
                 <div className='text-[#fff] absolute top-[35%] left-[50%] transform translate-x-[-50%] translate-x-[-50%] z-[1] w-full container mx-auto max-w-[1150px]'>
-                    <p className={`text-[80px] text-center ${Fjalla.className}`}>Enlist Your Property</p>
+                    <p className={`text-[80px] text-center max-[620px]:text-[40px] ${Fjalla.className}`}>Enlist Your Property</p>
                 </div>
                 <div className='bg-[rgba(0,0,0,0.40)] w-full h-full absolute top-0'></div>
             </div>

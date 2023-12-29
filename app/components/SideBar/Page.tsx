@@ -11,9 +11,26 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, setisOpen }) => {
 
+  const [width, setWidth] = useState<number>(window.innerWidth);
+
   const handleCloseNavBar = () =>{
     setisOpen(!isOpen);
   }
+
+  useEffect(() => {
+    const updateWindowWidth = () => {
+      setWidth(window.innerWidth);
+    };
+  
+    window.addEventListener('resize', updateWindowWidth);
+  
+    updateWindowWidth();
+  
+    // Cleanup: Remove event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', updateWindowWidth);
+    };
+  }, []);
 
   useEffect(()=> {
     if(isOpen){
@@ -21,7 +38,16 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, setisOpen }) => {
     }else{
         document.body.style.overflow = "visible";
     }
+
  }, [isOpen]);
+ 
+ useEffect(() => {
+  if(width > 820){
+    setisOpen(false);
+    document.body.style.overflow = "visible";
+  }
+}, [width]);
+
 
   return (
     <div
@@ -32,7 +58,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, setisOpen }) => {
       <div className="absolute top-[20px] right-[25px]">
         <button type="button" onClick={handleCloseNavBar} className="bg-[red] p-1 rounded-[5px] transition duratio-300 ease-in-out shadow-3dshadow text-white hover:bg-[rgba(255,0,0,.75)]"><FaTimes size={20} /></button>
       </div>
-       <div className="container mx-autoitems-center">
+       <div className="container mx-auto mt-10">
           <div className="items-center">
             <ul className="list-none flex flex-col justify-center items-center">
               {/* <div className="max-[620px]:block hidden absolute top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%]"><Image src="/logo/LogoJama.png" width={Phone ? 120 : 170} alt="logo" height={Phone ? 120 : 170} /></div> */}
