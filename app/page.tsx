@@ -5,12 +5,14 @@ import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import {FaArrowRight} from "react-icons/fa";
 import Contact from "./components/contact/contact";
 import BankLoan from "./components/loan/Loan";
+
 import SwiperCore, {
   EffectFade,
   EffectCoverflow,
   EffectCube,
 } from "swiper";
-import { Swiper, SwiperSlide} from "swiper/react";
+
+import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import ContentSLide from "./contentslide";
@@ -26,6 +28,8 @@ import Product from "./Product";
 
 import { Pagination, Autoplay } from "swiper";
 import Footer from "./components/footer/Footer";
+
+import type { Swiper as SwiperType } from "swiper";
 
 const lexend = Lexend({
   preload: false,
@@ -46,7 +50,7 @@ export default function Home() {
 
   const filterNotSold = Property && Property?.filter((item: any) => item.Type !== "Sold Out");
 
-  const swiperRef = useRef<HTMLButtonElement>();
+  const swiperRef: React.MutableRefObject<SwiperType | null> = useRef<SwiperType | null>(null);
   
   const cardVariants: Variants = {
     offscreen: {
@@ -202,7 +206,7 @@ export default function Home() {
             </div>
           </div>
           <div className="mt-10 flex justify-center items-center m-10">
-            <button type="button" className="max-[420px]:hidden max-[420px]:ml-[60px] max-[390px]:mr-[-60px] max-[420px]:w-[100px]" onClick={() => swiperRef.current.slidePrev()}>
+            <button type="button" className="max-[420px]:hidden max-[420px]:ml-[60px] max-[390px]:mr-[-60px] max-[420px]:w-[100px]" onClick={() => swiperRef.current!.slidePrev()}>
               <BiChevronLeft size={65} />
             </button>
             <Swiper
@@ -243,7 +247,7 @@ export default function Home() {
                 </div>
               </div>      
             </Swiper>
-            <button type="button" className="max-[420px]:hidden max-[460px]:mr-[-40px] max-[390px]:mr-[-60px]" onClick={() => swiperRef.current.slideNext()}>
+            <button type="button" className="max-[420px]:hidden max-[460px]:mr-[-40px] max-[390px]:mr-[-60px]" onClick={() => swiperRef.current!.slideNext()}>
               <BiChevronRight size={65} />
             </button>
           </div>

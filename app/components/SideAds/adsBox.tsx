@@ -52,7 +52,7 @@ const ShowAdsBox: React.FC<showAdsBoxProps> = ({showAds, setshowAds}) => {
                         </div>
                     </div>
                     <div>
-                        <iframe className="w-full" height="315" src="https://www.youtube.com/embed/zN67CXzI2C8" frameborder="0" allowfullscreen></iframe>
+                        <iframe className="w-full" height="315" src="https://www.youtube.com/embed/zN67CXzI2C8"></iframe>
                     </div>
                     <div className="flex justify-between items-center w-full px-[20px]">
                         <div className="flex items-center w-full justify-between gap-x-[20px] py-[20px]">

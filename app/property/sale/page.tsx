@@ -30,7 +30,7 @@ const Sale = () =>{
 
   const {data: PropertySales} =  useGetPropertyQuery()
 
-  const dropdownRef = useRef<HTMLButtonElement | null>(null);
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
 
 
   const [sortAsc, setSortAsc] = useState(false);
