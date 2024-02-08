@@ -240,7 +240,7 @@ export default function Home() {
                   <>
                     {filterNotSold?.slice(0,filterNotSold?.length).map((item, index) => (
                     <SwiperSlide key={index} className="pt-5 pb-5">
-                       <Product TypeProp={item?.Type} isImage={item?.Images[0]} id={item?.ProductId} location={`${item?.Location?.city}, ${item?.Location?.province}`} content={item?.TitleState} type={item?.PropertyType} Bathroom={item?.Bathrooms} Bedrooms={item?.Bedrooms} unit={item?.Unit} price={item?.Price} lot={item?.ParkingLot} floor={item?.LotFloor}  />
+                       <Product TypeProp={item?.Type} isImage={item?.Images[0]} id={item?.ProductId} _id={item?._id} location={`${item?.Location?.city}, ${item?.Location?.province}`} content={item?.TitleState} type={item?.PropertyType} Bathroom={item?.Bathrooms} Bedrooms={item?.Bedrooms} unit={item?.Unit} price={item?.Price} lot={item?.ParkingLot} floor={item?.LotFloor}  />
                     </SwiperSlide>
                   ))}
                   </>}

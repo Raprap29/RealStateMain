@@ -1,6 +1,6 @@
 "use client";
 
-import React, {useState, useEffect, useRef, ChangeEvent} from "react";
+import React, {useState, useEffect, useRef, ChangeEvent, RefObject} from "react";
 import Image from "next/image";
 import { MdLocationOn } from "react-icons/md";
 import { BiCaretDown } from "react-icons/bi";
@@ -98,7 +98,7 @@ const BankLoan: React.FC = () => {
         setshowLoc(true);
       }
     };
-    const scrollRefLoan = useRef(null);
+    const scrollRefLoan: RefObject<HTMLDivElement> = useRef(null);
     
     const handleClick = () => {
         scrollRefLoan.current?.scrollIntoView({ behavior: 'smooth' });

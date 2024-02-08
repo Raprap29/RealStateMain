@@ -62,7 +62,7 @@ const JamaRealtyView: React.FC<ViewDetailsProps> = ({params}) => {
 
     const swiperRef = useRef<HTMLButtonElement>();
 
-    const {data: ViewDetails} = useViewDetailsProductsQuery({_id: params.viewdetails});
+    const {data: ViewDetails} = useViewDetailsProductsQuery({_id: params.viewdetails}) as any;
     const {data: Property} = useGetPropertyQuery();
 
     const [sendMessageFormError, setsendMessageFormError] = useState<FormInquireError>({

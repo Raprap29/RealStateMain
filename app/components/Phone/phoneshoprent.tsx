@@ -24,7 +24,7 @@ const PhoneShopRent: React.FC = () => {
   
     const {data: PropertyRent} =  useGetPropertyQuery()
   
-    const dropdownRef = useRef<HTMLButtonElement | null>(null);
+    const dropdownRef = useRef<HTMLDivElement | null>(null);
   
     const [showBoxFormShop, setshowBoxFormShop] = useState<boolean>(false);
     const [sortAsc, setSortAsc] = useState(false);

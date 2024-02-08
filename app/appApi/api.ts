@@ -42,6 +42,7 @@ interface FormDeveloperGet {
 }
 
 interface Product {
+    _id: string;
     ProductId: string;
     TitleState: string;
     Type: string;

@@ -3,14 +3,11 @@
 import QuickSearch from "@/app/components/quicksearch/quickSearch";
 import Link from "next/link";
 import React, {useState, useEffect} from "react";
-import { AiOutlineShareAlt } from "react-icons/ai";
 import { MdLocationOn } from "react-icons/md";
 import {Coustard} from "next/font/google";
 import { useGetDeveloperQuery, useGetPropertyQuery } from "@/app/appApi/api";
-import { useSearchParams } from "next/navigation";
-import {Stint_Ultra_Condensed} from "next/font/google";
-
 import { Swiper, SwiperSlide } from 'swiper/react';
+import type {} from 'swiper';
 
 import 'swiper/css';
 import 'swiper/css/free-mode';
@@ -85,6 +82,11 @@ const ViewDeveloper: React.FC<ViewDeveloperProps> = ({params}) => {
           window.removeEventListener('resize', updateWindowWidth);
         };
       }, []);
+
+      const handleSwiper = (swiper: typeof Swiper) => {
+        setThumbsSwiper(swiper);
+    };
+    
     
     return(
         <React.Fragment>
@@ -98,7 +100,7 @@ const ViewDeveloper: React.FC<ViewDeveloperProps> = ({params}) => {
                             <p className={`font-medium text-[18px] mb-4 text-[24px] ${Coustard_Font.className} `}>Related Properties</p>
                         </div>   
                         <div className={`flex justify-center flex-wrap`}>
-                        {filteredDevelopers && filteredDevelopers?.slice(0,4)?.map((item: any, index: number) => (
+                        {filteredDevelopers && filteredDevelopers?.slice(0,3)?.map((item: any, index: number) => (
                                 <div key={index} className={`group bg-[#fff] w-[300px] border border-solid border-2 border-[#000000] h-[432.5px] rounded-[10px] transition-transform scale-95 hover:scale-100 transition ease-in-out duration-500 hover:shadow-[0px_10px_20px_2px_rgba(0,0,0,0.25)] shadow-[0px_0px_3px_2px_rgba(0,0,0,.25)]`}>
                                     <Link href={`/jama_property/${item?._id}`}>
                                         <div className="flex flex-col items-center relative px-2">
@@ -133,7 +135,7 @@ const ViewDeveloper: React.FC<ViewDeveloperProps> = ({params}) => {
                 style={{
                     '--swiper-navigation-color': '#fff',
                     '--swiper-pagination-color': '#fff',
-                  }}
+                  } as any}
                     loop={true}
                     spaceBetween={10}
                     navigation={true}
