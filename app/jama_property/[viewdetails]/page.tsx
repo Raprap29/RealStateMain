@@ -17,7 +17,7 @@ import SwiperCore, {
   import "swiper/css/pagination";
   import { Pagination, Navigation, Autoplay } from "swiper";
 import Link from "next/link";
-import { AiOutlineShareAlt } from "react-icons/ai";
+import type { Swiper as SwiperType } from "swiper";
 import BankLoan from "../../components/loan/Loan";
 import Footer from "../../components/footer/Footer";
 import { useRouter } from "next/navigation";
@@ -60,7 +60,7 @@ const JamaRealtyView: React.FC<ViewDetailsProps> = ({params}) => {
 
     const Router = useRouter();
 
-    const swiperRef = useRef<HTMLButtonElement>();
+    const swiperRef: React.MutableRefObject<SwiperType | null> = useRef<SwiperType | null>(null);
 
     const {data: ViewDetails} = useViewDetailsProductsQuery({_id: params.viewdetails}) as any;
     const {data: Property} = useGetPropertyQuery();
@@ -373,7 +373,7 @@ const JamaRealtyView: React.FC<ViewDetailsProps> = ({params}) => {
                 <div>
                 <div className="mx-auto container max-w-[1100px]">
                     <div className="mt-2 flex justify-center items-center ">
-                        <button type="button" className="max-[420px]:hidden max-[420px]:ml-[60px] max-[390px]:mr-[-60px] max-[420px]:w-[100px]" onClick={() => swiperRef.current.slidePrev()}>
+                        <button type="button" className="max-[420px]:hidden max-[420px]:ml-[60px] max-[390px]:mr-[-60px] max-[420px]:w-[100px]" onClick={() => swiperRef.current!.slidePrev()}>
                         <BiChevronLeft size={65} />
                         </button>
                         <Swiper
@@ -421,7 +421,7 @@ const JamaRealtyView: React.FC<ViewDetailsProps> = ({params}) => {
                                 </div>
                             </div>      
                         </Swiper>
-                        <button type="button" className="max-[420px]:hidden max-[460px]:mr-[-40px] max-[390px]:mr-[-60px]" onClick={() => swiperRef.current.slideNext()}>
+                        <button type="button" className="max-[420px]:hidden max-[460px]:mr-[-40px] max-[390px]:mr-[-60px]" onClick={() => swiperRef.current!.slideNext()}>
                             <BiChevronRight size={65} />
                         </button>
                     </div>

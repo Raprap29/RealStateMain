@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const API_BASE_URL = "https://jamarestapi.onrender.com"
+const API_BASE_URL = `${process.env.NEXT_PUBLIC_API}`
 
 interface GetSliamgeImage {
     images: string;

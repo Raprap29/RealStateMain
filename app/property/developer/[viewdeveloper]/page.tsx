@@ -7,7 +7,7 @@ import { MdLocationOn } from "react-icons/md";
 import {Coustard} from "next/font/google";
 import { useGetDeveloperQuery, useGetPropertyQuery } from "@/app/appApi/api";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import type {} from 'swiper';
+import type {Swiper as SwiperClass} from "swiper";
 
 import 'swiper/css';
 import 'swiper/css/free-mode';
@@ -29,7 +29,7 @@ interface ViewDeveloperProps {
 
 const ViewDeveloper: React.FC<ViewDeveloperProps> = ({params}) => { 
 
-    const [thumbsSwiper, setThumbsSwiper] = useState<null>(null);
+    const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass | null>(null);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     const {data: Property} = useGetPropertyQuery();
@@ -83,9 +83,9 @@ const ViewDeveloper: React.FC<ViewDeveloperProps> = ({params}) => {
         };
       }, []);
 
-      const handleSwiper = (swiper: typeof Swiper) => {
-        setThumbsSwiper(swiper);
-    };
+    //   const handleSwiper = (swiper: typeof Swiper) => {
+    //     setThumbsSwiper(swiper);
+    // };
     
     
     return(
