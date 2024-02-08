@@ -15,6 +15,9 @@ import "./style.css";
 import { Marker } from "react-leaflet";
 import { Icon } from "leaflet";
 import MarkerClusterGroup from "react-leaflet-cluster";
+import Contact from "../components/contact/contact";
+import BankLoan from "../components/loan/Loan";
+import Footer from "../components/footer/Footer";
 
 interface MapInterface {
   lon: number;
@@ -39,7 +42,11 @@ const MapJamaRealty: React.FC = () => {
 
     const [position, setPosition] = useState(null);
 
-      
+    const mapRef = useRef(null);
+
+    useEffect(() => {
+      console.log(mapRef.current);
+    }, [mapRef])
 
     const [ProvinceBox, setProvinceBox] = useState<boolean>(false);
     const [PropertyBox, setPropertyBox] = useState<boolean>(false);
@@ -151,7 +158,6 @@ const MapJamaRealty: React.FC = () => {
       
       setPriceRange([0, 0]);
     }
-
 
       useEffect(()=> {
         if (ProvinceBox) {
@@ -299,9 +305,9 @@ const MapJamaRealty: React.FC = () => {
         <React.Fragment>
             <title>Jama Realty | Map</title>
             <div className="bg-[#000] w-full h-[1px]"></div>
-            <div className="grid grid grid-cols-[30vw_minmax(60vw,_1fr)]">
-                <div>
-                    <div className="overflow-y-scroll bg-[#fff] bord h-[100vh] w-full rounded-[10px]">
+            <div className="grid grid max-[720px]:flex max-[720px]:flex-col-reverse grid-cols-[30vw_minmax(60vw,_1fr)]">
+                <div className="">
+                    <div className="overflow-y-scroll bg-[#fff] bord h-[80vh] w-full rounded-[10px]">
                         <div className="flex flex-col items-center px-[25px]">
                             <div className="flex w-full gap-x-[10px]">
                                 <div className="mt-5 w-full relative">
@@ -446,7 +452,7 @@ const MapJamaRealty: React.FC = () => {
                     </div>
                 </div>
                 <div className="">
-                    <MapContainer scrollWheelZoom={false} center={newFilteredProperties?.length < 0 ? [12.8797, 121.7740] : [12.8797, 121.7740]} zoom={newFilteredProperties?.length <= 0 ? 5 : 5}>
+                    <MapContainer ref={mapRef} className="map" scrollWheelZoom={false} center={newFilteredProperties?.length < 0 ? [12.8797, 121.7740] : [12.8797, 121.7740]} zoom={newFilteredProperties?.length <= 0 ? 5 : 5}>
                       <TileLayer
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -455,7 +461,7 @@ const MapJamaRealty: React.FC = () => {
                         chunkedLoading
                       >
                         {newFilteredProperties?.map((item: any, index: number) => (
-                          <Marker key={index} position={[item?.lat, item?.lon]} icon={customIcon}>
+                          <Marker draggable={true} key={index} position={[item?.lat, item?.lon]} icon={customIcon}>
                             <Popup className="PopUp">
                               <div className="p-3">
                                 <img alt={`image-${index}`} className="rounded-[5px] h-[150px] w-[300px]" src={item?.Images[0]}/>
@@ -474,7 +480,11 @@ const MapJamaRealty: React.FC = () => {
                       </MarkerClusterGroup>
                     </MapContainer>
                 </div>
+
             </div>
+            <Contact mt={0} />
+            <BankLoan />
+            <Footer />
         </React.Fragment>
     )
 }

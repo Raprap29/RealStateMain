@@ -81,6 +81,11 @@ interface InquireForm {
     property: string;
 }
 
+interface SocialMed {
+    name: string;
+    link: string;
+}
+
 export const RealtyApi = createApi({
     reducerPath: 'AuthRealty',
     baseQuery: fetchBaseQuery({baseUrl: API_BASE_URL}),
@@ -137,6 +142,12 @@ export const RealtyApi = createApi({
                 body: item,
             })
         }),
+        getSocMed: builder.query<SocialMed[], void>({
+            query: () => ({
+                url: "/socmed",
+                method: "GET",
+            })
+        })
     })
 });
 
@@ -150,4 +161,5 @@ export const {
     useGetSlideImageQuery,
     useGetPropertyQuery,
     useGetDeveloperQuery,
+    useGetSocMedQuery
 } = RealtyApi;

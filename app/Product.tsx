@@ -62,9 +62,8 @@ export default function Product(props: any){
                     </div>
                 </div>
                 <div className="absolute bottom-[17px] flex">
-                    <div className="flex justify-between items-center w-[260px] pl-2 pr-2  max-[360px]:pl-[30px] max-[360px]:pr-[30px]">
-                        <Link href="/" className="rounded-[5px] text-white bg-[#18872B] px-5 py-[8px]">View Details</Link>
-                        <div className="cursor-pointer"><AiOutlineShareAlt color="#25D242" size={30}/></div>
+                    <div className="flex justify-between items-center w-full pl-2 pr-2  max-[360px]:pl-[30px] max-[360px]:pr-[30px]">
+                        <Link href={`/jama_property/${props._id}`} className="rounded-[5px] text-white bg-[#18872B] px-5 py-[8px]">View Details</Link>
                     </div>
                 </div>
             </div>

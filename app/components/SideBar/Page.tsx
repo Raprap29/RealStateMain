@@ -11,50 +11,13 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, setisOpen }) => {
 
-  const [width, setWidth] = useState<number>(window.innerWidth);
 
   const handleCloseNavBar = () =>{
-    setisOpen(!isOpen);
-  }
-
-  useEffect(() => {
-    const updateWindowWidth = () => {
-      setWidth(window.innerWidth);
-    };
-  
-    window.addEventListener('resize', updateWindowWidth);
-  
-    updateWindowWidth();
-  
-    // Cleanup: Remove event listener on component unmount
-    return () => {
-      window.removeEventListener('resize', updateWindowWidth);
-    };
-  }, []);
-
-  useEffect(()=> {
-    if(isOpen){
-        document.body.style.overflow = "hidden";
-    }else{
-        document.body.style.overflow = "visible";
-    }
-
- }, [isOpen]);
- 
- useEffect(() => {
-  if(width > 820){
     setisOpen(false);
-    document.body.style.overflow = "visible";
   }
-}, [width]);
-
 
   return (
-    <div
-      className={`overflow-y-scroll fixed left-0 top-0 h-screen w-full bg-gray-200 z-50 transform ${
-        isOpen ? "translate-x-0" : "-translate-x-full"
-      } transition duration-300 ease-in-out z-[9999]`}
-    >
+    <div className={`overflow-y-scroll fixed left-0 top-0 h-screen transition-all duration-300 ease-in-out z-[9999] w-[70%] bg-gray-200 transform ${isOpen ? "translate-x-0" : "translate-x-full"}`}>
       <div className="absolute top-[20px] right-[25px]">
         <button type="button" onClick={handleCloseNavBar} className="bg-[red] p-1 rounded-[5px] transition duratio-300 ease-in-out shadow-3dshadow text-white hover:bg-[rgba(255,0,0,.75)]"><FaTimes size={20} /></button>
       </div>

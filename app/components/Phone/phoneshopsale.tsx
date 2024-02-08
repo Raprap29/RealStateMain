@@ -497,6 +497,12 @@ const PhoneShopSale: React.FC = () => {
         };
       }, []);
 
+      useEffect(() => {
+        if(windowWidth >= 720){
+          document.body.style.overflow = "visible";
+        }
+      }, [windowWidth]);
+      
      useEffect(()=> {
         if(showBoxFormShop){
             document.body.style.overflow = "hidden";
@@ -513,7 +519,7 @@ const PhoneShopSale: React.FC = () => {
                         <div className="sticky px-[10px] top-[0px] z-[20]">
                             <button onClick={handleClickToggleShop} type="button" className="border bg-[#fff] border-solid border-[3px] border-[#000] rounded-[5px] absolute top-[120px] text-[green] hover:text-[rgba(0,128,0,0.75)] transition duration-300 ease-in-out"><AiFillAppstore size={45} /></button>
                         </div>
-                        <div className={`bg-[#fff] w-full h-full ${showBoxFormShop ? "fixed" : "hidden"} top-0 z-[120] overflow-hidden`}>
+                        <div className={`bg-[#fff] w-full h-full ${showBoxFormShop ? "fixed" : "hidden"} top-0 z-[830] overflow-hidden`}>
                             <div className="h-full overflow-y-scroll">
                                 <div className="p-3">
                                 <div className="py-5 justify-center flex flex-col items-center">

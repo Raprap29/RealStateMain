@@ -7,6 +7,7 @@ import React, {useEffect} from 'react'
 import { ReduxProvider } from './provider/provider';
 import Head from 'next/head';
 import ArrowUp from './components/ArrowUp/ArrowUp';
+import SideBarAds from './components/SideAds/SideBarAds';
 const rubik = Rubik({ subsets: ['latin'] })
 
 export default function RootLayout({
@@ -24,8 +25,9 @@ export default function RootLayout({
       <body className={rubik.className}>
           <ReduxProvider>
             <NavBar />
-            {children}
+              {children}
             <ArrowUp />
+            <SideBarAds />
           </ReduxProvider>
       </body>
     </html>

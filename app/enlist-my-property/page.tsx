@@ -407,7 +407,6 @@ const EnlistMyProperty: React.FC = () => {
                     <div className="mb-2 mt-4">{sendMessageFormError.WhatProperty && <p className="text-[red] font-bold">{sendMessageFormError.WhatProperty}</p>}</div>
                     <div className="w-full">
                       <div className="relative">
-                      {/* <div className="mb-2">{sendMessageFormError.ForLook && <p className="text-[red] font-bold">{sendMessageFormError.ForLook}</p>}</div> */}
                         <button type="button" onClick={() => setshowLooking(!showLooking)} className="flex items-center justify-between w-full bg-[#EAEAEA] py-2 rounded-[5px]">
                           <p className="pl-3">{Looking}</p> 
                           {showLooking ? 
@@ -419,7 +418,7 @@ const EnlistMyProperty: React.FC = () => {
                           <BiCaretDown className="cursor-pointer pr-2" onClick={() => setshowLooking(!showLooking)} size={30} />
                         </>}
                         </button>
-                        <div ref={LookRef} className={`overflow-y-scroll ${showLooking ? "absolute" : "hidden"} top-[48px] px-[10px] rounded-[5px] shadow-3dshadow bg-[#fff] w-full py-[10px] h-[120px]`}>
+                        <div ref={LookRef} className={`overflow-y-scroll ${showLooking ? "absolute" : "hidden"} top-[48px] px-[10px] rounded-[5px] border border-solid border-1 border-[#ccc] bg-[#fff] w-full py-[10px] h-[120px]`}>
                             {PropertyType && PropertyType?.map((property: any, index: number) => (
                                <div className="group w-full" key={index}>
                                   <button type="button" onClick={() => setLookFor(property.name)} className="w-full">{property.name}</button>

@@ -97,10 +97,10 @@ const ViewDeveloper: React.FC<ViewDeveloperProps> = ({params}) => {
                         <div className="flex justify-center max-[720px]:px-[20px]">
                             <p className={`font-medium text-[18px] mb-4 text-[24px] ${Coustard_Font.className} `}>Related Properties</p>
                         </div>   
+                        <div className={`flex justify-center flex-wrap`}>
                         {filteredDevelopers && filteredDevelopers?.slice(0,4)?.map((item: any, index: number) => (
-                            <div className={`flex justify-center flex-wrap`} key={index}>
-                                <div className={`group bg-[#fff] w-[300px] border border-solid border-2 border-[#000000] h-[432.5px] rounded-[10px] transition-transform scale-95 hover:scale-100 transition ease-in-out duration-500 hover:shadow-[0px_10px_20px_2px_rgba(0,0,0,0.25)] shadow-[0px_0px_3px_2px_rgba(0,0,0,.25)]`}>
-                                    <Link href={`/jama_property?id=${item?._id}`}>
+                                <div key={index} className={`group bg-[#fff] w-[300px] border border-solid border-2 border-[#000000] h-[432.5px] rounded-[10px] transition-transform scale-95 hover:scale-100 transition ease-in-out duration-500 hover:shadow-[0px_10px_20px_2px_rgba(0,0,0,0.25)] shadow-[0px_0px_3px_2px_rgba(0,0,0,.25)]`}>
+                                    <Link href={`/jama_property/${item?._id}`}>
                                         <div className="flex flex-col items-center relative px-2">
                                             <img src={item?.Images[0]} alt="photo" className="h-[240px] w-full mt-2 rounded-[10px]" />
                                             <div className="absolute top-[25px] bg-[#FF8A00] shadow-3dshadow px-4 py-2 rounded-[10px] left-[30px]"><p className="text-[#fff] font-bold">FOR {item?.Type && item?.Type.toUpperCase()}</p></div>
@@ -115,12 +115,11 @@ const ViewDeveloper: React.FC<ViewDeveloperProps> = ({params}) => {
                                     <div className="p-3"><p className="font-bold">{handleChangeWord(item?.TitleState)}</p></div>
                                     <div className="pl-3 pr-3 pt-2 flex justify-between items-center">
                                         <div className="font-medium"><p>Price: ₱<span>{formatPrice(item?.Price)}</span></p></div>
-                                        <div className="cursor-pointer"><AiOutlineShareAlt color="#25D242" size={25}/></div>
                                     </div>
-                                    <Link href={`/jama_property?id=${item?._id}`} className="bg-[#D9D9D9] rounded-b-[10px] border border-solid border-t-2 border-b-2 w-full border-[#000] py-3 absolute bottom-0 flex justify-center cursor-pointer group-hover:bg-[#25D242] group-hover:text-[#fff] transition ease-in-out duration-300"><h1 className="font-bold">VIEW MORE</h1></Link>
+                                    <Link href={`/jama_property/${item?._id}`} className="bg-[#D9D9D9] rounded-b-[10px] border border-solid border-t-2 border-b-2 w-full border-[#000] py-3 absolute bottom-0 flex justify-center cursor-pointer group-hover:bg-[#25D242] group-hover:text-[#fff] transition ease-in-out duration-300"><h1 className="font-bold">VIEW MORE</h1></Link>
                                 </div>
-                            </div>
                         ))}
+                        </div>
                     </>}
 
                 </div>

@@ -52,10 +52,12 @@ const CardState: React.FC<CardProps> = ({isImage, title, price, link, location, 
                     <div className="flex flex-col items-center relative px-[10px]">
                         <img src={isImage} alt="photo" className="h-[240px] w-full mt-2 rounded-[10px]" />
                         <div className={`absolute top-[25px] ${type === "Sales" ? "bg-[#FF8A00]" : "bg-[blue]"} shadow-3dshadow px-4 py-2 rounded-[10px] left-[30px]`}><p className="text-[#fff] font-bold">FOR {type}</p></div>
-                        <div className="absolute bottom-4 bg-[#D9D9D9] rounded-[5px] pl-[10px] w-[330px] py-[10px]">
-                            <div className="flex items-center pr-[5px]">
-                                <MdLocationOn className="mr-[5px]" color="#25D242" size={30} />
-                                <p className="text-[14px] text-black font-bold max-[360px]:text-[9px]">{handleChangeWord(location)}</p>
+                        <div className="absolute bottom-4 px-[20px] w-full">
+                            <div>
+                                <div className="flex items-center pr-[10px] py-[10px] bg-[#D9D9D9] rounded-[5px]">
+                                    <MdLocationOn className="mr-[5px]" color="#25D242" size={30} />
+                                    <p className="text-[14px] text-black font-bold max-[360px]:text-[9px]">{handleChangeWord(location)}</p>
+                                </div>
                             </div>
                         </div>
                     </div>

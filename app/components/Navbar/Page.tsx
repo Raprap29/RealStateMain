@@ -10,6 +10,8 @@ import {AiFillPhone, AiFillMail} from "react-icons/ai";
 import Sidebar from "../SideBar/Page";
 import {BiAlignLeft} from "react-icons/bi";
 import { useGetDeveloperQuery } from "@/app/appApi/api";
+import { useRouter } from 'next/navigation';
+import { useGetSocMedQuery } from "@/app/appApi/api";
 
 const lexend = Lexend({
   weight: "600",
@@ -23,11 +25,17 @@ const NavBar = () => {
   const [Phone, setPhone] = useState<boolean>(false);
   const paths: string[] = ['facebook', 'instagram', 'viber', 'youtube', 'whatsapp']
   const toggleMenu = (): void => {
-    setToggleMenu(!ToggleMenu);
+    setToggleMenu(true);
   };
 
-  const path_id = pathname.split("/");
+  const {data: SocMed} = useGetSocMedQuery();
+
+  const [width, setWidth] = useState<number>(typeof window !== 'undefined' ? window.innerWidth : 0);
   
+  const path_id = pathname.split("/");
+
+  console.log(SocMed)
+
   const OrganizeName = (name: string) => {
     const splitWords = name.split(" ");
 
@@ -40,6 +48,36 @@ const NavBar = () => {
   
     return finalName;
   }
+
+  
+  useEffect(() => {
+    const updateWindowWidth = () => {
+      setWidth(window.innerWidth);
+    };
+  
+    window.addEventListener('resize', updateWindowWidth);
+  
+    return () => {
+      window.removeEventListener('resize', updateWindowWidth);
+    };
+  }, []);
+  
+  useEffect(()=> {
+    if(ToggleMenu){
+        document.body.style.overflow = "hidden";
+    }else{
+        document.body.style.overflow = "";
+    }
+
+ }, [ToggleMenu]);
+
+ useEffect(() => {
+  if(width > 820){
+    setToggleMenu(false);
+    document.body.style.overflow = "";
+  }
+}, [width]);
+
 
 
   const {data: Developer} = useGetDeveloperQuery();
@@ -58,8 +96,10 @@ const NavBar = () => {
         <div className="px-4 flex items-center max-[720px]:flex-col gap-y-[15px]">
           <p className={`${lexend.className} text-[14px] max-[720px]:text-[10px]`}>GET CONNECTED</p>
           <div className="ml-[20px] flex gap-x-[15px] max-[720px]:ml-[20px]">
-            {paths.map((path) => (
-              <Image key={path} src={`/icon/${path}.png`}  width={Phone ? 15 : 23} height={5} alt="icon" />
+            {SocMed && SocMed?.map((path: any, index: number) => (
+              <Link key={index} href={path?.link}>
+                <Image src={`/icon/${path?.name}.png`}  width={Phone ? 15 : 23} height={5} alt="icon" />
+              </Link>
             ))}
           </div>
         </div>
@@ -78,7 +118,7 @@ const NavBar = () => {
           </div>
         </div>
       </div>
-      <nav className={`max-[620px]:h-[70px] flex flex-wrap items-center px-1 justify-between bg-[#FFFFFF] ${pathname === "/map" ? "" : "sticky top-0"} w-full items-center max-[720px]:px-2 z-[50]`} style={{ boxShadow: "1px 5px 10px 0px rgba(0,0,0, 0.25)"}}>
+      <nav className={`max-[620px]:h-[70px] flex flex-wrap items-center px-1 justify-between bg-[#FFFFFF] sticky top-0 w-full items-center max-[720px]:px-2 z-[9980]`} style={{ boxShadow: "1px 5px 10px 0px rgba(0,0,0, 0.25)"}}>
         <div className="container mx-auto flex flex-wrap items-center">
           <div className="flex-grow items-center">
             <ul className="flex list-none items-center mx-auto container justify-between">
@@ -140,7 +180,6 @@ const NavBar = () => {
                         {pathname === "/property/developer" || pathname === `/property/developer/${path_id[3]}` ? <div className="border-b-[3px] border-[#25D242] absolute top-6 left-0 right-0"></div> : ""}
                       </div>
                     </Link>
-                    {pathname === "/map" ? <></> : <>
                     <div className="absolute group-hover:block hidden top-[60px]">
                       <div className="bg-[#fff] border border-solid border-1 border-[#ccc] rounded-[5px] w-full">
                         {Developer && Developer?.map((item: any, index: number) => (
@@ -152,7 +191,6 @@ const NavBar = () => {
                         ))}
                       </div> 
                     </div>
-                    </>}
                   </div>
                 </li>
                 <li className={`nav-item`}>
