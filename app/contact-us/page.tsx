@@ -1,7 +1,6 @@
 "use client";
 
-import React, {useState, useEffect, useRef} from "react";
-import ContentSLide from "../contentslide";
+import React from "react";
 import Contact from "../components/contact/contact";
 import Footer from "../components/footer/Footer";
 import BankLoan from "../components/loan/Loan";
@@ -66,8 +65,8 @@ const ContactUs: React.FC = () => {
                         <a className="hover:text-[green] text-[#000] transition duration-300 ease-in-out" href="mailto:info@jamarealty.com">info@jamarealty.com</a>
                     </div>
                     <div className="flex flex-col gap-y-[20px] mt-[35px]">
-                        {paths.map((path: any) => (
-                            <div className="flex items-center gap-x-[20px]">
+                        {paths.map((path: any, index: number) => (
+                            <div key={index} className="flex items-center gap-x-[20px]">
                                 <Image key={path.name} src={`/icon/${path.name}.png`} width={30} height={5} alt="icon" />
                                 <Link href={path.link}>{path.name}</Link>
                             </div>
