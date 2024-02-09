@@ -108,9 +108,9 @@ const BankLoan: React.FC = () => {
         <React.Fragment>
             <title>Jama Realty - Loan</title>
             <div className="w-full h-full relative">
-                <img src='/assets/a769abf246aa73992caf22dde4af3bd4.jpg' className='bg-cover bg-center w-full h-[450px]' alt='photoabout'/>
+                <Image src='/assets/a769abf246aa73992caf22dde4af3bd4.jpg' height={450} width={1000} className='bg-cover bg-center w-full h-[450px]' alt='photoabout' />
                 <div className='absolute absolute top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%] z-[1]'>
-                    <img src="/logo/png-clipart-bdo-logo-and-slogan-bank.png" className="w-[580px]" />
+                    <Image  alt="photobanklogo" src="/logo/png-clipart-bdo-logo-and-slogan-bank.png" height={2000} width={580} className="w-[580px]" />
                     <div className="group flex justify-center p-2 transition ease-in-out">
                         <button type="button" onClick={handleClick} className="bg-[#FFB20C] p-3 shadow-[0px_5px_5px_0px_rgba(0,73,144,0)] group-hover:shadow-[0px_0px_5px_5px_rgba(0,73,144,0.80)] transition ease-in-out duration-300"><p className={`text-[#fff] text-[16px] max-[520px]:text-[12px]`}>CLICK TO CALCULATE YOUR HOME LOAN</p></button>
                     </div>

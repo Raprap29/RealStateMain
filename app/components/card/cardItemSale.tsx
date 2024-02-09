@@ -5,6 +5,7 @@ import { AiOutlineShareAlt } from "react-icons/ai";
 import Link from "next/link";
 import { MdLocationOn } from "react-icons/md";
 import { MuseoModerno } from "next/font/google";
+import Image from "next/image";
 
 const Museo_Moderno = MuseoModerno({weight: '700', preload: false})
 
@@ -70,7 +71,7 @@ const CardState: React.FC<CardProps> = ({isImage, title, price, link, location, 
                 <div key={id} className={`max-[620px]:w-full max-[620px]:px-[20px] group bg-[#fff] border border-solid border-2 border-[#000000] w-[400px] h-[432.5px] rounded-[10px] transition-transform scale-95 hover:scale-100 transition ease-in-out duration-500 hover:shadow-[0px_10px_20px_2px_rgba(0,0,0,0.25)] shadow-[0px_0px_3px_2px_rgba(0,0,0,.25)]`}>
                     <Link href={link}>
                         <div className="flex flex-col items-center relative px-2">
-                            <img src={isImage} alt="photo" className="h-[240px] w-full mt-2 rounded-[10px]" />
+                            <Image width={1000} height={240} src={isImage} alt="photo" className="h-[240px] w-full mt-2 rounded-[10px]" />
                             <div className="absolute top-[25px] bg-[#FF8A00] shadow-3dshadow px-4 py-2 rounded-[10px] left-[30px]"><p className="text-[#fff] font-bold">FOR SALE</p></div>
                             <div className="absolute bottom-4">
                                 <div className="bg-[#D9D9D9] rounded-[5px] max-[620px]:w-full w-[330px]">
@@ -101,7 +102,7 @@ const CardState: React.FC<CardProps> = ({isImage, title, price, link, location, 
                 <div key={id} className="group bg-[#fff] border border-solid border-2 border-[#000000] w-full h-full rounded-[10px] flex mb-4 scale-95 hover:scale-100 transition ease-in-out duration-500">
                     <Link href={link}>
                         <div className="h-full items-center flex py-2 px-2 w-full">
-                            <img src={isImage} alt="photo" className="h-[240px] w-full rounded-[10px]" />
+                            <Image width={1000} height={240} src={isImage} alt="photo" className="h-[240px] w-full rounded-[10px]" />
                         </div>
                     </Link>
                     <div className="py-3 px-3">

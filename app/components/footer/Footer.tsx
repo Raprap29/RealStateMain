@@ -4,6 +4,7 @@ import Link from "next/link";
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useSendSubsriberMutation } from "@/app/appApi/api";
 import { Fjalla_One } from "next/font/google";
+import Image from "next/image";
 
 const Fjalla = Fjalla_One({weight: "400", subsets: ['latin']});
 
@@ -66,7 +67,9 @@ const Footer: React.FC = () => {
            <div className="flex flex-col items-center justify-center">
             <div className="bg-[#fff] max-[620px]:px-[20px] gap-y-[20px] grid grid-cols-3 max-[620px]:grid-cols-1 w-full max-[620px]:justify-center container mx-auto mt-4 mb-4">
                     <div className="w-full flex flex-col items-center">
-                        <div><img src="/logo/JAMA REALTY.png" className="max-[520px]:w-[150px]" /></div>
+                    <div className="max-w-[520px] w-[150px]">
+                        <Image src="/logo/JAMA REALTY.png" alt="JAMA REALTY Logo" layout="responsive" width={150} height={150} />
+                    </div>
                     </div>
                     <div className="flex flex-col w-[200px] max-[620px]:w-full max-[620px]:items-center">
                         <div><h1 className={`${Fjalla.className} font-bold text-[30px] max-[520px]:text-[20px]`}>USEFUL LINES</h1></div>

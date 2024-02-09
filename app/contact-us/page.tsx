@@ -40,7 +40,14 @@ const ContactUs: React.FC = () => {
         <React.Fragment>
             <title>Jama Realty - Contact Us</title>
             <div className="w-full h-full relative">
-                <img src='/assets/PhotoAbout.jpg' className='bg-cover bg-center w-full h-[450px]' alt='photoabout'/>
+                <div className="w-full h-[450px]">
+                <Image
+                    src="/assets/PhotoAbout.jpg"
+                    layout="fill"
+                    objectFit="cover"
+                    alt="Photo About"
+                />
+                </div>
                 <div className='text-[#fff] absolute top-[35%] left-[50%] transform translate-x-[-50%] translate-x-[-50%] z-[1] w-full container mx-auto max-w-[1150px]'>
                     <p className={`text-[45px] text-center ${Museo_Moderno.className}`}>Contact Us for Inquire Property</p>
                 </div>
