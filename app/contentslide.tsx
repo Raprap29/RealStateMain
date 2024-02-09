@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef, FormEvent} from "react";
+import React, {useState, useEffect, useRef, FormEvent, MutableRefObject} from "react";
 
 import SwiperCore, {
     EffectFade,
@@ -37,7 +37,7 @@ const ContentSLide: React.FC = () =>{
     const [showbedroom, setshowbedroom] = useState<boolean>(false);
     const [selecterbed, setselecterbed] = useState<string>("");
     const [ShowOption, setShowOption] = useState<boolean>(false);
-    const swiperRef = useRef();
+    const swiperRef: MutableRefObject<any | null> = useRef<(() => void) | null>(null);
 
     const Router = useRouter();
 
@@ -215,6 +215,7 @@ const ContentSLide: React.FC = () =>{
    
   }, [propertyMobile])
 
+
     return(
         <>
           <div className="w-full h-[500px] max-[420px]:h-[50vh] relative">
@@ -227,7 +228,7 @@ const ContentSLide: React.FC = () =>{
             }}
             draggable={false}
             className="mySwiper h-[500px] max-[420px]:h-[50vh] z-[-1]"
-            onSwiper={(swiper) => {
+            onSwiper={(swiper: any) => {
               swiperRef.current = swiper;
             }}
           >
