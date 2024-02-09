@@ -46,7 +46,7 @@ export default function Home() {
 
   const [Phone, setPhone] = useState<boolean>(false);
 
-  const {data: Property} = useGetPropertyQuery();
+  const {data: Property} = useGetPropertyQuery() as any;
 
   const filterNotSold = Property && Property?.filter((item: any) => item.Type !== "Sold Out");
 
@@ -92,14 +92,9 @@ export default function Home() {
 
 
   return (
-    <>
-      {/* Header */}
-        <title>Jama Realty</title>
-      {/* First Screen */}
     <div>
+    <title>Jama Realty</title>
     <ContentSLide />
-    {/* Second Screen */}
-
     <motion.div
         initial="offscreen"
         whileInView="onscreen"
@@ -155,7 +150,7 @@ export default function Home() {
             <img src="/assets/home-begin-search.jpg" className="w-[500px] max-[720px]:w-full h-[370px] max-[720px]:h-[40%]" />
             <div className="w-[480px] max-[520px]:w-full max-[720px]:px-3">
               <div><p className="text-[#3B5189] text-[25px] font-bold max-[720px]:mt-[20px]">Begin your Philippines real estate search</p></div>
-              <div><p className={`${lexend.className} font-light max-[720px]:text-justify`}>Discover the endless possibilities of the Philippine real estate market with JAMAREALTY, your ultimate destination for buying, selling, or investing in properties. With access to a diverse range of verified listings, you can explore a wide variety of residential and commercial properties, all while gaining exclusive neighborhood insights and insider information. Trust JAMAREALTY to connect you with the best agent who will cater to your specific needs, ensuring a seamless and enjoyable real estate journey where you'll find a space that captures your heart.</p></div>
+              <div><p className={`${lexend.className} font-light max-[720px]:text-justify`}>Discover the endless possibilities of the Philippine real estate market with JAMAREALTY, your ultimate destination for buying, selling, or investing in properties. With access to a diverse range of verified listings, you can explore a wide variety of residential and commercial properties, all while gaining exclusive neighborhood insights and insider information. Trust JAMAREALTY to connect you with the best agent who will cater to your specific needs, ensuring a seamless and enjoyable real estate journey where you&apos;ll find a space that captures your heart.</p></div>
               <div className="mb-3">
                 <Link href="/map" className="flex justify-end items-center text-[#3B5189] font-bold group transition duration-300 ease-in-out hover:translate-x-2 hover:text-[#1DA834] max-[720px]:mb-[20px]">
                   Initiate Your Exploration
@@ -167,7 +162,7 @@ export default function Home() {
           <div className="flex gap-x-[20px] max-[720px]:flex-col-reverse">
             <div className="w-[480px] max-[520px]:w-full max-[720px]:px-3">
               <div><p className="text-[#3B5189] text-[25px] mt-[10px] font-bold max-[720px]:mt-[10px]">Begin Your Real Estate Journey in the Philippines</p></div>
-              <div><p className={`${lexend.className} font-light max-[720px]:text-justify`}>Begin your real estate journey in the Philippines, where a wealth of opportunities awaits. With its diverse range of properties, from luxurious beachfront villas to modern urban condos, you'll find the perfect fit for your lifestyle and investment goals. Explore stunning landscapes, from pristine beaches to lush mountains, and immerse yourself in the rich culture and warmth of the Filipino people. Whether you're seeking a dream home or a profitable investment, the Philippines offers endless potential. Take the first step and unlock the possibilities that this tropical paradise has to offer, making your real estate journey a truly unforgettable experience.</p></div>
+              <div><p className={`${lexend.className} font-light max-[720px]:text-justify`}>Begin your real estate journey in the Philippines, where a wealth of opportunities awaits. With its diverse range of properties, from luxurious beachfront villas to modern urban condos, you&apos;ll find the perfect fit for your lifestyle and investment goals. Explore stunning landscapes, from pristine beaches to lush mountains, and immerse yourself in the rich culture and warmth of the Filipino people. Whether you&apos;re seeking a dream home or a profitable investment, the Philippines offers endless potential. Take the first step and unlock the possibilities that this tropical paradise has to offer, making your real estate journey a truly unforgettable experience.</p></div>
               <div className="mt-3">
                 <Link href="/enlist-my-property" className="flex justify-end items-center text-[#3B5189] font-bold group transition duration-300 ease-in-out hover:translate-x-2 hover:text-[#1DA834]">
                   Begin Your Listing Property
@@ -230,7 +225,7 @@ export default function Home() {
                 <div className="flex items-center justify-center">
                   {filterNotSold && filterNotSold?.length > 8 ? 
                   <>
-                    {filterNotSold?.slice(0,8).map((item, index) => (
+                    {filterNotSold?.slice(0,8).map((item: any, index: number) => (
                     <SwiperSlide key={index} className="pt-5 pb-5">
                       <Product TypeProp={item?.Type} isImage={item?.Images[0]} id={item?.ProductId} location={`${item?.Location?.city}, ${item?.Location?.province}`} content={item?.TitleState} type={item?.PropertyType} Bathroom={item?.Bathrooms} Bedrooms={item?.Bedrooms} unit={item?.Unit} price={item?.Price} lot={item?.ParkingLot} floor={item?.LotFloor}  />
                     </SwiperSlide>
@@ -238,7 +233,7 @@ export default function Home() {
                   </>
                   : 
                   <>
-                    {filterNotSold?.slice(0,filterNotSold?.length).map((item, index) => (
+                    {filterNotSold?.slice(0,filterNotSold?.length).map((item: any, index: number) => (
                     <SwiperSlide key={index} className="pt-5 pb-5">
                        <Product TypeProp={item?.Type} isImage={item?.Images[0]} id={item?.ProductId} _id={item?._id} location={`${item?.Location?.city}, ${item?.Location?.province}`} content={item?.TitleState} type={item?.PropertyType} Bathroom={item?.Bathrooms} Bedrooms={item?.Bedrooms} unit={item?.Unit} price={item?.Price} lot={item?.ParkingLot} floor={item?.LotFloor}  />
                     </SwiperSlide>
@@ -256,6 +251,5 @@ export default function Home() {
       <BankLoan />
       <Footer />
     </div>
-    </>
   )
 }

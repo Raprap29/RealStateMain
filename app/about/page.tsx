@@ -23,7 +23,8 @@ const AboutPage = () => {
     <>
         <title>Jama Realty - About Us</title>
         <div className="w-full h-full relative">
-          <img src='/assets/PhotoAbout.jpg' className='bg-cover bg-center w-full h-[450px]' alt='photoabout'/>
+
+        <div className='bg-cover bg-center w-full h-[450px]' style={{ backgroundImage: 'url(/assets/PhotoAbout.jpg)' }} />
           <div className='text-[#fff] absolute top-[35%] left-[50%] transform translate-x-[-50%] translate-x-[-50%] z-[1] w-full container mx-auto max-w-[1150px]'>
             <p className={`text-[45px] max-[720px]:text-[22px] max-[720px]:px-[30px] ${Museo_Moderno.className}`}>Building Dreams, Crafting Destinations</p>
             <p className={`text-[45px] max-[720px]:text-[22px] max-[720px]:px-[30px] ${Museo_Moderno.className}`}>Discover the Essence of Jama Realty in Real Estate</p>
@@ -48,7 +49,7 @@ const AboutPage = () => {
               <div className='relative px-[10px]'>
                 <div className='absolute top-[28px] left-[45px]'>
                   <div className='border bg-[#fff] shadow-3dshadow border-solid border-[#A49D9D] w-[45px] h-[45px] flex justify-center items-center transform translate-x-[-50%] translate-y-[-50%] absolute top-[50%] left-[50%] rounded-[1000px] border-1'>
-                    <img alt='icon' src='/icon/vission.png' className='w-[30px] h-[30px]' />
+                  <Image alt='icon' src='/icon/vission.png' width={30} height={30} />
                   </div>
                 </div>
                 <div className='bg-[#1B7E19] rounded-[10px] pl-[20px] pr-[20px] py-[20px] max-[420px]:w-full w-[300px] z-[-1]'>
@@ -59,7 +60,7 @@ const AboutPage = () => {
             <div className='relative px-[10px]'>
               <div className='absolute top-[28px] left-[45px]'>
                 <div className='border bg-[#fff] shadow-3dshadow border-solid border-[#A49D9D] w-[45px] h-[45px] flex justify-center items-center transform translate-x-[-50%] translate-y-[-50%] absolute top-[50%] left-[50%] rounded-[1000px] border-1'>
-                  <img alt='icon' src='/icon/Mission.png' className='w-[30px] h-[30px]' />
+                  <Image alt='icon' src='/icon/Mission.png' width={30} height={30} />
                 </div>
               </div>
               <div className='bg-[#1B7E19] rounded-[10px] pl-[20px] pr-[20px] py-[20px] max-[420px]:w-full w-[300px] z-[-1]'>
@@ -70,7 +71,7 @@ const AboutPage = () => {
             <div className='relative px-[10px]'>
               <div className='absolute top-[28px] left-[45px]'>
                 <div className='border bg-[#fff] shadow-3dshadow border-solid border-[#A49D9D] w-[45px] h-[45px] flex justify-center items-center transform translate-x-[-50%] translate-y-[-50%] absolute top-[50%] left-[50%] rounded-[1000px] border-1'>
-                  <img alt='icon' src='/icon/values.png' className='w-[30px] h-[30px]' />
+                  <Image alt='icon' src='/icon/values.png' width={30} height={30} />
                 </div>
               </div>
               <div className='bg-[#1B7E19] rounded-[10px] pb-[20px] pt-6 pl-[20px] pr-[20px] w-full z-[-1]'>
@@ -91,11 +92,13 @@ const AboutPage = () => {
         <>
         <div className='h-[660px] flex flex-col items-center mt-[3rem]'>
           <div className='w-[280px] h-[280px] relative'>
-            <img className='rounded-[1000px] w-full h-full bg-cover bg-center' src='/assets/097feff961369265243eca1867c57edc.jpg' />
+          <div className='rounded-[1000px] w-full h-full bg-cover bg-center' style={{ backgroundImage: 'url(/assets/097feff961369265243eca1867c57edc.jpg)' }} />
             <div className='border border-solid border-1 border-[#9D9D9D] absolute top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%] h-[290px] w-[290px] rounded-[1000px]'></div>
             <div className='absolute top-[35%] transform left-[-50px]'>
               <div className='bg-[#fff] w-[75px] h-[75px] rounded-[1000px] z-[1]'>
-                <img alt='icon' src='/icon/vission.png' className='z-[2] w-[50px] h-[50px] absolute top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%]' />
+              <div className='relative' style={{ width: '50px', height: '50px' }}>
+                <Image alt='icon' src='/icon/vission.png' layout='fill' className='z-[2]' />
+              </div>
                 <div className='z-[1] border bg-[#fff] border-solid border-[#A49D9D] w-[65px] h-[65px] transform translate-x-[-50%] translate-y-[-50%] absolute top-[50%] left-[50%] rounded-[1000px] border-1'></div>
                 <div className='bg-[#1B7E19] rounded-[10px] pl-[20px] py-[20px] pr-[40px] absolute top-[-130%] right-[55%] w-[300px] z-[-1]'>
                   <p className='text-center text-[#fff] font-black text-[23px] mb-2'>OUR VISSION</p>
@@ -104,8 +107,8 @@ const AboutPage = () => {
               </div>
             </div>
             <div className='absolute top-[35%] transform right-[-50px]'>
-              <div className='bg-[#fff] w-[75px] h-[75px] rounded-[1000px] z-[1]'>
-                <img alt='icon' src='/icon/Mission.png' className='w-[50px] h-[50px] absolute top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%]' />
+              <div className='bg-[#fff] w-[75px] h-[75px] rounded-[1000px] z-[1]'> 
+              <Image alt='icon' src='/icon/Mission.png' className='w-[50px] h-[50px] absolute top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%]' />
                 <div className='border border-solid border-[#A49D9D] w-[65px] h-[65px] transform translate-x-[-50%] translate-y-[-50%] absolute top-[50%] left-[50%] rounded-[1000px] border-1'></div>
                 <div className='bg-[#1B7E19] rounded-[10px] pr-[20px] py-[20px] pl-[40px] absolute top-[-130%] left-[55%] w-[300px] z-[-1]'>
                   <p className='text-center text-[#fff] font-black text-[23px] mb-2'>OUR MISSION</p>
@@ -115,7 +118,7 @@ const AboutPage = () => {
             </div>
             <div className='absolute top-[110%] transform transate-x-[-50%] left-[35%] translate-y-[-50%]'>
               <div className='bg-[#fff] w-[75px] h-[75px] rounded-[1000px] z-[1]'>
-                <img alt='icon' src='/icon/values.png' className='w-[50px] h-[50px] absolute top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%]' />
+              <Image alt='icon' src='/icon/values.png' className='w-[50px] h-[50px] absolute top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%]' />
                 <div className='border border-solid border-[#A49D9D] w-[65px] h-[65px] transform translate-x-[-50%] translate-y-[-50%] absolute top-[50%] left-[50%] rounded-[1000px] border-1'></div>
                 <div className='bg-[#1B7E19] rounded-[10px] p-5 mt-3 pt-6 absolute top-[50%] transform translate-x-[-50%] left-[50%] w-[300px] z-[-1]'>
                   <p className='text-center text-[#fff] font-black text-[23px] mb-2'>OUR VALUES</p>

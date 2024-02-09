@@ -29,7 +29,7 @@ const Rent = () =>{
 
     const Router = useRouter();
 
-    const {data: PropertyRent} =  useGetPropertyQuery()
+    const {data: PropertyRent} =  useGetPropertyQuery();
 
     const dropdownRef = useRef<HTMLButtonElement | null>(null);
 
@@ -490,7 +490,7 @@ const Rent = () =>{
             <ContentSLide />   
             <div className="flex flex-col items-center justify-center mt-5 text-center mx-auto container max-w-[1100px]">
                 <h1 className="text-[30px] font-bold">FOR RENT</h1>
-                <p>Discover our wide range of rental properties, providing a diverse selection of options, including vacant lots, preselling condominium units, and fully-equipped commercial spaces. Whether you're seeking an investment opportunity or looking for a place to call home, our collection offers excellent choices for your rental needs.</p>
+                <p>Discover our wide range of rental properties, providing a diverse selection of options, including vacant lots, preselling condominium units, and fully-equipped commercial spaces. Whether you&apos;re seeking an investment opportunity or looking for a place to call home, our collection offers excellent choices for your rental needs.</p>
             </div>
             <div className="shadow-[0_3px_6px_0px_rgba(0,0,0,1)] w-full h-[3px] mt-5 bg-[#000]"></div>  
             <PhoneShopRent />

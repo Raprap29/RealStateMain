@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { MdLocationOn } from "react-icons/md";
+import Image from "next/image";
 export default function Product(props: any){
 
     function handleChangeWord(sentence: string): string{
@@ -21,7 +22,7 @@ export default function Product(props: any){
         <>
             <div key={props.id} className="relative rounded-[5px] bg-[#fff] flex flex-col items-center shadow-[0px_0px_3px_2px_rgba(74,107,222,.25)] max-[360px]:w-[220px] w-[260px] h-[440px]">
                 <div className="p-2 relative">
-                    <img className="rounded-[5px] w-[240px] h-[180px]" src={props.isImage} alt="image"></img>
+                    <Image src={props.isImage} alt="image" width={240} height={180} className="rounded-[5px]" />
                     <div className="absolute top-[17px] left-[22px] flex gap-x-[30px]">
                         <div className={`${props.TypeProp === "Rent" ? "bg-[blue]" : "bg-[#FF8A00]"} px-3 py-2 rounded-[5px] font-medium text-white shadow-3dshadow max-[360px]:text-[12px]`}>For {props.TypeProp}</div>
                         <div className="bg-[#26E926] px-3 py-2 rounded-[5px] font-medium text-white shadow-3dshadow max-[360px]:text-[12px]">New</div>
