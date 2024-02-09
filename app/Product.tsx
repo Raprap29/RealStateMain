@@ -1,6 +1,5 @@
 import Link from "next/link";
-import React, {useState} from "react";
-import { AiOutlineShareAlt } from "react-icons/ai";
+import React from "react";
 import { MdLocationOn } from "react-icons/md";
 export default function Product(props: any){
 
