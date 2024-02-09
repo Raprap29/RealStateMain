@@ -2,8 +2,6 @@
 
 import React, {useState, useEffect, useRef, ChangeEvent, RefObject} from "react";
 import Image from "next/image";
-import { MdLocationOn } from "react-icons/md";
-import { BiCaretDown } from "react-icons/bi";
 import Footer from "../components/footer/Footer";
 import QuickSearch from "../components/quicksearch/quickSearch";
 

@@ -21,6 +21,8 @@ export default function RootLayout({
     <html lang="en">
       <Head>
         <link rel="icon" href="logo/LogoJamaRealty.ico" />
+        <meta property="og:description" content="Jamarealty leverages advanced real estate technologies and strategic digital marketing to foster seamless connections between brokers, property owners, renters, and buyers. By harnessing the power of data analytics, virtual tours, and targeted advertising, "/>
+        <meta property="og:image" content="logo/LogoJama.png" />
       </Head>
       <body className={rubik.className}>
           <ReduxProvider>
