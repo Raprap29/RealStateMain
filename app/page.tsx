@@ -103,15 +103,16 @@ export default function Home() {
   }
 
   return (
-    <div>
+    <React.Fragment>
     <title>Jama Realty</title>
+    <div>
     <ContentSLide />
     <motion.div
         initial="offscreen"
         whileInView="onscreen"
         viewport={{ once: true, amount: 0.0 }}
           
-       className="h-[500px] overflow-hidden max-[320px]:h-screen max-[720px]:h-full relative z-[2]">
+      className="h-[500px] overflow-hidden max-[320px]:h-screen max-[720px]:h-full relative z-[2]">
       <motion.div
         variants={cardVariants}
 
@@ -150,7 +151,7 @@ export default function Home() {
       </motion.div>
 
     {/* Third Screen */}
-   
+
       <motion.div
       initial="offscreen"
       whileInView="onscreen"
@@ -246,7 +247,7 @@ export default function Home() {
                   <>
                     {filterNotSold?.slice(0,filterNotSold?.length).map((item: any, index: number) => (
                     <SwiperSlide key={index} className="pt-5 pb-5">
-                       <Product TypeProp={item?.Type} isImage={item?.Images[0]} id={item?.ProductId} _id={item?._id} location={`${item?.Location?.city}, ${item?.Location?.province}`} content={item?.TitleState} type={item?.PropertyType} Bathroom={item?.Bathrooms} Bedrooms={item?.Bedrooms} unit={item?.Unit} price={item?.Price} lot={item?.ParkingLot} floor={item?.LotFloor}  />
+                      <Product TypeProp={item?.Type} isImage={item?.Images[0]} id={item?.ProductId} _id={item?._id} location={`${item?.Location?.city}, ${item?.Location?.province}`} content={item?.TitleState} type={item?.PropertyType} Bathroom={item?.Bathrooms} Bedrooms={item?.Bedrooms} unit={item?.Unit} price={item?.Price} lot={item?.ParkingLot} floor={item?.LotFloor}  />
                     </SwiperSlide>
                   ))}
                   </>}
@@ -262,5 +263,6 @@ export default function Home() {
       <BankLoan />
       <Footer />
     </div>
+    </React.Fragment>     
   )
 }
