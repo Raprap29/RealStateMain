@@ -20,6 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Head>
+        <title>Jama Realty Test</title>
         <link rel="icon" href="logo/LogoJamaRealty.ico" />
         <meta property="og:description" content="Jamarealty leverages advanced real estate technologies and strategic digital marketing to foster seamless connections between brokers, property owners, renters, and buyers. By harnessing the power of data analytics, virtual tours, and targeted advertising, "/>
         <meta property="og:image" content="logo/LogoJama.png" />
