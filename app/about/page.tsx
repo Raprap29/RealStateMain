@@ -97,7 +97,7 @@ const AboutPage = () => {
             <div className='absolute top-[35%] transform left-[-50px]'>
               <div className='bg-[#fff] w-[75px] h-[75px] rounded-[1000px] z-[1]'>
               <div className='relative' style={{ width: '50px', height: '50px' }}>
-                <Image alt='icon' src='/icon/vission.png' layout='fill' className='z-[2]' />
+                <Image alt='icon' src='/icon/vission.png' width={1000} height={1000} className='z-[2] w-[50px] h-[50px] absolute top-[72%] left-[73%] transform translate-x-[-50%] translate-y-[-50%]'  />
               </div>
                 <div className='z-[1] border bg-[#fff] border-solid border-[#A49D9D] w-[65px] h-[65px] transform translate-x-[-50%] translate-y-[-50%] absolute top-[50%] left-[50%] rounded-[1000px] border-1'></div>
                 <div className='bg-[#1B7E19] rounded-[10px] pl-[20px] py-[20px] pr-[40px] absolute top-[-130%] right-[55%] w-[300px] z-[-1]'>
