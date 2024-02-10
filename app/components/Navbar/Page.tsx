@@ -34,8 +34,6 @@ const NavBar = () => {
   
   const path_id = pathname.split("/");
 
-  console.log(SocMed)
-
   const OrganizeName = (name: string) => {
     const splitWords = name.split(" ");
 
