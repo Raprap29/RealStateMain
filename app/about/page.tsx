@@ -101,7 +101,7 @@ const AboutPage = () => {
               </div>
                 <div className='z-[1] border bg-[#fff] border-solid border-[#A49D9D] w-[65px] h-[65px] transform translate-x-[-50%] translate-y-[-50%] absolute top-[50%] left-[50%] rounded-[1000px] border-1'></div>
                 <div className='bg-[#1B7E19] rounded-[10px] pl-[20px] py-[20px] pr-[40px] absolute top-[-130%] right-[55%] w-[300px] z-[-1]'>
-                  <p className='text-center text-[#fff] font-black text-[23px] mb-2'>OUR VISSION</p>
+                  <p className='text-center text-[#fff] font-black text-[23px] mb-2'>OUR VISION</p>
                   <p className='text-justify text-[15px] text-[#fff] font-medium'>Our vision at Jama Realty is to be the leading real estate company that transforms lives and communities through outstanding service and expertise. We envision a future where everyone can find their perfect home or investment property, supported by our knowledgeable team and cutting-edge technology.</p>
                 </div>
               </div>

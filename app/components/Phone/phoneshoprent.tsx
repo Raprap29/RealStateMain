@@ -7,6 +7,7 @@ import { useGetPropertyQuery } from "@/app/appApi/api";
 import { useRouter } from "next/navigation";
 import CardState from "../card/cardItemRent";
 import Slider from 'rc-slider';
+import Link from "next/link";
 import 'rc-slider/assets/index.css';
 import { AiFillAppstore, AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import { Be_Vietnam_Pro } from 'next/font/google';
@@ -519,7 +520,7 @@ const PhoneShopRent: React.FC = () => {
                         <div className="sticky px-[10px] top-[0px] z-[20]">
                             <button onClick={handleClickToggleShop} type="button" className="border bg-[#fff] border-solid border-[3px] border-[#000] rounded-[5px] absolute top-[120px] text-[green] hover:text-[rgba(0,128,0,0.75)] transition duration-300 ease-in-out"><AiFillAppstore size={45} /></button>
                         </div>
-                        <div className={`bg-[#fff] w-full h-full ${showBoxFormShop ? "fixed" : "hidden"} top-0 z-[830] overflow-hidden`}>
+                        <div className={`bg-[#fff] w-full h-full ${showBoxFormShop ? "fixed" : "hidden"} top-0 z-[10000] overflow-hidden`}>
                             <div className="h-full overflow-y-scroll">
                                 <div className="p-3">
                                 <div className="py-5 justify-center flex flex-col items-center">
@@ -706,11 +707,22 @@ const PhoneShopRent: React.FC = () => {
                             )}
                         </div>
                     </div>
-                    <div className="flex justify-center items-center p-8 gap-5 mt-5">
+                      <div className="flex justify-center items-center p-8 gap-5 mt-5">
+                      {itemShow?.length > 0 ? <>
                         <button onClick={handlePrevPage} className={`${currentPage === 1 ? "pointer-events-none bg-[#25D242]" : ""} bg-[#D9D9D9] hover:bg-[#25D242] border boder-solid border-2 border-[#000] hover:border-[#000] transition duration-300 ease-in-out rounded-[10px] text-[#000] px-5 py-3 font-bold hover:text-[#000]`}><AiOutlineArrowLeft style={{fontWeight: 'bold'}} size={20} /></button>
                         <button onClick={handleNextPage} className={`${currentPage === totalPages ? "pointer-events-none bg-[#25D242]" : ""} bg-[#D9D9D9] hover:bg-[#25D242] border boder-solid border-2 border-[#000] hover:border-[#000] transition duration-300 ease-in-out rounded-[10px] text-[#000] px-5 py-3 font-bold hover:text-[#000]`}><AiOutlineArrowRight fontWeight={'700'} style={{fontWeight: 'bold'}} size={20} /></button>
-                        </div>
-                        </div>
+                        </> : 
+                        <>
+                          <div className="flex flex-col justify-center">
+                                <div>
+                                  <p className="font-bold">NO PROPERTY SHOW</p>
+                                </div>
+                                <Link href="/property/rent-list" className="text-center bg-[green] text-white rounded-[5px] shadow-3dshadow py-[8px] mt-5" >BACK TO LIST</Link>
+                             </div>
+                        </>
+                        }
+                      </div>
+                    </div>
                     </>
                 }
         </React.Fragment>

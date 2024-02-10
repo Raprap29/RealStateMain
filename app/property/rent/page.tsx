@@ -6,6 +6,7 @@ import ContentSLide from "@/app/contentslide";
 import { BiCaretDown, BiCaretUp } from "react-icons/bi";
 import { Be_Vietnam_Pro } from 'next/font/google';
 import Slider from 'rc-slider';
+import Link from "next/link";
 import 'rc-slider/assets/index.css';
 import {AiFillAppstore, AiOutlineUnorderedList, AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 import CardState from "@/app/components/card/cardItemRent";
@@ -699,11 +700,24 @@ const Rent = () =>{
                       </div>
                    </div>
                    <div className="flex justify-center items-center p-8 gap-5 mt-5">
-                   {currentPage === 1 ? "" : <button onClick={handlePrevPage} className="bg-[#D9D9D9] hover:bg-[#25D242] border boder-solid border-2 border-[#000] hover:border-[#000] transition duration-300 ease-in-out rounded-[10px] text-[#000] px-5 py-3 font-bold hover:text-[#000]"><AiOutlineArrowLeft style={{fontWeight: 'bold'}} size={20} /></button>}
-                    {getPaginationNumbers().map((page, index)=>(
-                        <div key={index}>{page}</div>
-                    ))}
-                    {currentPage === totalPages ? "" :  <button onClick={handleNextPage} className="bg-[#D9D9D9] hover:bg-[#25D242] border boder-solid border-2 border-[#000] hover:border-[#000] transition duration-300 ease-in-out rounded-[10px] text-[#000] px-5 py-3 font-bold hover:text-[#000]"><AiOutlineArrowRight fontWeight={'700'} style={{fontWeight: 'bold'}} size={20} /></button>}
+                   {itemShow?.length <= 0 ?
+                      <>
+                        <div className="flex flex-col justify-center">
+                          <div>
+                            <p className="font-bold">NO PROPERTY SHOW</p>
+                          </div>
+                          <Link href="/property/rent-list" className="text-center bg-[green] text-white rounded-[5px] shadow-3dshadow py-[8px] mt-5" >BACK TO LIST</Link>
+                        </div>
+                      </>
+                    : 
+                      <>
+                      {currentPage === 1 ? "" : <button onClick={handlePrevPage} className="bg-[#D9D9D9] hover:bg-[#25D242] border boder-solid border-2 border-[#000] hover:border-[#000] transition duration-300 ease-in-out rounded-[10px] text-[#000] px-5 py-3 font-bold hover:text-[#000]"><AiOutlineArrowLeft style={{fontWeight: 'bold'}} size={20} /></button>}
+                        {getPaginationNumbers().map((page, index)=>(
+                            <div key={index}>{page}</div>
+                        ))}
+                        {currentPage === totalPages ? "" :  <button onClick={handleNextPage} className="bg-[#D9D9D9] hover:bg-[#25D242] border boder-solid border-2 border-[#000] hover:border-[#000] transition duration-300 ease-in-out rounded-[10px] text-[#000] px-5 py-3 font-bold hover:text-[#000]"><AiOutlineArrowRight fontWeight={'700'} style={{fontWeight: 'bold'}} size={20} /></button>}
+                      </>
+                    }
                    </div>
               </div>
             </div>            
