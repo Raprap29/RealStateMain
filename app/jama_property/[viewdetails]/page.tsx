@@ -56,7 +56,7 @@ const JamaRealtyView: React.FC<ViewDetailsProps> = ({params}) => {
     const pathname = usePathname()
     const searchParams = useSearchParams()
 
-    const [Phone, setPhone] = useState<boolean>(false);
+    const [slidesPerView, setSlidesPerView] = useState(getInitialSlidesPerView());
 
     const Router = useRouter();
 
@@ -262,13 +262,24 @@ const JamaRealtyView: React.FC<ViewDetailsProps> = ({params}) => {
         }
     }, [ViewDetails, DataProperty]);
 
-    useEffect(()=>{
-        window.addEventListener(
-            "resize",
-            () => window.innerWidth >= 620 ? setPhone(false) : setPhone(true)
-        );
-        
-      }, [Phone])
+    useEffect(() => {
+        const handleResize = () => {
+          setSlidesPerView(getInitialSlidesPerView());
+        };
+    
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+      }, []);
+    
+      function getInitialSlidesPerView() {
+        const windowWidth = window.innerWidth;
+    
+        if (windowWidth <= 720) {
+          return 1;
+        } else {
+          return 3;
+        }
+      }
 
     return(
         <React.Fragment>
@@ -378,7 +389,7 @@ const JamaRealtyView: React.FC<ViewDetailsProps> = ({params}) => {
                         </button>
                         <Swiper
                             className="mySwiper"
-                            slidesPerView={Phone ? 1 : 3}
+                            slidesPerView={slidesPerView}
                             spaceBetween={30}
                             slidesPerGroup={1}
                             scrollbar={{ draggable: true }}

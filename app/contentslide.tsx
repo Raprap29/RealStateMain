@@ -217,7 +217,7 @@ const ContentSLide: React.FC = () =>{
 
     return(
         <>
-          <div className="w-full h-[500px] max-[420px]:h-[400px] relative">
+          <div className="w-full h-[500px] max-[420px]:h-[500px] relative">
           <Swiper
             modules={[Pagination, Autoplay, Navigation]}
             loop={true}
@@ -226,7 +226,7 @@ const ContentSLide: React.FC = () =>{
               disableOnInteraction: false,
             }}
             draggable={false}
-            className="mySwiper h-[500px] max-[420px]:h-[400px] z-[-1]"
+            className="mySwiper h-[500px] max-[420px]:h-[500px] z-[-1]"
             onSwiper={(swiper: any) => {
               swiperRef.current = swiper;
             }}
@@ -244,7 +244,7 @@ const ContentSLide: React.FC = () =>{
               </SwiperSlide>
             ))}
           </Swiper>
-            <div className="absolute bg-[rgba(0,0,0,0.20)] h-[500px] w-full top-0 max-[420px]:h-[400px] z-[1]"></div>
+            <div className="absolute bg-[rgba(0,0,0,0.20)] h-[500px] w-full top-0 max-[420px]:h-[500px] z-[1]"></div>
             <div className="z-[10] absolute top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%] w-full h-full rounded-[10px] flex justify-between">
               <div className="h-full w-[160px] relative">
                 <button onClick={slidePrev} className="h-full w-[200px] max-[720px]:w-[50px]  flex justify-center items-center text-[70px]">
