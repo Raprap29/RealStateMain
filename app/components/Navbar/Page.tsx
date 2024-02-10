@@ -98,7 +98,7 @@ const NavBar = () => {
           <div className="ml-[20px] flex gap-x-[15px] max-[720px]:ml-[20px]">
             {SocMed && SocMed?.map((path: any, index: number) => (
               <Link key={index} href={path?.link}>
-                <Image src={`/icon/${path?.name}.png`}  width={Phone ? 15 : 23} height={5} alt="icon" />
+                <Image src={`/icon/${path?.name}.png`}  width={10000} className="w-[23px] max-[620px]:w-[15px]" height={5} alt="icon" />
               </Link>
             ))}
           </div>
@@ -127,7 +127,7 @@ const NavBar = () => {
                   <BiAlignLeft size={30} className="text-[#3B5189]" />
                 </button>
               </div>
-              <div className="max-[620px]:block hidden absolute top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%]"><Image src="/logo/LogoJama.png" width={Phone ? 120 : 170} alt="logo" height={Phone ? 120 : 170} /></div>
+              <div className="max-[620px]:block hidden absolute top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%]"><Image src="/logo/LogoJama.png" width={1000} className="w-[170px] max-[720px]:w-[120px] h-[120px] max-[720px]:h-[65px]" alt="logo" height={1000} /></div>
               <div className="flex items-center gap-x-2 max-[820px]:hidden">
                 <li className={"nav-item"}>
                   <Link className="px-3 py-7 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75 " href="/">

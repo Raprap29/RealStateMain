@@ -44,7 +44,7 @@ SwiperCore.use([
 
 export default function Home() {  
 
-  const [Phone, setPhone] = useState<boolean>(false);
+  const [slidesPerView, setSlidesPerView] = useState(getInitialSlidesPerView());
 
   const {data: Property} = useGetPropertyQuery() as any;
 
@@ -82,14 +82,25 @@ export default function Home() {
     }
   };
 
-  useEffect(()=>{
-    window.addEventListener(
-        "resize",
-        () => window.innerWidth >= 620 ? setPhone(false) : setPhone(true)
-    );
-  }, [Phone])
 
+  useEffect(() => {
+    const handleResize = () => {
+      setSlidesPerView(getInitialSlidesPerView());
+    };
 
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  function getInitialSlidesPerView() {
+    const windowWidth = window.innerWidth;
+
+    if (windowWidth <= 720) {
+      return 1;
+    } else {
+      return 3;
+    }
+  }
 
   return (
     <div>
@@ -98,14 +109,14 @@ export default function Home() {
     <motion.div
         initial="offscreen"
         whileInView="onscreen"
-        viewport={{ once: true, amount: 0.8 }}
+        viewport={{ once: true, amount: 0.0 }}
           
        className="h-[500px] overflow-hidden max-[320px]:h-screen max-[720px]:h-full relative z-[2]">
       <motion.div
         variants={cardVariants}
 
         >
-        <div className="flex justify-center flex-col items-center mt-5">
+        <div className="flex justify-center flex-col items-center mt-2">
           <p className={`${lexend.className} font-extralight text-[18px]`}>REAL ESTATE JAMAREALTY</p>
         </div>
         <div className="flex flex-col justify-center items-center relative">
@@ -116,7 +127,7 @@ export default function Home() {
             height={1000}
             quality={100}
           />
-          <div className={`top-[20px] ${Phone ? "" : "absolute"} flex flex-col items-center max-w-[800px]`}>
+          <div className={`top-[4px] max-[720px]:relative absolute flex flex-col items-center max-w-[800px] pb-[20px]`}>
             <div className="text-center">
               <p className="text-[30px] drop-shadow-[0_2px_3px_rgba(0,0,0,0.70)] font-bold text-[#3B5189]">WHO WE ARE</p>
               <p className="mt-5 leading-[40px] font-light max-[620px]:px-10 max-[520px]:text-[14px] max-[520px]:leading-normal max-[360px]:px-1">Jamarealty leverages advanced real estate technologies and strategic digital marketing to foster seamless connections between brokers, property owners, renters, and buyers. By harnessing the power of data analytics, virtual tours, and targeted advertising, Jamarealty streamlines property transactions, enhances market visibility, and maximizes the potential for successful selling and renting. This innovative approach empowers users to navigate the ever-changing real estate landscape efficiently and make informed decisions that align with their goals and aspirations.</p>
@@ -134,7 +145,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <hr className="w-full absolute bottom-0 max-[320px]:hidden"/>
+        <hr className="w-full absolute bottom-0 max-[620px]:hidden"/>
         </motion.div>
       </motion.div>
 
@@ -144,7 +155,7 @@ export default function Home() {
       initial="offscreen"
       whileInView="onscreen"
       viewport={{ once: true, amount: 0.2 }}
-      className="flex h-[750px] max-[720px]:h-full flex-col items-center mt-10 container overflow-hidden">
+      className="flex h-[750px] max-[720px]:h-full flex-col items-center pt-10 container overflow-hidden">
         <motion.div variants={cardVariantsExplore}>
           <div className="flex gap-x-[20px] max-[720px]:flex-col">
             <img src="/assets/home-begin-search.jpg" className="w-[500px] max-[720px]:w-full h-[370px] max-[720px]:h-[40%]" />
@@ -207,7 +218,7 @@ export default function Home() {
             <Swiper
               modules={[Pagination, Autoplay]}
               className="mySwiper3"
-              slidesPerView={Phone ? 1 : 3}
+              slidesPerView={slidesPerView}
               spaceBetween={30}
               slidesPerGroup={1}
               scrollbar={{ draggable: true }}
