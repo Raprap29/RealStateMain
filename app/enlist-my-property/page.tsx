@@ -380,7 +380,7 @@ const EnlistMyProperty: React.FC = () => {
                 <div className='bg-[rgba(0,0,0,0.40)] w-full h-full absolute top-0'></div>
             </div>
             <div className="container mx-auto flex justify-center mt-5 mb-5">
-                <p className="text-center font-thin w-[900px]">If you own property is in the <span className="font-bold">Manila</span> and are looking to sell or rent it out? We can help you find ready buyers who are eager to invest. We understand that properties are meant to be profitable, and we are committed to helping you achieve that goal quickly.</p>
+                <p className="text-center font-thin w-[900px]">If you own property is in the <span className="font-bold">Philippines</span> and are looking to sell or rent? We can help you find ready buyers who are eager to invest. We understand that properties are meant to be profitable, and we are committed to helping you achieve that goal quickly.</p>
             </div>
             <div className="flex justify-center flex-col container mx-auto max-[720px]:w-full max-[720px]:px-[10px] w-[630px]">
                 <div className="mb-2">{sendMessageFormError.FullName && <p className="text-[red] font-bold">{sendMessageFormError.FullName}</p>}</div>
@@ -445,7 +445,7 @@ const EnlistMyProperty: React.FC = () => {
                     <button type="button" onClick={() => changeProperty("SELL")} className={`${ChooseProperty === "SELL" ? "bg-[green] pointer-events-none text-white" : ""} w-full hover:bg-[green] transition duration-300 ease-in-out hover:text-white bg-[#ccc] py-[10px] rounded-[5px] shadow-3dshadow font-bold`}>I WANT TO SELL MY PROPERTY</button>
                     <button type="button" onClick={() => changeProperty("RENT")} className={`${ChooseProperty === "RENT" ? "bg-[green] pointer-events-none text-white" : ""} w-full hover:bg-[green] transition duration-300 ease-in-out hover:text-white bg-[#ccc] py-[10px] rounded-[5px] shadow-3dshadow font-bold`}>I WANT TO RENT MY PROPERTY</button>
                 </div>
-                <p className="font-medium mb-3 text-center mt-3 text-[15px]">Note: Before uploading your files, make sure that you are using the latest version of your browser, your internet connection and optimize first your image. Only 4 images can upload.</p>
+                <p className="font-medium mb-3 text-center mt-3 text-[15px]">Note: Before uploading your files, make sure that you are using the latest version of your browser, your internet connection is optimized, and your images are optimized. Limit upload to 4 images.</p>
                 <div className="mb-2">{sendMessageFormError.Images && <p className="text-center text-[red] font-bold">{sendMessageFormError.Images}</p>}</div>
                 <div className="w-full flex-wrap gap-y-[10px] overflow-y-scroll justify-center gap-x-[15px] flex items-center p-3 h-[140px] border border-solid border-1 border-[#ccc]">
                   {base64Images?.length <= 0 ? 

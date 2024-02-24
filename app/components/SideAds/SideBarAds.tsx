@@ -18,9 +18,9 @@ const SideBarAds: React.FC = () => {
         <React.Fragment>
             <ShowAdsBox setshowAds={setshowAds} showAds={showAds} />
             <div className="fixed z-[700] top-[50%] left-0">
-                <button onClick={handleShowAds} type="button" className="bg-[green] flex flex-col gap-y-[10px] rounded-[5px] shadow-3dshadow text-white p-1">
+                <button onClick={handleShowAds} type="button" className="bg-[#000] h-[240px] flex flex-col gap-y-[10px] rounded-[5px] shadow-3dshadow text-white p-1">
                     {paths.map((path: any, index: number) => (
-                        <Image key={index} src={`/icon/${path}.png`}  width={30} height={5} alt="icon" />
+                        <Image key={index} src={`/icon/${path}.png`} width={30} height={5} alt="icon" />
                     ))}
                 </button>
             </div>

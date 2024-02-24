@@ -10,7 +10,6 @@ import {AiFillPhone, AiFillMail} from "react-icons/ai";
 import Sidebar from "../SideBar/Page";
 import {BiAlignLeft} from "react-icons/bi";
 import { useGetDeveloperQuery } from "@/app/appApi/api";
-import { useRouter } from 'next/navigation';
 import { useGetSocMedQuery } from "@/app/appApi/api";
 
 const lexend = Lexend({
@@ -23,7 +22,6 @@ const NavBar = () => {
   const pathname = usePathname();
   const [ToggleMenu, setToggleMenu] = useState<boolean>(false);
   const [Phone, setPhone] = useState<boolean>(false);
-  const paths: string[] = ['facebook', 'instagram', 'viber', 'youtube', 'whatsapp']
   const toggleMenu = (): void => {
     setToggleMenu(true);
   };
@@ -165,7 +163,7 @@ const NavBar = () => {
                 <li className={`nav-item`}>
                   <Link className="px-3 py-7 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" href="/enlist-my-property">
                     <div className="w-full relative">
-                      <span>ENLIST MY PROPERTY</span>
+                      <span>LIST MY PROPERTY</span>
                       {pathname === "/enlist-my-property" || pathname === `/enlist-my-property` ? <div className="border-b-[3px] border-[#25D242] absolute top-6 left-0 right-0"></div> : ""}
                     </div>
                   </Link>
