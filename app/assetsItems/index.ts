@@ -23,7 +23,7 @@ export const properyIcon = [
         properyTitle: "Sell a Property",
         paragraphproperty: "Regardless of your chosen approach to selling your home, we are here to assist you in achieving a successful and seamless sale transaction.",
         buttonProperty: "See You Options",
-        link: "https://toprealty.com.ph/enlist-my-property/"
+        link: "/enlist-my-property"
     },
     {
         icon: "Rent",
