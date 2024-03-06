@@ -9,6 +9,8 @@ import { MuseoModerno } from "next/font/google";
 import { FaEnvelope, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
+import { useGetSocMedQuery } from "@/app/appApi/api";
+
 const Museo_Moderno = MuseoModerno({weight: '700', preload: false})
 
 const paths = [
@@ -36,6 +38,9 @@ const paths = [
 
 
 const ContactUs: React.FC = () => {
+
+    const {data: SocMed} = useGetSocMedQuery();
+
     return(
         <React.Fragment>
             <title>Jama Realty - Contact Us</title>
@@ -72,9 +77,9 @@ const ContactUs: React.FC = () => {
                         <a className="hover:text-[green] text-[#000] transition duration-300 ease-in-out" href="mailto:info@jamarealty.com">info@jamarealty.com</a>
                     </div>
                     <div className="flex flex-col gap-y-[20px] mt-[35px]">
-                        {paths.map((path: any, index: number) => (
+                        {SocMed && SocMed?.map((path: any, index: number) => (
                             <div key={index} className="flex items-center gap-x-[20px]">
-                                <Image key={path.name} src={`/icon/${path.name}.png`} width={30} height={5} alt="icon" />
+                                <Image src={`/icon/${path.name}.png`} width={30} height={5} alt="icon" />
                                 <Link href={path.link}>{path.name}</Link>
                             </div>
                         ))}
