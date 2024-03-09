@@ -6,6 +6,7 @@ import {MdKeyboardArrowLeft, MdKeyboardArrowRight, MdLocationOn} from "react-ico
 import { useSendMessageCustomerToEmailMutation, useViewDetailsProductsQuery, useGetPropertyQuery } from "../../appApi/api";
 import { usePathname, useSearchParams  } from "next/navigation";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
+import useOrigin from "@/app/helpers/hooks/hostname";
 import OF from "./assets_detailsJama/OF";
 import SwiperCore, {
     EffectFade,
@@ -226,7 +227,7 @@ const JamaRealtyView: React.FC<ViewDetailsProps> = ({params}) => {
                     contact: contact,
                     subject: subject,
                     inquire: inquire,
-                    url: `http://localhost:${pathname}?id=${params.viewdetails}`,
+                    url: `https://${useOrigin()}/${pathname}/${params.viewdetails}`,
                 }).unwrap();
                 clearAllField();
               }
