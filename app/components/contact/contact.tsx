@@ -4,7 +4,9 @@ import React, {ChangeEvent, useState, useRef, FormEvent} from "react";
 import { BiCaretDown, BiCaretUp } from "react-icons/bi";
 import Image from "next/image";
 import { useSendMessageCustomerMutation } from "@/app/appApi/api";
+import libphonenumber from 'google-libphonenumber';
 
+const phoneUtil = libphonenumber.PhoneNumberUtil.getInstance();
 interface styles {
     mt: number,
 }
@@ -149,9 +151,12 @@ const Contact:React.FC<styles> = ({mt = 0}) =>{
         }
         
         function isValidContactNumber(contactNumber: string) {
-          const pattern = /^[0-9]+$/;
-      
-          return pattern.test(contactNumber);
+          try {
+              const parsedNumber = phoneUtil.parse(contactNumber, 'ZZ');
+              return phoneUtil.isValidNumber(parsedNumber);
+          } catch (error) {
+              return false;
+          }
         }
 
         function isValidEmail(email: string) {
@@ -267,7 +272,7 @@ const Contact:React.FC<styles> = ({mt = 0}) =>{
                   </div>
                   <div>
                   <div className="mb-2">{sendMessageFormError.ContactNumber && <p className="text-[red] font-bold">{sendMessageFormError.ContactNumber}</p>}</div>
-                    <input onChange={handleChangeMessage} value={sendMessageForm.ContactNumber} name="ContactNumber" className="w-full p-2 rounded-[5px] bg-[#EAEAEA] border-solid border-[1px] pl-[15px] border-[#7b7979] outline-none" placeholder="+63" />
+                    <input onChange={handleChangeMessage} value={sendMessageForm.ContactNumber} name="ContactNumber" className="w-full p-2 rounded-[5px] bg-[#EAEAEA] border-solid border-[1px] pl-[15px] border-[#7b7979] outline-none" placeholder="Contact Number *" />
                   </div>
                 </div>
                 <div className="w-full">

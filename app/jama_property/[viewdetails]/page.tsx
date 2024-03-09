@@ -21,6 +21,11 @@ import type { Swiper as SwiperType } from "swiper";
 import BankLoan from "../../components/loan/Loan";
 import Footer from "../../components/footer/Footer";
 import { useRouter } from "next/navigation";
+import libphonenumber from 'google-libphonenumber';
+
+const phoneUtil = libphonenumber.PhoneNumberUtil.getInstance();
+
+
 SwiperCore.use([
     EffectCoverflow,
     EffectCube,
@@ -52,6 +57,8 @@ interface ViewDetailsProps{
 }
 
 const JamaRealtyView: React.FC<ViewDetailsProps> = ({params}) => {
+
+
 
     const pathname = usePathname()
     const searchParams = useSearchParams()
@@ -114,10 +121,13 @@ const JamaRealtyView: React.FC<ViewDetailsProps> = ({params}) => {
     }
 
     function isValidContactNumber(contactNumber: string) {
-        const pattern = /^[0-9]+$/;
-    
-        return pattern.test(contactNumber);
-      }
+        try {
+            const parsedNumber = phoneUtil.parse(contactNumber, 'ZZ');
+            return phoneUtil.isValidNumber(parsedNumber);
+        } catch (error) {
+            return false;
+        }
+    }
 
     function isValidEmail(email: string) {
         const pattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
@@ -334,7 +344,7 @@ const JamaRealtyView: React.FC<ViewDetailsProps> = ({params}) => {
                             <input onChange={handleChange} value={FormInquire.email} name="email" type="text" placeholder="Email *" className={`px-[10px] w-full h-[50px] outline-none border border-1 border-solid bg-[#EAEAEA] rounded-[5px] ${sendMessageFormError.email ? "border-[red]" : "border-[#7B7979]"}`} />
                         </div>
                         <div className="w-full">
-                            <input onChange={handleChange} value={FormInquire.contact} name="contact" type="text" placeholder="+63" className={`px-[10px] w-full h-[50px] outline-none border border-1 border-solid bg-[#EAEAEA] rounded-[5px] ${sendMessageFormError.contact ? "border-[red]" : "border-[#7B7979]"}`} />
+                            <input onChange={handleChange} value={FormInquire.contact} name="contact" type="text" placeholder="Contact Number *" className={`px-[10px] w-full h-[50px] outline-none border border-1 border-solid bg-[#EAEAEA] rounded-[5px] ${sendMessageFormError.contact ? "border-[red]" : "border-[#7B7979]"}`} />
                         </div>
                         <div className="w-full">
                             <input onChange={handleChange} value={FormInquire.subject} name="subject" type="text" placeholder="Subject *" className={`px-[10px] w-full h-[50px] outline-none border border-1 border-solid bg-[#EAEAEA] rounded-[5px] ${sendMessageFormError.subject ? "border-[red]" : "border-[#7B7979]"}`} />
@@ -360,7 +370,7 @@ const JamaRealtyView: React.FC<ViewDetailsProps> = ({params}) => {
                                 <input onChange={handleChange} value={FormInquire.email} name="email" type="text" placeholder="Email *" className={`px-[10px] w-full h-[50px] outline-none border border-1 border-solid bg-[#EAEAEA] rounded-[5px] ${sendMessageFormError.email ? "border-[red]" : "border-[#7B7979]"}`} />
                             </div>
                             <div className="w-full">
-                                <input onChange={handleChange} value={FormInquire.contact} name="contact" type="text" placeholder="+63" className={`px-[10px] w-full h-[50px] outline-none border border-1 border-solid bg-[#EAEAEA] rounded-[5px] ${sendMessageFormError.contact ? "border-[red]" : "border-[#7B7979]"}`} />
+                                <input onChange={handleChange} value={FormInquire.contact} name="contact" type="text" placeholder="Contact Number *" className={`px-[10px] w-full h-[50px] outline-none border border-1 border-solid bg-[#EAEAEA] rounded-[5px] ${sendMessageFormError.contact ? "border-[red]" : "border-[#7B7979]"}`} />
                             </div>
                             <div className="w-full">
                                 <input onChange={handleChange} value={FormInquire.subject} name="subject" type="text" placeholder="Subject *" className={`px-[10px] w-full h-[50px] outline-none border border-1 border-solid bg-[#EAEAEA] rounded-[5px] ${sendMessageFormError.subject ? "border-[red]" : "border-[#7B7979]"}`} />

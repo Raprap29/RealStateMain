@@ -368,7 +368,7 @@ const EnlistMyProperty: React.FC = () => {
         <React.Fragment>
             <title>Jama Realty | Enlist Property</title>
             {LoadingEnlistProperty && (
-              <div className={`${LoadingEnlistProperty ? "fixed" : "hidden"} inset-0 bg-[rgba(0,0,0,.30)] z-[99] overflow-y-auto`}>
+              <div className={`${LoadingEnlistProperty ? "fixed" : "hidden"} inset-0 bg-[rgba(0,0,0,.30)] z-[9999] overflow-y-auto`}>
                 <img alt="Loading" src="/assets/loading/Hourglass.gif" className="absolute top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%] w-[60px] h-[60px]"  />
               </div>
             )}
