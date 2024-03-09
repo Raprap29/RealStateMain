@@ -13,30 +13,6 @@ import { useGetSocMedQuery } from "@/app/appApi/api";
 
 const Museo_Moderno = MuseoModerno({weight: '700', preload: false})
 
-const paths = [
-    {
-        name: "facebook",
-        link: "testmuna",
-    },
-    {
-        name: "instagram",
-        link: "testmuna",
-    },
-    {
-        name: "viber",
-        link: "testmuna",
-    },
-    {
-        name: "youtube",
-        link: "testmuna",
-    },
-    {
-        name: "whatsapp",
-        link: "testmuna",
-    },
-]
-
-
 const ContactUs: React.FC = () => {
 
     const {data: SocMed} = useGetSocMedQuery();
