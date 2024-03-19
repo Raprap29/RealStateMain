@@ -10,14 +10,26 @@ import { MuseoModerno } from "next/font/google";
 const Museo_Moderno = MuseoModerno({weight: '700', preload: false})
 
 const AboutPage = () => {
-  const [Phone, setPhone] = useState<boolean>(false);
-  
-  useEffect(()=>{
-    window.addEventListener(
-        "resize",
-        () => window.innerWidth >= 720 ? setPhone(false) : setPhone(true)
-    );
-  }, [Phone])
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+
+
+
+  useEffect(() => {
+    const updateWindowWidth = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', updateWindowWidth);
+
+    updateWindowWidth();
+
+    // Cleanup: Remove event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', updateWindowWidth);
+    };
+  }, []);
+
 
   return (
     <>
@@ -43,7 +55,7 @@ const AboutPage = () => {
         <div className='bg-[#3B5189] h-[120px] w-full flex items-center justify-center'>
           <p className='text-[40px] text-[#fff] font-black max-[720px]:text-center max-[720px]:text-[30px]'>OUR MISSION, VISSION AND VALUES</p>
         </div>
-        {Phone ? 
+        {windowWidth < 720 ? 
         <>
           <div className='mb-8 flex flex-col gap-y-[20px] items-center mt-[3rem]'>    
               <div className='relative px-[10px]'>

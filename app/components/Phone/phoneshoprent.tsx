@@ -298,60 +298,6 @@ const PhoneShopRent: React.FC = () => {
         setAnimated(true);
     }
   
-    const getPaginationNumbers = () => {
-        const paginationNumbers = [];
-        let startPage, endPage;
-    
-        if (totalPages <= 3) {
-  
-          startPage = 1;
-          endPage = totalPages;
-        } else {
-  
-          if (currentPage <= 1) {
-            startPage = 1;
-            endPage = 3;
-          } else if (currentPage + 1 >= totalPages) {
-            startPage = totalPages - 2;
-            endPage = totalPages;
-          } else {
-            startPage = currentPage - 1;
-            endPage = currentPage + 1;
-          }
-        }
-    
-        if (startPage > 1) {
-          paginationNumbers.push(
-            <button onClick={() => handlePageClick(1)} className='px-7 rounded-[5px] py-2 bg-[#D9D9D9] text-[#000] hover:bg-[#25D242] border boder-solid border-2 hover:border-[#000] transition duration-300 ease-in-out font-bold hover:text-[#000]'>{1}</button>);
-          if (startPage > 2) {
-            paginationNumbers.push(  
-            <button key="left-ellipsis" className="ellipsis" disabled>
-            ...
-          </button>);
-          }
-        }
-    
-        for (let i = startPage; i <= endPage; i++) {
-          paginationNumbers.push(
-            <button onClick={() => handlePageClick(i)} className={`px-7 rounded-[5px] py-2 border boder-solid border-2 hover:bg-[#25D242] hover:border-[#000] hover:text-[#000] font-bold transition duration-300 ease-in-out ${currentPage === i ? 'bg-[#25D242] text-[#000] font-bold border boder-solid border-2 border-[#000]' : 'bg-[#D9D9D9] text-[#000]'}`}>{i}</button>
-          );
-        }
-  
-        if (endPage < totalPages) {
-          if (endPage < totalPages - 1) {
-            paginationNumbers.push(
-                <button key="left-ellipsis" className="ellipsis" disabled>
-                ...
-              </button>
-            );
-          }
-           // Last button
-          paginationNumbers.push(
-            <button onClick={() => handlePageClick(totalPages)}  className='px-7 rounded-[5px] py-2 bg-[#D9D9D9] text-[#000] hover:bg-[#25D242]] border boder-solid border-2 hover:border-[#000] transition duration-300 ease-in-out font-bold hover:text-[#000]'>{totalPages}</button>);
-        }
-    
-        return paginationNumbers;
-      };
   
       useEffect(()=> {
         if (showDefault) {
