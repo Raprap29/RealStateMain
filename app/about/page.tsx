@@ -12,9 +12,6 @@ const Museo_Moderno = MuseoModerno({weight: '700', preload: false})
 const AboutPage = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-
-
-
   useEffect(() => {
     const updateWindowWidth = () => {
       setWindowWidth(window.innerWidth);
