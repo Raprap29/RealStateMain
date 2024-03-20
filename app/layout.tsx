@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: "JAMA REALTY",
     description: "Unlock the Gateway to Exceptional Philippine Real Estate: Explore our Verified Listings Now!",
+    type: "website",
+    url: "https://jamarealty.netlify.app/",
+    siteName: "JAMAREALTY",
   }
 }
 
