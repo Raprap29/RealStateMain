@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://jamarealty.netlify.app/",
     siteName: "JAMAREALTY",
+    images: "/assets/bg.png",
   }
 }
 
