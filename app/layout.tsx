@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     description: "Unlock the Gateway to Exceptional Philippine Real Estate: Explore our Verified Listings Now!",
     type: "website",
     url: "https://jamarealty.netlify.app/",
-    siteName: "JAMAREALTY",
+    siteName: "JAMA REALTY",
     images: "/assets/bg.png",
   }
 }
