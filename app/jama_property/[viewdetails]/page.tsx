@@ -64,6 +64,8 @@ const JamaRealtyView: React.FC<ViewDetailsProps> = ({params}) => {
     const pathname = usePathname()
     const searchParams = useSearchParams()
 
+    const origin = useOrigin();
+
     const [slidesPerView, setSlidesPerView] = useState(getInitialSlidesPerView());
 
     const Router = useRouter();
@@ -227,7 +229,7 @@ const JamaRealtyView: React.FC<ViewDetailsProps> = ({params}) => {
                     contact: contact,
                     subject: subject,
                     inquire: inquire,
-                    url: `https://${useOrigin()}/${pathname}/${params.viewdetails}`,
+                    url: `https://${origin}/${pathname}/${params.viewdetails}`,
                 }).unwrap();
                 clearAllField();
               }
