@@ -216,7 +216,6 @@ const ContentSLide: React.FC = () =>{
 
     return(
         <>
-          <div className="w-full h-[500px] max-[420px]:h-[500px] relative">
           <Swiper
             modules={[Autoplay, Navigation]}
             loop={true}
@@ -225,7 +224,7 @@ const ContentSLide: React.FC = () =>{
               disableOnInteraction: false,
             }}
             draggable={false}
-            className="mySwiper h-[500px] max-[420px]:h-[500px] z-[-1]"
+            className="mySwiper h-[500px] relative w-full"
             onSwiper={(swiper: any) => {
               swiperRef.current = swiper;
             }}
@@ -356,7 +355,7 @@ const ContentSLide: React.FC = () =>{
                 <BiChevronRight className="text-white" />
               </button>
             </div>
-          </div>
+  
           <form onSubmit={handleSumbitForMobile} className='container mx-auto max-w-[1150px] mt-8 mb-8 p-[20px] max-[720px]:block hidden'>
           <div className='w-full h-full border border-solid border-1 rounded-[5px] border-[#B9AFAF] shadow-[2px_2px_3px_0px_rgba(0,0,0,0.25)]'>
               <div className='flex p-5 w-full gap-x-[5px] flex-wrap justify-center gap-y-[20px]'>
