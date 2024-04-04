@@ -11,7 +11,7 @@ import { Swiper, SwiperSlide} from "swiper/react";
 import { MdLocationOn } from "react-icons/md";
 import "swiper/css";
 import "swiper/css/pagination"
-import { Pagination, Navigation, Autoplay } from "swiper";
+import { Navigation, Autoplay } from "swiper";
 import { useGetSlideImageQuery, useGetPropertyQuery } from "./appApi/api";
 import {useRouter} from "next/navigation";
 import "./style.css";
@@ -21,7 +21,6 @@ SwiperCore.use([
     EffectCube,
     EffectFade,
     Navigation,
-    Pagination,
     Autoplay,
   ]);
 
@@ -219,7 +218,7 @@ const ContentSLide: React.FC = () =>{
         <>
           <div className="w-full h-[500px] max-[420px]:h-[500px] relative">
           <Swiper
-            modules={[Pagination, Autoplay, Navigation]}
+            modules={[Autoplay, Navigation]}
             loop={true}
             autoplay={{
               delay: 3000,
