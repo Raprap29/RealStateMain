@@ -235,7 +235,7 @@ const ContentSLide: React.FC = () =>{
             {SlideImage && SlideImage.map((item: any, index: number)=> (
               <SwiperSlide key={index}> 
                 <Image
-                  src={`${item.images?.length === 0 ? "/assets/sean-pollock-PhYq704ffdA-unsplash.jpg" : item.images}`}
+                  src={item.images}
                   alt={`Photo-${index}`}
                   layout="fill"
                   objectFit="cover"

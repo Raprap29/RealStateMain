@@ -2,6 +2,7 @@ import Link from "next/link";
 import React, {useEffect, useState} from "react";
 import { BiAlignLeft } from "react-icons/bi";
 import { FaHouseUser, FaTimes } from "react-icons/fa";
+import {Variant, motion} from "framer-motion";
 
 
 interface SidebarProps {
@@ -11,13 +12,16 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, setisOpen }) => {
 
+  const SlideSideBar: Variant = {
+    
+  }
 
   const handleCloseNavBar = () =>{
     setisOpen(false);
   }
 
   return (
-    <div className={`overflow-y-scroll fixed left-0 top-0 h-screen transition-all duration-300 ease-in-out z-[9999] w-[70%] bg-gray-200 transform ${isOpen ? "translate-x-0" : "translate-x-full"}`}>
+    <motion.div className={`overflow-y-scroll fixed left-0 top-0 h-screen transition-all duration-300 ease-in-out z-[9999] w-[70%] bg-gray-200 left-[-300px]`}>
       <div className="absolute top-[20px] right-[25px]">
         <button type="button" onClick={handleCloseNavBar} className="bg-[red] p-1 rounded-[5px] transition duratio-300 ease-in-out shadow-3dshadow text-white hover:bg-[rgba(255,0,0,.75)]"><FaTimes size={20} /></button>
       </div>
@@ -94,7 +98,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, setisOpen }) => {
             </ul>
           </div>
         </div>
-    </div>
+    </motion.div>
   );
 };
 
