@@ -11,7 +11,7 @@ import { Swiper, SwiperSlide} from "swiper/react";
 import { MdLocationOn } from "react-icons/md";
 import "swiper/css";
 import "swiper/css/pagination"
-import { Navigation, Autoplay } from "swiper";
+import { Pagination, Navigation, Autoplay } from "swiper";
 import { useGetSlideImageQuery, useGetPropertyQuery } from "./appApi/api";
 import {useRouter} from "next/navigation";
 import "./style.css";
@@ -21,6 +21,7 @@ SwiperCore.use([
     EffectCube,
     EffectFade,
     Navigation,
+    Pagination,
     Autoplay,
   ]);
 
@@ -216,15 +217,16 @@ const ContentSLide: React.FC = () =>{
 
     return(
         <>
+          <div className="w-full h-[500px] max-[420px]:h-[500px] relative">
           <Swiper
-            modules={[Autoplay, Navigation]}
+            modules={[Pagination, Autoplay, Navigation]}
             loop={true}
             autoplay={{
               delay: 3000,
               disableOnInteraction: false,
             }}
             draggable={false}
-            className="mySwiper h-[500px] relative w-full"
+            className="mySwiper h-[500px] max-[420px]:h-[500px] z-[-1]"
             onSwiper={(swiper: any) => {
               swiperRef.current = swiper;
             }}
@@ -233,7 +235,7 @@ const ContentSLide: React.FC = () =>{
             {SlideImage && SlideImage.map((item: any, index: number)=> (
               <SwiperSlide key={index}> 
                 <Image
-                  src={item.images}
+                  src={`${item.images || "/assets/sean-pollock-PhYq704ffdA-unsplash.jpg"}`}
                   alt={`Photo-${index}`}
                   layout="fill"
                   objectFit="cover"
@@ -355,7 +357,7 @@ const ContentSLide: React.FC = () =>{
                 <BiChevronRight className="text-white" />
               </button>
             </div>
-  
+          </div>
           <form onSubmit={handleSumbitForMobile} className='container mx-auto max-w-[1150px] mt-8 mb-8 p-[20px] max-[720px]:block hidden'>
           <div className='w-full h-full border border-solid border-1 rounded-[5px] border-[#B9AFAF] shadow-[2px_2px_3px_0px_rgba(0,0,0,0.25)]'>
               <div className='flex p-5 w-full gap-x-[5px] flex-wrap justify-center gap-y-[20px]'>
