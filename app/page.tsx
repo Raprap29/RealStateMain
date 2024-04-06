@@ -135,7 +135,7 @@ export default function Home() {
             </div>
             <div className="mt-3 flex justify-center items-center gap-x-[80px] gap-y-[15px] flex-wrap">
               <Link
-                href="/"
+                href="/property/sale-list"
                 className="z-[10] bg-[#25D242] px-4 flex items-center text-white rounded-[10px] text-[16px] py-3 uppercase font-bold leading-snug text-black hover:bg-[#1DA834] transition duration-300 ease-in-out shadow-3dshadow max-[460px]:text-[14px]"
               >
                 BUY YOUR DREAM HOME
@@ -176,7 +176,7 @@ export default function Home() {
               <div><p className="text-[#3B5189] text-[25px] mt-[10px] font-bold max-[720px]:mt-[10px]">Begin Your Real Estate Journey in the Philippines</p></div>
               <div><p className={`${lexend.className} font-light max-[720px]:text-justify`}>Begin your real estate journey in the Philippines, where a wealth of opportunities awaits. With its diverse range of properties, from luxurious beachfront villas to modern urban condos, you&apos;ll find the perfect fit for your lifestyle and investment goals. Explore stunning landscapes, from pristine beaches to lush mountains, and immerse yourself in the rich culture and warmth of the Filipino people. Whether you&apos;re seeking a dream home or a profitable investment, the Philippines offers endless potential. Take the first step and unlock the possibilities that this tropical paradise has to offer, making your real estate journey a truly unforgettable experience.</p></div>
               <div className="mt-3">
-                <Link href="/enlist-my-property" className="flex justify-end items-center text-[#3B5189] font-bold group transition duration-300 ease-in-out hover:translate-x-2 hover:text-[#1DA834]">
+                <Link href="/list-my-property" className="flex justify-end items-center text-[#3B5189] font-bold group transition duration-300 ease-in-out hover:translate-x-2 hover:text-[#1DA834]">
                   Begin Your Listing Property
                   <FaArrowRight className="ml-3 transition duration-300 ease-in-out group-hover:mr-4 max-[720px]:mr-[10px]" />
                 </Link>

@@ -161,10 +161,10 @@ const NavBar = () => {
                   </Link>
                 </li>
                 <li className={`nav-item`}>
-                  <Link className="px-3 py-7 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" href="/enlist-my-property">
+                  <Link className="px-3 py-7 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" href="/list-my-property">
                     <div className="w-full relative">
                       <span>LIST MY PROPERTY</span>
-                      {pathname === "/enlist-my-property" || pathname === `/enlist-my-property` ? <div className="border-b-[3px] border-[#25D242] absolute top-6 left-0 right-0"></div> : ""}
+                      {pathname === "/list-my-property" || pathname === `/list-my-property` ? <div className="border-b-[3px] border-[#25D242] absolute top-6 left-0 right-0"></div> : ""}
                     </div>
                   </Link>
                 </li>
