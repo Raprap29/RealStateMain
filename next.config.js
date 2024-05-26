@@ -4,7 +4,7 @@ const nextConfig = {
     swcMinify: true,
     // unoptimized: true,
     env: {
-        NEXT_PUBLIC_API: 'https://serverjama.vercel.app'
+        NEXT_PUBLIC_API: 'https://serverrealapi.vercel.app'
     }
 }
 
