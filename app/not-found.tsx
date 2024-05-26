@@ -16,7 +16,7 @@ export default function NotFoundPage() {
       </div>
       <h2 className='text-4xl font-bold mb-4 mt-4'>Page Not Found</h2>
       <p className='text-gray-600 mb-6'>
-        We're sorry, but the requested page could not be found.
+        We&#x2019re sorry&#x201A but the requested page could not be found.
       </p>
       <Link href="/">
         <p className='text-blue-500 underline hover:text-blue-700'>
