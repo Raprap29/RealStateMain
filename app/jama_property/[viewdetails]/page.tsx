@@ -63,7 +63,6 @@ const JamaRealtyView: React.FC<ViewDetailsProps> = ({params}) => {
 
     const pathname = usePathname()
     const searchParams = useSearchParams()
-
     const origin = useOrigin();
 
     const [slidesPerView, setSlidesPerView] = useState(getInitialSlidesPerView());

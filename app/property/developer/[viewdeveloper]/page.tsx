@@ -31,13 +31,13 @@ const ViewDeveloper: React.FC<ViewDeveloperProps> = ({params}) => {
 
     const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass | null>(null);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
+    const decodedString = decodeURIComponent(params.viewdeveloper.replace(/\+/g, " "));
     const {data: Property} = useGetPropertyQuery();
     const {data: Developer} = useGetDeveloperQuery();
-
-    const filteredDevelopers = Property && Property?.filter((item: any) => item.Developer === params.viewdeveloper);
     
-    const filterViewDevelopers = Developer && Developer?.filter((item: any) => item.nameDeveloper === params.viewdeveloper);
+    const filteredDevelopers = Property && Property?.filter((item: any) => item.Developer === decodedString);
+    
+    const filterViewDevelopers = Developer && Developer?.filter((item: any) => item.nameDeveloper === decodedString);
 
     function handleChangeWord(sentence: string): string{
 
@@ -147,7 +147,7 @@ const ViewDeveloper: React.FC<ViewDeveloperProps> = ({params}) => {
                         <div key={index}>
                             {item?.desciptionImagesForView && item?.desciptionImagesForView?.map((item: any, index: number) => (
                                 <SwiperSlide key={index}>
-                                    <img className="h-[300px] w-full rounded-[5px]" src={item} />
+                                    <img className="h-[600px] w-full rounded-[5px]" src={item} />
                                 </SwiperSlide>
                             ))}
                         </div>
@@ -185,7 +185,7 @@ const ViewDeveloper: React.FC<ViewDeveloperProps> = ({params}) => {
                 {filterViewDevelopers && filterViewDevelopers?.map((item:any, index: number) => (
                     <div className="flex justify-center mt-5 flex-col items-center max-[720px]:px-[20px]" key={index}>
                         <img alt="Logo" className="w-[250px] h-[200px] rounded-[5px]" src={item?.logo}/>
-                        <p className={`text-[16px] text-justify w-[900px] max-[820px]:w-full max-[820px]:px-[10px] mt-5`}>{item?.descriptionLogo}</p>
+                        <pre className={`text-[16px] text-justify w-[900px] max-[820px]:w-full max-[820px]:px-[10px] mt-5`}>{`${item?.descriptionLogo}`}</pre>
                     </div>
                 ))}
                 <hr className="mt-4 mb-4" />
@@ -193,8 +193,8 @@ const ViewDeveloper: React.FC<ViewDeveloperProps> = ({params}) => {
                     <div key={index}>
                         {item?.desciptionImagesOfLogo && item?.desciptionImagesOfLogo?.map((item: any, index: number) => (
                             <div className="flex justify-center mt-5 flex-col items-center mb-5 max-[720px]:px-[20px]" key={index}>
-                                <img alt="Logo" className="h-[400px] rounded-[5px]" src={item?.image} />
-                                <p className={`text-[16px] text-justify w-[900px] mt-5 max-[820px]:w-full max-[820px]:px-[10px]`}>{item?.descriptionImage}</p>
+                                <img alt="Logo" className=" rounded-[5px]" src={item?.image} />
+                                <pre className={`text-[16px] text-justify w-[900px] mt-5 max-[820px]:w-full max-[820px]:px-[10px]`}>{item?.descriptionImage}</pre>
                             </div>
                         ))}
                     </div>
