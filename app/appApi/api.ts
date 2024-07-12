@@ -89,7 +89,10 @@ interface SocialMed {
 
 export const RealtyApi = createApi({
     reducerPath: 'AuthRealty',
-    baseQuery: fetchBaseQuery({baseUrl: API_BASE_URL}),
+    baseQuery: fetchBaseQuery({
+        baseUrl: API_BASE_URL,
+        credentials: 'include'
+    }),
     endpoints: (builder) => ({
         getSlideImage: builder.query<GetSliamgeImage[], void>({
             query: () => ({
