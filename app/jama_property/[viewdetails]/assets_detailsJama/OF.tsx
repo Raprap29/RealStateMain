@@ -126,7 +126,7 @@ const OF: React.FC<ValueCA> = ({FormCA}) => {
                             <div className="flex flex-col items-center">
                                 <img alt="image-1" src={itemView?.image} className="mb-5" />
                             </div>
-                            <p className="text-justify">{itemView?.descriptionImage}</p>
+                            <pre className="text-justify">{itemView?.descriptionImage}</pre>
                         </div>     
                     ))}
                 </div>
