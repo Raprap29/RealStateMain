@@ -21,7 +21,7 @@ export default function Product(props: any){
     const handleChangeContent = (sentence: string): string =>{
         const words = sentence?.split(" ");
 
-        if (words?.length < 4) {
+        if (words?.length > 4) {
             return sentence;
         }
 
