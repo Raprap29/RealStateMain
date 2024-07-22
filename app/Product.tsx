@@ -8,7 +8,20 @@ export default function Product(props: any){
 
         const words = sentence?.split(" ");
 
-        if (words?.length < 5) {
+        if (words?.length < 13) {
+            return sentence;
+        }
+
+        const truncatedWords = words?.slice(0, 13);
+        const truncatedSentence = truncatedWords?.join(' ');
+      
+        return `${truncatedSentence}...`;
+    }
+
+    const handleChangeContent = (sentence: string): string =>{
+        const words = sentence?.split(" ");
+
+        if (words?.length < 4) {
             return sentence;
         }
 
@@ -35,7 +48,7 @@ export default function Product(props: any){
                     </div>
                 </div>
                     <div className="mt-1">
-                        <p className="max-[360px]:ml-10 max-[360px]:mr-10 mr-[50px] ml-[50px] mt-[4px] text-[14px] font-medium max-[360px]:text-[10px]">{handleChangeWord(props.content)}</p>
+                        <p className="max-[360px]:ml-10 max-[360px]:mr-10 mr-[50px] ml-[50px] mt-[4px] text-[14px] font-medium max-[360px]:text-[10px]">{handleChangeContent(props.content)}</p>
                         <div className="flex text-[15px] justify-between pr-[10px]  pl-[10px] mt-2 ml-10 mr-10">
                         <div className="text-[12px] max-[400px]:text-[10px]">
                             <p className="font-light pt-1 pb-1">Property Type: <span className="font-medium">{props.type}</span></p>
