@@ -21,11 +21,11 @@ export default function Product(props: any){
     const handleChangeContent = (sentence: string): string =>{
         const words = sentence?.split(" ");
 
-        if (words?.length > 4) {
+        if (words?.length < 5) {
             return sentence;
         }
 
-        const truncatedWords = words?.slice(0, 13);
+        const truncatedWords = words?.slice(0, 5);
         const truncatedSentence = truncatedWords?.join(' ');
       
         return `${truncatedSentence}...`;
