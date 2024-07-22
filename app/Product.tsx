@@ -8,7 +8,7 @@ export default function Product(props: any){
 
         const words = sentence?.split(" ");
 
-        if (words?.length < 13) {
+        if (words?.length < 5) {
             return sentence;
         }
 
