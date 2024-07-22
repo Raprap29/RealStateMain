@@ -48,7 +48,7 @@ export default function Product(props: any){
                     </div>
                 </div>
                 <div className="mt-1 w-full">
-                        <p className="max-[360px]:ml-10 max-[360px]:mr-10 mr-[50px] ml-[50px] mt-[4px] text-[14px] font-medium max-[360px]:text-[10px]">{handleChangeContent(props.content)}</p>
+                        <p className="max-[360px]:ml-10 max-[360px]:mr-10 ml-[50px] mt-[4px] text-[14px] font-medium max-[360px]:text-[10px]">{handleChangeContent(props.content)}</p>
                         <div className="flex text-[15px] justify-between pr-[10px]  pl-[10px] mt-2 ml-10 mr-10">
                         <div className="text-[12px] max-[400px]:text-[10px]">
                             <p className="font-light pt-1 pb-1">Property Type: <span className="font-medium">{props.type}</span></p>
