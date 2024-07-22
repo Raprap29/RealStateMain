@@ -33,7 +33,7 @@ export default function Product(props: any){
     
     return(
         <>
-            <div key={props.id} className="relative rounded-[5px] bg-[#fff] flex flex-col items-center shadow-[0px_0px_3px_2px_rgba(74,107,222,.25)] max-[360px]:w-[220px] w-[260px] h-[440px]">
+            <div key={props.id} className="relative rounded-[5px] bg-[#fff] flex flex-col items-center shadow-[0px_0px_3px_2px_rgba(74,107,222,.25)] max-[360px]:w-[220px] w-[260px]">
                 <div className="p-2 relative">
                     <Image src={props.isImage} alt="image" width={240} height={180} className="rounded-[5px]" />
                     <div className="absolute top-[17px] left-[22px] flex gap-x-[30px]">
